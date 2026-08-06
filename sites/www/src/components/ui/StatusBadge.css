@@ -1,0 +1,25 @@
+.status {
+  display: inline-block;
+  padding: 0.15em 0.65em;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.status--good {
+  color: var(--green);
+  background: rgba(63, 125, 84, 0.1);
+}
+
+.status--young {
+  color: var(--accent-ink);
+  background: var(--accent-wash);
+}
+
+.status--muted {
+  color: var(--ink-soft);
+  background: var(--rule);
+}

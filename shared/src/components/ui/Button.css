@@ -1,0 +1,74 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* ---- Sizes ---- */
+.btn--md {
+  padding: 0.7em 1.15em;
+  font-size: 0.95rem;
+}
+
+.btn--lg {
+  padding: 0.95em 1.5em;
+  font-size: 1.02rem;
+}
+
+/* ---- Variants ---- */
+.btn--primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--primary:hover {
+  background: var(--accent-ink);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--rule-strong);
+}
+
+.btn--secondary:hover {
+  border-color: var(--ink);
+  background: rgba(42, 32, 22, 0.04);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--accent-ink);
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+}
+
+.btn--ghost:hover {
+  color: var(--ink);
+}
+
+/* On dark surfaces, the secondary button flips to light outlines. */
+.on-dark .btn--secondary {
+  color: var(--on-dark);
+  border-color: var(--rule-dark);
+}
+
+.on-dark .btn--secondary:hover {
+  border-color: var(--on-dark);
+  background: rgba(243, 234, 215, 0.08);
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Source of the social card (public/og.png), referenced by og:image and the
+  Twitter card on every page. Rosy paper + plum ink + logo gradient, matching
+  src/styles/theme.css; the "P" is the official Pimalaya logo.
+
+  Regenerate the PNG with:
+
+    inkscape assets/og.svg -w 1200 -h 630 -o public/og.png
+
+  (Text is set in Noto Serif; render on a machine that has it.)
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="254.18" y1="564.76" x2="254.18" y2="141.44" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f193b6"/>
+      <stop offset=".59" stop-color="#e267a3"/>
+      <stop offset="1" stop-color="#bf1e83"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rosy paper background with a hairline frame, letterpress style. -->
+  <rect width="1200" height="630" fill="#f9f1f3"/>
+  <rect x="24" y="24" width="1152" height="582" fill="none" stroke="#dfc3cf" stroke-width="2"/>
+
+  <!-- The official Pimalaya "P". -->
+  <g transform="translate(120, 168) scale(0.465)">
+    <path fill="url(#g)" d="M445.013 229.29c0-34.01-27.57-61.58-61.58-61.58h-163.14c-66.54 0-120.47 53.94-120.47 120.47v286.6c0 32.33 26.21 58.54 58.54 58.54h6.06c32.33 0 58.54-26.21 58.54-58.54V351.67c0-33.58 27.22-60.81 60.81-60.81h99.66c34.01 0 61.58-27.57 61.58-61.58z"/>
+    <path fill="url(#g)" d="M487.373 208.71h126.66c.61 0 1.1-.53 1.04-1.14C604.453 91.35 506.503 0 387.553 0H78.993c-33.55 0-60.75 27.2-60.75 60.75v6.17c0 33.55 27.2 60.75 60.75 60.75h308.56c48.51 0 89.11 34.43 98.71 80.13.11.53.57.91 1.12.91z"/>
+    <path fill="url(#g)" d="M486.453 249.54c-.15 0-.28.11-.31.25-9.79 45.45-50.26 79.63-98.59 79.63h-62.34c-33.73 0-61.08 27.35-61.08 61.08v5.51c0 33.73 27.35 61.08 61.08 61.08h62.34c118.82 0 216.7-91.15 227.51-207.19a.334.334 0 0 0-.33-.36h-128.27z"/>
+  </g>
+
+  <!-- Wordmark + tagline, plum ink on paper. -->
+  <text x="470" y="318" font-family="Noto Serif, Georgia, serif" font-weight="700" font-size="88" fill="#301f2a">Pimalaya blog</text>
+  <text x="472" y="392" font-family="Noto Serif, Georgia, serif" font-size="34" fill="#6f5464">The project journal</text>
+  <text x="472" y="474" font-family="Noto Serif, Georgia, serif" font-size="28" fill="#bf1e83">blog.pimalaya.org</text>
+</svg>

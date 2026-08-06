@@ -1,0 +1,37 @@
+.logo {
+  display: inline-flex;
+  align-items: anchor-center;
+  gap: 1rem;
+}
+
+/* The mark keeps its brand gradient on light and dark alike. */
+.logo__mark {
+  align-self: center;
+}
+
+.logo__word {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.logo__tag {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-ink);
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  padding: 0.15em 0.6em;
+}
+
+.logo--on-dark .logo__word {
+  color: var(--on-dark);
+}
+
+.logo--on-dark .logo__tag {
+  color: var(--rose);
+  border-color: var(--rule-dark);
+}

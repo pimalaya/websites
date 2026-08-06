@@ -1,0 +1,24 @@
+{
+  "name": "pimalaya-website",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Pimalaya website",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && node prerender.js",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@pimalaya/shared": "*",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
+  }
+}

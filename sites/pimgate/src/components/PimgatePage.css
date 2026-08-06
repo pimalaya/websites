@@ -1,0 +1,311 @@
+/* ---- Hero ---- */
+
+.hero {
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero__title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  margin-top: 0.75rem;
+  max-width: 24ch;
+}
+
+.hero__lead {
+  margin-top: 1rem;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 2vw, 1.18rem);
+  max-width: 62ch;
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+/* ---- The deadline ---- */
+
+.deadline {
+  background: var(--surface);
+  border-bottom: 1px solid var(--rule);
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.deadline__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  max-width: 26ch;
+}
+
+.deadline__lead {
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+.deadline__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.deadline-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.4rem 1.5rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.deadline-card__date {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.deadline-card__name {
+  margin-top: 0.6rem;
+  font-size: 1.2rem;
+}
+
+.deadline-card__description {
+  margin-top: 0.6rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* ---- How it works ---- */
+
+.how {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.how__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  max-width: 26ch;
+}
+
+.how__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.how-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.4rem 1.5rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.how-card__name {
+  font-size: 1.2rem;
+}
+
+.how-card__description {
+  margin-top: 0.6rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* The exit path, set apart like a quiet promise. */
+.how__exit {
+  margin-top: 1.75rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+/* ---- Open source ---- */
+
+.open {
+  background: var(--ink-900);
+  color: var(--on-dark-soft);
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+}
+
+.open__eyebrow {
+  color: var(--rose);
+}
+
+.open__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--on-dark);
+}
+
+.open__lead {
+  margin-top: 0.9rem;
+  max-width: 62ch;
+}
+
+.open__crates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.75rem;
+}
+
+.open__crates a {
+  display: inline-block;
+  padding: 0.35em 0.9em;
+  border: 1px solid var(--rule-dark);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--on-dark);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.open__crates a:hover {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+
+.open__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* ---- The offers ---- */
+
+.offers {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.offers__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  max-width: 26ch;
+}
+
+.offers__lead {
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+.offers__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+  align-items: stretch;
+}
+
+.offer-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.75rem 1.75rem 1.5rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.offer-card--accent {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.offer-card__name {
+  font-size: 1.35rem;
+}
+
+.offer-card__price {
+  margin-top: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent-ink);
+}
+
+.offer-card__description {
+  margin-top: 0.75rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.offer-card__points {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.offer-card__points li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.offer-card__points li::before {
+  content: '·';
+  position: absolute;
+  left: 0.4rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.offer-card__cta {
+  margin-top: 1.5rem;
+  align-self: flex-start;
+}
+
+/* ---- Trust ---- */
+
+.trust {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.trust__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
+
+.trust__points {
+  margin-top: 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.trust__points li {
+  padding: 1.2rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.trust__points strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}

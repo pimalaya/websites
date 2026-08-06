@@ -1,0 +1,315 @@
+/* ---- Hero ---- */
+
+.hero {
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero__title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  margin-top: 0.75rem;
+  max-width: 22ch;
+}
+
+.hero__lead {
+  margin-top: 1rem;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 2vw, 1.18rem);
+  max-width: 62ch;
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+/* ---- Flagship (Himalaya) ---- */
+
+.flagship {
+  background: var(--surface);
+  border-bottom: 1px solid var(--rule);
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.flagship__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.flagship__head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.flagship__title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+/* Live shields.io badge; the only non-self-hosted element on the page. */
+.flagship__stars {
+  align-self: center;
+  border-radius: 4px;
+}
+
+.flagship__lead {
+  margin-top: 1rem;
+  color: var(--ink-soft);
+  max-width: 52ch;
+}
+
+.flagship__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* A still terminal, set like the blog's code blocks: ink-900 on paper. */
+.flagship__term {
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--ink-900);
+  color: var(--on-dark);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+.flagship__prompt {
+  color: var(--rose);
+}
+
+@media (max-width: 820px) {
+  .flagship__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Apps catalogue ---- */
+
+.apps {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.apps__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
+
+.apps__lead {
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+.apps__lead a {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.apps__group {
+  margin-top: 2.5rem;
+}
+
+.apps__domain {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink-faint);
+}
+
+.apps__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.app-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.4rem 1.5rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.app-card:hover {
+  border-color: var(--rule-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.app-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.app-card__name {
+  font-size: 1.2rem;
+}
+
+.app-card:hover .app-card__name {
+  color: var(--accent-ink);
+}
+
+.app-card__description {
+  margin-top: 0.6rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.app-card__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-top: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+
+/* ---- For Rust developers ---- */
+
+.devs {
+  background: var(--ink-900);
+  color: var(--on-dark-soft);
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+}
+
+.devs__eyebrow {
+  color: var(--rose);
+}
+
+.devs__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--on-dark);
+}
+
+.devs__lead {
+  margin-top: 0.9rem;
+  max-width: 62ch;
+}
+
+.devs__crates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.75rem;
+}
+
+.devs__crates a {
+  display: inline-block;
+  padding: 0.35em 0.9em;
+  border: 1px solid var(--rule-dark);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--on-dark);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.devs__crates a:hover {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+
+.devs__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* ---- Gratitude ---- */
+
+.gratitude {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.gratitude__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.gratitude__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  max-width: 24ch;
+}
+
+.gratitude__lead {
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
+  max-width: 58ch;
+}
+
+.gratitude__lead a {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.gratitude__logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: 1.75rem;
+}
+
+/* Funder logos ship with white backgrounds; multiply blends them into the
+   paper, like the old site's sepia treatment. */
+.gratitude__logos img {
+  height: 64px;
+  width: auto;
+  mix-blend-mode: multiply;
+}
+
+.gratitude__donate {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.gratitude__donate a {
+  display: inline-block;
+  padding: 0.35em 0.9em;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.gratitude__donate a:hover {
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}

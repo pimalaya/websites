@@ -1,0 +1,57 @@
+/*
+ * Design tokens for the Pimalaya websites.
+ *
+ * The palette derives from the Pimalaya logo gradient (#f193b6 → #e267a3 →
+ * #bf1e83): rosy paper, plum ink, magenta accent, the Carillon website's
+ * letterpress structure re-inked in the brand colours. Everything downstream
+ * references these variables, so re-theming is a single-file job.
+ */
+
+:root {
+  /* ---- Surfaces ---- */
+  --paper: #f9f1f3; /* page background (rosy paper) */
+  --paper-raised: #fdf9fa; /* cards sitting on paper */
+  --surface: #ffffff; /* clean white sections */
+  --ink-900: #23121c; /* dark section background (deep plum) */
+  --ink-800: #2d1824;
+
+  /* ---- Text ---- */
+  --ink: #301f2a; /* primary text */
+  --ink-soft: #6f5464; /* secondary text */
+  --ink-faint: #a78d9c; /* muted labels / captions */
+  --on-dark: #f7e9f0; /* text on dark surfaces */
+  --on-dark-soft: #bb9cad;
+
+  /* ---- Accents ---- */
+  --accent: #bf1e83; /* logo magenta, primary brand accent */
+  --accent-ink: #97156a; /* darker magenta for hover / links */
+  --accent-wash: #f7d9ea; /* soft accent background fill */
+  --rose: #e267a3; /* logo mid-pink, secondary tone (highlights on dark) */
+  --green: #3f7d54; /* "available" status */
+
+  /* ---- Lines ---- */
+  --rule: #ecd9e1; /* hairline borders on paper */
+  --rule-strong: #dfc3cf;
+  --rule-dark: rgba(247, 233, 240, 0.14); /* borders on dark */
+
+  /* ---- Typography ---- */
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+    Georgia, serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* ---- Radii ---- */
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+
+  /* ---- Shadows ---- */
+  --shadow-sm: 0 1px 2px rgba(48, 31, 42, 0.06), 0 1px 1px rgba(48, 31, 42, 0.04);
+  --shadow-md: 0 14px 34px -16px rgba(48, 31, 42, 0.22);
+  --shadow-lg: 0 34px 64px -24px rgba(48, 31, 42, 0.32);
+
+  /* ---- Layout ---- */
+  --container: 1080px;
+  --nav-height: 68px;
+}

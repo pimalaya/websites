@@ -1,0 +1,118 @@
+name: publish
+
+# Every push to master builds all three sites (www = pimalaya.org, blog =
+# blog.pimalaya.org, pimgate = pimgate.pimalaya.org), then deploys the Pimgate
+# one-pager to this repository's GitHub Pages (custom domain configured in the
+# repository Pages settings, DNS CNAME to pimalaya.github.io).
+#
+# GitHub Pages serves one site per repository, so three domains cannot all be
+# served from this repository's Pages. Until the maintainer picks a cutover
+# path for pimalaya.org and blog.pimalaya.org (see the README Deployment
+# section), those two sites are built here as a permanent CI check but still
+# deployed from their standalone repositories; the disabled deploy-www and
+# deploy-blog jobs below show the standard cross-repo publish pattern, ready
+# to switch on.
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; let an in-flight production deploy finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Build every site: www and blog act as CI checks until their deploy
+      # jobs are enabled, pimgate feeds the Pages deploy below.
+      - run: npm run build:www
+      - run: npm run build:blog
+      - run: npm run build:pimgate
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: sites/pimgate/dist
+      # Kept for the disabled cross-repo deploy jobs below; harmless
+      # otherwise.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: www-dist
+          path: sites/www/dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: blog-dist
+          path: sites/blog/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  # --- Cross-repo deploy stubs, DISABLED until cutover. ---------------------
+  # pimalaya.org and blog.pimalaya.org are still deployed by their standalone
+  # repositories' own workflows. To cut one of them over to this monorepo:
+  #
+  #   1. In the target repository (pimalaya/website or pimalaya/blog), switch
+  #      the Pages source from "GitHub Actions" to "Deploy from a branch"
+  #      (branch gh-pages), and disable its own publish workflow.
+  #   2. Generate an SSH deploy key pair; add the public key to the target
+  #      repository (Settings > Deploy keys, write access) and the private key
+  #      to THIS repository's secrets (WWW_DEPLOY_KEY / BLOG_DEPLOY_KEY).
+  #      A fine-grained PAT in `personal_token` works too.
+  #   3. Flip the job's `if: false` to `if: true` (or drop the line).
+  #
+  # The custom domain keeps living in the target repository's Pages settings,
+  # so DNS does not move. peaceiris/actions-gh-pages force-pushes the dist to
+  # the target branch and writes the CNAME file from `cname`.
+
+  deploy-www:
+    if: false # DISABLED: enable at pimalaya.org cutover (see above)
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: www-dist
+          path: dist
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.WWW_DEPLOY_KEY }}
+          external_repository: pimalaya/website
+          publish_branch: gh-pages
+          publish_dir: dist
+          cname: pimalaya.org
+
+  deploy-blog:
+    if: false # DISABLED: enable at blog.pimalaya.org cutover (see above)
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: blog-dist
+          path: dist
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.BLOG_DEPLOY_KEY }}
+          external_repository: pimalaya/blog
+          publish_branch: gh-pages
+          publish_dir: dist
+          cname: blog.pimalaya.org

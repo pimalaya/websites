@@ -1,0 +1,23 @@
+{
+  "name": "pimalaya-websites",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Pimalaya websites",
+  "workspaces": [
+    "shared",
+    "sites/*"
+  ],
+  "scripts": {
+    "dev:www": "npm run dev --workspace sites/www",
+    "build:www": "npm run build --workspace sites/www",
+    "preview:www": "npm run preview --workspace sites/www",
+    "dev:blog": "npm run dev --workspace sites/blog",
+    "build:blog": "npm run build --workspace sites/blog",
+    "preview:blog": "npm run preview --workspace sites/blog",
+    "newsletter": "npm run newsletter --workspace sites/blog --",
+    "dev:pimgate": "npm run dev --workspace sites/pimgate",
+    "build:pimgate": "npm run build --workspace sites/pimgate",
+    "preview:pimgate": "npm run preview --workspace sites/pimgate"
+  }
+}
