@@ -18,9 +18,9 @@ export interface Page {
 export function renderPages(): { pages: Page[] } {
   const home: Page = {
     slug: '',
-    title: 'Pimgate | Keep IMAP and SMTP working with Microsoft 365 and Gmail',
+    title: 'Pimgate | The PIM gateway: mail, contacts and calendars over standard protocols',
     description:
-      'Pimgate is the open-source mail gateway that keeps IMAP and SMTP clients and devices working against Microsoft 365 and Gmail, served from an offline-first local replica in an open format.',
+      'Pimgate is the open-source PIM gateway: mail, contacts and calendars served from offline-first local replicas in one open format, over the standard protocols your clients and devices already speak. IMAP and SMTP today, CardDAV and CalDAV on the roadmap.',
     appHtml: renderToString(<App />),
   }
 

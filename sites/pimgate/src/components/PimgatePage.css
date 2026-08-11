@@ -18,6 +18,14 @@
   max-width: 62ch;
 }
 
+/* The honest status line: what ships today, what is on the roadmap. */
+.hero__status {
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  max-width: 62ch;
+}
+
 .hero__cta {
   display: flex;
   flex-wrap: wrap;

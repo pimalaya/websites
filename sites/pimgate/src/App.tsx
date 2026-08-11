@@ -75,7 +75,7 @@ export default function App() {
         <PimgatePage />
       </main>
       <Footer
-        tagline="The open-source mail gateway"
+        tagline="The open-source PIM gateway"
         logoTag="pimgate"
         columns={footerColumns}
         bottomNote={

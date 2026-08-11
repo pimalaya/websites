@@ -2,24 +2,7 @@
 
 The Pimalaya web properties, one workspace sharing a theme, a license and a nix shell
 
-This is the monorepo of the Pimalaya websites: an npm workspace where every web property is a package under sites/, all consuming the shared theme and components in [shared/](./shared) (the letterpress design tokens, the site chrome, the ui primitives and the prerender machinery extracted from pimalaya.org and blog.pimalaya.org). Every shipped page is prerendered to static HTML at build time with the SPA module script stripped, so the sites run from HTML and CSS alone. All three properties live here: the Pimalaya website (sites/www, pimalaya.org), the blog (sites/blog, blog.pimalaya.org), and the [Pimgate](https://github.com/pimalaya/pimgate) one-pager (sites/pimgate, pimgate.pimalaya.org). The migration of the standalone [website](https://github.com/pimalaya/website) and [blog](https://github.com/pimalaya/blog) repositories into this workspace is done; their deployment cutover is pending (see [Deployment](#deployment)), and those repositories retire once it happens.
-
-## Table of contents
-
-- [Sites](#sites)
-- [Workspace layout](#workspace-layout)
-- [Installation](#installation)
-  - [Nix](#nix)
-  - [Sources](#sources)
-- [Usage](#usage)
-  - [Writing a blog post](#writing-a-blog-post)
-  - [Mailing the newsletter](#mailing-the-newsletter)
-- [Deployment](#deployment)
-- [AI disclosure](#ai-disclosure)
-- [License](#license)
-- [Social](#social)
-- [Contributing](#contributing)
-- [Sponsoring](#sponsoring)
+Every site is an npm workspace package under sites/, consuming the shared theme and prerender machinery in [shared/](./shared) and shipping as JavaScript-free static HTML.
 
 ## Sites
 
@@ -29,59 +12,28 @@ This is the monorepo of the Pimalaya websites: an npm workspace where every web 
 | [sites/blog](./sites/blog)       | blog.pimalaya.org    | `npm run build:blog`    | cutover pending: still deployed from [blog](https://github.com/pimalaya/blog) |
 | [sites/pimgate](./sites/pimgate) | pimgate.pimalaya.org | `npm run build:pimgate` | this repository's GitHub Pages                                                |
 
-The pimalaya.org site is named `www` (not `website`) so the directory names the property like the others do: `www` is the conventional host label for the apex domain, and it avoids colliding with the retiring standalone website repository.
-
-## Workspace layout
-
-The root package.json declares the npm workspaces `shared` and `sites/*`. [shared/](./shared) is `@pimalaya/shared`, the common layer every site consumes: the design tokens and global styles (src/styles), the site chrome (Nav and Footer, parameterized per site), the ui primitives (Button, Icon, Logo, Container), and the reusable prerender script (`@pimalaya/shared/prerender`) that turns a Vite client + SSR build into JavaScript-free static pages with sitemap.xml and robots.txt (plus article og:type and sitemap lastmod on sites with dated pages). Each site under [sites/](./sites) keeps what is its own: index.html and head metadata, page components and copy, a thin prerender.js injecting its JSON-LD, and its public/ assets. sites/www additionally owns the products catalogue (src/lib/products.ts) and the StatusBadge primitive; sites/blog owns the markdown posts pipeline (posts/, src/lib/posts.ts), the RSS feed (src/lib/feed.ts, also served live by the dev server) and the newsletter script (scripts/newsletter.js). One flake.nix and shell.nix at the root provide the node toolchain for the whole workspace.
+NOTE: the pimalaya.org site is named `www`, the conventional host label for the apex domain, to avoid colliding with the retiring standalone repository.
 
 ## Installation
-
-The sites are static bundles any host can serve; GitHub Pages serves them in production (see [Deployment](#deployment)). Build them only to develop them or host your own copies.
-
-### Nix
-
-With the [Flakes](https://nixos.wiki/wiki/Flakes) feature enabled, build a site's static bundle (`.#www`, `.#blog` or `.#pimgate`; the default package stays the Pimgate one-pager):
-
-```sh
-nix build github:pimalaya/websites#www
-```
-
-The result is a dist/ directory any static host can serve.
-
-### Sources
 
 ```sh
 git clone https://github.com/pimalaya/websites
 cd websites
 npm install
-npm run build:www # or build:blog, build:pimgate
 ```
 
-The bundle lands in sites/<site>/dist.
+With [Flakes](https://nixos.wiki/wiki/Flakes) enabled, `nix build github:pimalaya/websites#<site>` builds a bundle without cloning.
 
 ## Usage
 
-Run `npm run dev:<site>` for a hot-reloading dev server, `npm run build:<site>` for the production bundle, and `npm run preview:<site>` to serve that bundle locally, where `<site>` is `www`, `blog` or `pimgate`. Copy and outward links live inline in each site's components (the sites are English-only), the shared design tokens in shared/src/styles/theme.css, the products catalogue in sites/www/src/lib/products.ts, and the Pimgate offer prices in sites/pimgate/src/lib/pricing.ts (placeholders until the real numbers are set). CONTRIBUTING.md and the [cairn](./cairn) folder cover where to edit what.
-
-### Writing a blog post
-
-Drop a markdown file in sites/blog/posts/, named after its URL slug (`posts/my-article.md` lands at `/my-article/`), with a small frontmatter block carrying `title`, `description` and `date` (YYYY-MM-DD). Add `draft: true` to keep a post out of the build. The build fails on a missing title, description, or date, so a half-filled post cannot ship. The dev server serves every post at its slug and /feed.xml live.
-
-### Mailing the newsletter
-
-The newsletter is manual, there is no CI step. To mail a post to the [newsletter](https://buttondown.com/pimalaya), run `npm run newsletter -- <slug>` and paste the output into a new Buttondown email (the composer is markdown-native): the subject is the post title, and the body is the post source with links absolutized and a canonical link appended.
+- `npm run build:www` builds pimalaya.org into sites/www/dist (swap `build` for `dev` or `preview` on any site)
+- `npm run build:blog` builds blog.pimalaya.org; a post is a markdown file in [sites/blog/posts/](./sites/blog/posts) with `title`, `description` and `date` frontmatter
+- `npm run build:pimgate` builds the Pimgate one-pager
+- `npm run newsletter -- <slug>` prints a Buttondown-ready email for a post ([sites/blog/scripts/newsletter.js](./sites/blog/scripts/newsletter.js), manual, no CI step)
 
 ## Deployment
 
-GitHub Pages serves one site per repository, so three domains cannot all be served from this repository's Pages. The publish workflow builds all three sites on every push (www and blog act as CI checks), then deploys sites/pimgate's dist/ to this repository's Pages under the pimgate.pimalaya.org custom domain.
-
-pimalaya.org and blog.pimalaya.org are still deployed by the standalone [website](https://github.com/pimalaya/website) and [blog](https://github.com/pimalaya/blog) repositories' own workflows: the cutover is the one open decision of the migration, and the maintainer picks between two options.
-
-- **Cross-repo push (no DNS change)**: keep the two standalone repositories alive as Pages shells, switch their Pages source to a `gh-pages` branch, and enable the disabled `deploy-www` / `deploy-blog` jobs in [.github/workflows/publish.yml](./.github/workflows/publish.yml). They push each site's dist/ to its repository's Pages branch via peaceiris/actions-gh-pages with a per-repository deploy key (or a fine-grained PAT); the custom domains and DNS stay exactly where they are. The repositories can then be archived read-only except for the Pages branch... which GitHub does not allow (archived repositories freeze Pages deployments), so they stay unarchived shells.
-- **Move DNS to another host**: point pimalaya.org and blog.pimalaya.org at a host that can serve several sites (any static host, or a second GitHub org/user Pages setup), deploy from this repository only, and archive the standalone repositories fully.
-
-The step-by-step for the first option is commented in the workflow file next to the disabled jobs.
+The publish workflow builds all three sites on every push and deploys sites/pimgate's dist/ to this repository's GitHub Pages under pimgate.pimalaya.org. pimalaya.org and blog.pimalaya.org are still deployed from the standalone [website](https://github.com/pimalaya/website) and [blog](https://github.com/pimalaya/blog) repositories until the pending cutover: either enable the disabled cross-repo deploy jobs, or move DNS to a host that can serve several sites from one repository. Both options are detailed in the comments of [.github/workflows/publish.yml](./.github/workflows/publish.yml).
 
 ## AI disclosure
 

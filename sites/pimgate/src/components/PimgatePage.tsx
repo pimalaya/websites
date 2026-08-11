@@ -28,15 +28,18 @@ export function PimgatePage() {
     <>
       <section className="hero">
         <div className="container">
-          <span className="eyebrow">Mail gateway · Free and open source</span>
+          <span className="eyebrow">PIM gateway · Free and open source</span>
           <h1 className="hero__title">
-            Keep IMAP and SMTP working with Microsoft 365 and Gmail
+            One gateway for your mail, contacts and calendars
           </h1>
           <p className="hero__lead">
-            Pimgate is the open-source mail gateway that keeps IMAP and SMTP
-            clients and devices working against Microsoft 365 and Gmail. It
-            serves your mailbox from an offline-first local replica, stored in
-            an open format.
+            Pimgate is the PIM gateway: mail, contacts and calendars served
+            from offline-first local replicas in one open format, over the
+            standard protocols your clients and devices already speak.
+          </p>
+          <p className="hero__status">
+            Mail (IMAP and SMTP) is available today; contacts and calendars
+            (CardDAV and CalDAV) are on the roadmap.
           </p>
           <div className="hero__cta">
             <Button href="#offers" size="lg">
@@ -62,7 +65,9 @@ export function PimgatePage() {
             Scanners, printers, ERP systems, monitoring, ticketing and legacy
             line-of-business software speak IMAP and SMTP with a username and a
             password. Most of them cannot be modified to do OAuth. The
-            providers are removing what they depend on, on a schedule.
+            providers are removing what they depend on, on a schedule. These
+            mail deadlines are the first wave, and the reason the mail
+            frontends shipped first.
           </p>
           <ul className="deadline__grid">
             <li className="deadline-card">
@@ -104,31 +109,35 @@ export function PimgatePage() {
             <li className="how-card">
               <h3 className="how-card__name">A local replica</h3>
               <p className="how-card__description">
-                neverest mirrors the mailbox into a pimdir store: an open,
-                documented on-disk format, bodies included, offline-first. The
-                provider side speaks whatever the provider requires, OAuth
-                included.
+                neverest mirrors your collections into a pimdir store: an
+                open, documented on-disk format, one store for every kind of
+                personal information, offline-first. Today it mirrors
+                mailboxes, bodies included; address books and calendars come
+                next. The provider side speaks whatever the provider requires,
+                OAuth included.
               </p>
             </li>
             <li className="how-card">
               <h3 className="how-card__name">Standard frontends</h3>
               <p className="how-card__description">
-                pimgate serves that store over IMAP and SMTP on your network,
-                so existing clients and devices keep working unchanged. No
-                provider credential ever reaches the frontend.
+                pimgate serves that store on your network over the protocols
+                your software already speaks: IMAP and SMTP today, CardDAV and
+                CalDAV next. Existing clients and devices keep working
+                unchanged, and no provider credential ever reaches the
+                frontend.
               </p>
             </li>
             <li className="how-card">
               <h3 className="how-card__name">Durable sending</h3>
               <p className="how-card__description">
-                Submissions land in a queue that survives restarts and
-                outages. Mail is sent when the provider is reachable, and sits
-                visibly in an Outbox until then.
+                Outgoing items land in a queue that survives restarts and
+                outages. Mail sits visibly in an Outbox until the provider is
+                reachable, then goes out.
               </p>
             </li>
           </ul>
           <p className="how__exit">
-            The store is an open format: leave anytime, restore anywhere.
+            One open format for all your PIM data: leave anytime, restore anywhere.
           </p>
         </div>
       </section>
@@ -183,7 +192,7 @@ export function PimgatePage() {
           <span className="eyebrow">The offers</span>
           <h2 className="offers__title">Run it yourself, or have us run it on your infra</h2>
           <p className="offers__lead">
-            There is no hosted tier: your mail does not transit through our
+            There is no hosted tier: your data does not transit through our
             servers. The gateway runs where you decide, and what we sell is
             the operation around it.
           </p>
@@ -244,9 +253,9 @@ export function PimgatePage() {
           <h2 className="trust__title">The security posture</h2>
           <ul className="trust__points">
             <li>
-              <strong>Credential-less frontend.</strong> Clients authenticate
+              <strong>Credential-less frontends.</strong> Clients authenticate
               to the gateway; the provider credential lives with the sync
-              engine and never reaches the IMAP or SMTP frontend.
+              engine and never reaches the frontends your software talks to.
             </li>
             <li>
               <strong>Your tenant, your scopes.</strong> The OAuth app
@@ -255,13 +264,14 @@ export function PimgatePage() {
             </li>
             <li>
               <strong>Offline-first.</strong> A provider outage degrades to
-              serving the replica, not to downtime. Reading keeps working;
-              sending queues until the provider is back.
+              serving the replicas, not to downtime. Reading keeps working;
+              outgoing mail queues until the provider is back.
             </li>
             <li>
-              <strong>Open end to end.</strong> Open code and an open on-disk
-              format. There is nothing to reverse-engineer on the way in and
-              nothing to escape from on the way out.
+              <strong>Open end to end.</strong> Open code and one open on-disk
+              format for all your PIM data. There is nothing to
+              reverse-engineer on the way in and nothing to escape from on the
+              way out.
             </li>
             <li>
               <strong>Security artifacts.</strong> A threat model and a
