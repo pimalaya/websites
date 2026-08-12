@@ -31,7 +31,7 @@ Pimdir keeps the part those layouts got right, the large immutable content besid
 - pimdir.db, a SQLite database holding collections, items, per-source bindings and sync checkpoints,
 - objects/, a content-addressed blob directory holding the item bodies, one immutable file per content hash, sharded two levels deep.
 
-SQLite is a deliberate choice rather than "a database": the file format is byte-identical across every OS and architecture, with a stability commitment through 2050. *You copy a store, you do not run a server.*
+SQLite is a deliberate choice: its file format is byte-identical across every OS and architecture, with a stability commitment through 2050. *You copy a store, you do not run a server.*
 
 A few ideas do most of the work. A collection declares a **media type** and the store never parses the bodies, so mail, contacts and calendars are the same tables. Bodies are **content-addressed**, so an item filed in two collections is stored once and a copy or a move is a pointer edit rather than a byte copy. Identity is split into four distinct things (the backend handle, the cross-collection link id, the content hash, and a short public id that clients display) instead of one identifier asked to be all of them. The database is a *derived* cache, rebuildable from the blobs and a fresh sync. **One process owns it**, readers open it read-only, and anything else appends to an action queue the owner applies in order. And a removal is **retention, not deletion**: when the last source drops an item the row is kept until an explicit purge, so a remote expunge never destroys the local copy.
 
