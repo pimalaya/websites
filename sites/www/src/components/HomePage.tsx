@@ -1,4 +1,4 @@
-import { apps, repoUrl } from '../lib/products'
+import { apps, libraries, repoUrl } from '../lib/products'
 import { Button, Icon } from '@pimalaya/shared'
 import { StatusBadge } from './ui/StatusBadge'
 import { Subscribe } from './Subscribe'
@@ -8,12 +8,13 @@ import './HomePage.css'
  * The front door: what Pimalaya is, Himalaya first (it is how most people
  * arrive), then the catalogue of installable tools, the library story for
  * Rust developers, the follow-along box, and the funding gratitude. The
- * grid only shows products flagged `home` in src/lib/products.ts; the
- * full truthful map lives at /ecosystem/.
+ * grid only shows products flagged `home` in src/lib/products.ts, apps and
+ * libraries alike (a library ships a command too when it carries a CLI
+ * feature); the full truthful map lives at /ecosystem/.
  */
 export function HomePage() {
   const domains = ['Email', 'Contacts', 'Time', 'Plumbing']
-  const grid = apps.filter((app) => app.home)
+  const grid = [...apps, ...libraries].filter((product) => product.home)
 
   return (
     <>

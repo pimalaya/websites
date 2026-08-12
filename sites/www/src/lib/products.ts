@@ -26,7 +26,11 @@ export interface Product {
   kind: string
   status: Status
   description: string
-  /* Shown in the home page grid (installable today only). */
+  /*
+   * Shown in the home page grid (installable today only). A library can
+   * carry it too when it also ships a command anyone can install, which is
+   * why the grid draws from both catalogues.
+   */
   home?: boolean
   /*
    * Hand-curated popularity rank (rough GitHub star magnitude), used only
@@ -173,24 +177,24 @@ export const apps: Product[] = [
     popularity: 15,
   },
   {
-    name: 'io-pim-discovery',
-    repo: 'io-pim-discovery',
-    domain: 'Plumbing',
-    kind: 'CLI + library',
-    status: 'early',
-    description:
-      'Discover a provider’s IMAP, SMTP, CardDAV and CalDAV services from an email address.',
-    home: true,
-    popularity: 10,
-  },
-  {
-    name: 'cardamum-android',
-    repo: 'cardamum-android',
-    domain: 'Contacts',
+    name: 'pimalaya-android',
+    repo: 'android',
+    domain: 'Email + Contacts + Calendar',
     kind: 'Android app',
     status: 'in development',
-    description: 'Cardamum for Android: contacts sync in your pocket.',
+    description:
+      'Mail, contacts and calendars in one Android app, over one local store and one account list. Contacts are the mature domain; mail and calendar are read-only for now.',
     popularity: 12,
+  },
+  {
+    name: 'pimalaya-linux',
+    repo: 'linux',
+    domain: 'Email + Contacts',
+    kind: 'Desktop app',
+    status: 'in development',
+    description:
+      'A native GTK4 and libAdwaita desktop app for mail and contacts, sharing its configuration file with the command-line tools.',
+    popularity: 5,
   },
 ]
 
@@ -323,6 +327,17 @@ export const libraries: Product[] = [
     status: 'stable',
     description: 'Standard I/O connectors that drive the I/O-free crates.',
     popularity: 15,
+  },
+  {
+    name: 'io-pim-discovery',
+    repo: 'io-pim-discovery',
+    domain: 'Plumbing',
+    kind: 'Library + CLI',
+    status: 'early',
+    description:
+      'Discover a provider’s IMAP, SMTP, CardDAV and CalDAV services from an email address. The CLI ships as an off-by-default cargo feature.',
+    home: true,
+    popularity: 10,
   },
 ]
 

@@ -8,11 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Moved io-pim-discovery from the apps to the libraries in the www catalogue: it is a library whose command-line interface is an off-by-default cargo feature, not a CLI that happens to expose a library. It keeps its place on the home page grid, which now draws from both catalogues instead of the apps alone.
+- Renamed cardamum-android to pimalaya-android and rescoped it to the whole of personal information management (pimalaya/android: mail, contacts and calendars over one store and one account list), stating that contacts are the mature domain while mail and calendar are read-only for now. The matching experiment paragraph now carries the one-app-for-three-domains point it validates.
 - Reordered the www ecosystem page so the libraries come before the apps, stating the architecture the right way round: every app is a thin frontend over the crates. The section order is now roadmap, libraries, apps, community, frozen and retired, experiments.
 - Closed the "Installable today" section of the www home page with a primary call to action to the ecosystem page; until now the section ended on the last app card with no way out.
 
 ### Added
 
+- Added pimalaya-linux to the www catalogue (pimalaya/linux): the native GTK4 and libAdwaita desktop app for mail and contacts, which until now appeared on the ecosystem page only as an unnamed "GTK4 + libadwaita" mention in the experiments prose, with no repository to follow.
 - Added a "From the community" section to the www ecosystem page, crediting eight third-party front-ends and integrations built on the Pimalaya tools and crates: himalaya-emacs, mailbrus, the two himalaya.nvim plugins, himalaya-wrap, the Raycast extension, dfzf and the OpenClaw skill.
 
   They live in their own `community` catalogue in sites/www/src/lib/products.ts, with a full URL and an author instead of a repository slug under the organisation, and no hand-curated status. Their table swaps the Domain and Status columns for a single Author column, and the section lead states that none of them are maintained by the organisation. The prerender JSON-LD ItemList is unchanged: it still describes only the organisation's own repositories.

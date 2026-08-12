@@ -207,19 +207,25 @@ export function EcosystemPage() {
               now.
             </p>
             <p>
-              <strong>cardamum-android</strong> validates that the I/O-free
+              <strong>pimalaya-android</strong> validates that the I/O-free
               Rust libraries can power a real mobile app: the protocol logic
               runs in Rust, compiled for Android, while the platform side
-              (TLS, storage, the system contacts) stays native. It syncs
-              CardDAV address books with the phone's own contacts; a blog
-              post about the approach is coming soon.
+              (TLS, storage, the system contacts) stays native. It started as
+              a contacts app and became the whole thing, mail, contacts and
+              calendars behind one store and one account list, which is the
+              second point it validates: the three domains belong in one app,
+              not three. Contacts is where it is mature; mail and calendar
+              read today and will write later. A blog post about the approach
+              is coming soon.
             </p>
             <p>
-              <strong>GTK4 + libadwaita</strong> carries the same idea to a
-              third ecosystem: a native Linux desktop app for mail and
+              <strong>pimalaya-linux</strong> carries the same idea to a third
+              ecosystem: a native GTK4 and libAdwaita desktop app for mail and
               contacts, built on the very same Rust cores, to prove the
               libraries fit any UI (terminal, mobile or desktop) without
-              rewriting the protocols.
+              rewriting the protocols. It reads the same configuration file as
+              the command-line tools, so one account definition serves all of
+              them. Only the application shell exists so far.
             </p>
           </div>
 
