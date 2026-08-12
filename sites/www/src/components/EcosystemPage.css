@@ -36,6 +36,12 @@
   max-width: 68ch;
 }
 
+.eco__section-lead a {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .eco__prose {
   margin-top: 1.25rem;
   display: grid;

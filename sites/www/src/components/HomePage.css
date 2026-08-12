@@ -188,6 +188,11 @@
   color: var(--accent-ink);
 }
 
+/* The way out of the catalogue: the grid only shows what ships today. */
+.apps__cta {
+  margin-top: 2.5rem;
+}
+
 /* ---- For Rust developers ---- */
 
 .devs {

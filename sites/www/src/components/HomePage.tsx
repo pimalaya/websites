@@ -125,6 +125,12 @@ export function HomePage() {
               </ul>
             </div>
           ))}
+
+          <div className="apps__cta">
+            <Button href="/ecosystem/" size="lg">
+              Browse the full ecosystem <Icon name="arrowRight" size={18} />
+            </Button>
+          </div>
         </div>
       </section>
 

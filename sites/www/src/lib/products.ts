@@ -4,6 +4,9 @@
  * home page only shows what a user can install today (`home: true`), the
  * ecosystem page shows everything, including what is brewing and what has
  * been retired.
+ *
+ * Third-party projects live in their own `community` catalogue at the bottom
+ * of this file: they are not ours to grade, so they carry no status.
  */
 
 export type Status =
@@ -397,3 +400,87 @@ export const retired: Product[] = [
 export function repoUrl(product: Product): string {
   return `https://github.com/pimalaya/${product.repo}`
 }
+
+/* A third-party project built on top of the Pimalaya tools or crates. */
+export interface CommunityProject {
+  name: string
+  /* Full URL: these live outside the organisation. */
+  url: string
+  /* The person or organisation maintaining it, as credit. */
+  author: string
+  kind: string
+  description: string
+}
+
+/*
+ * Front-ends and integrations built by other people. The list is curated by
+ * hand from the Himalaya README and from what reaches the maintainers, so it
+ * is certainly incomplete; the invitation to open a pull request sits next
+ * to the table on the ecosystem page. Archived projects are left out.
+ */
+export const community: CommunityProject[] = [
+  {
+    name: 'himalaya-emacs',
+    url: 'https://github.com/dantecatalfamo/himalaya-emacs',
+    author: 'dantecatalfamo',
+    kind: 'Emacs plugin',
+    description:
+      'Browse, read, write and organize emails from Emacs, on top of the Himalaya CLI. Published on MELPA.',
+  },
+  {
+    name: 'mailbrus',
+    url: 'https://github.com/antono/mailbrus',
+    author: 'antono',
+    kind: 'Desktop and web app',
+    description:
+      'A keyboard-driven, plain-text-first email client built on the io-email and io-maildir crates, shipped as a Tauri app and a progressive web app.',
+  },
+  {
+    name: 'himalaya.nvim',
+    url: 'https://github.com/knownasnaffy/himalaya.nvim',
+    author: 'knownasnaffy',
+    kind: 'Neovim plugin',
+    description:
+      'A native Neovim interface to the Himalaya CLI, written in Lua on top of nui.nvim.',
+  },
+  {
+    name: 'himalaya.nvim',
+    url: 'https://github.com/JostBrand/himalaya.nvim',
+    author: 'JostBrand',
+    kind: 'Neovim plugin',
+    description:
+      'A Neovim port of himalaya-vim, with folder pickers backed by fzf or Telescope.',
+  },
+  {
+    name: 'himalaya-wrap',
+    url: 'https://github.com/robertmeta/himalaya-wrap',
+    author: 'robertmeta',
+    kind: 'Emacs plugin',
+    description:
+      'An Emacs front-end to the Himalaya CLI designed for Emacspeak users, working straight against the remote server with no local maildir.',
+  },
+  {
+    name: 'himalaya',
+    url: 'https://www.raycast.com/jns/himalaya',
+    author: 'jns',
+    kind: 'Raycast extension',
+    description:
+      'Read and manage the emails of your default account from the Raycast launcher on macOS.',
+  },
+  {
+    name: 'dfzf',
+    url: 'https://github.com/parisni/dfzf',
+    author: 'parisni',
+    kind: 'Sway and i3 toolkit',
+    description:
+      'A fuzzy-finder desktop toolkit whose dfzf-mail viewer runs on the Himalaya CLI and mml.',
+  },
+  {
+    name: 'himalaya SKILL',
+    url: 'https://github.com/openclaw/openclaw/blob/main/skills/himalaya/SKILL.md',
+    author: 'openclaw',
+    kind: 'Agent skill',
+    description:
+      'Teaches the OpenClaw coding agent to manage emails through the Himalaya CLI.',
+  },
+]

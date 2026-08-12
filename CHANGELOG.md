@@ -6,8 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- Reordered the www ecosystem page so the libraries come before the apps, stating the architecture the right way round: every app is a thin frontend over the crates. The section order is now roadmap, libraries, apps, community, frozen and retired, experiments.
+- Closed the "Installable today" section of the www home page with a primary call to action to the ecosystem page; until now the section ended on the last app card with no way out.
+
 ### Added
 
+- Added a "From the community" section to the www ecosystem page, crediting eight third-party front-ends and integrations built on the Pimalaya tools and crates: himalaya-emacs, mailbrus, the two himalaya.nvim plugins, himalaya-wrap, the Raycast extension, dfzf and the OpenClaw skill.
+
+  They live in their own `community` catalogue in sites/www/src/lib/products.ts, with a full URL and an author instead of a repository slug under the organisation, and no hand-curated status. Their table swaps the Domain and Status columns for a single Author column, and the section lead states that none of them are maintained by the organisation. The prerender JSON-LD ItemList is unchanged: it still describes only the organisation's own repositories.
 - Migrated the two existing sites into the workspace: sites/www (pimalaya.org, from the standalone website repository) and sites/blog (blog.pimalaya.org, from the standalone blog repository, including the posts, the RSS feed and the manual Buttondown newsletter script).
 
   Both sites now consume `@pimalaya/shared` for the theme, the chrome, the ui primitives and the prerender machinery instead of their own copies; their pages, copy, head metadata, JSON-LD and rendered output are unchanged. The shared prerender gained the blog's date-driven behaviours (article og:type, sitemap lastmod), both no-ops for undated sites. The root gained dev/build/preview aliases for www and blog plus a newsletter alias; the flake now exposes a packages attrset (`www`, `blog`, `pimgate`, with pimgate remaining the default); the publish workflow builds all three sites and carries disabled cross-repo deploy stubs for www and blog until the maintainer picks a deployment cutover path (documented in the README).
