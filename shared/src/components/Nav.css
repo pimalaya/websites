@@ -62,11 +62,46 @@
   color: var(--ink);
 }
 
+/*
+ * The sponsor button: a heart in the accent, outlined rather than filled, so
+ * it stays visibly secondary to the primary call to action sitting next to
+ * it while still being the one thing on the bar with colour in it.
+ */
+.nav__sponsor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Deliberately the same metrics as .btn--md, so it sits level with the
+     primary call to action on the sites that still have one. */
+  gap: 0.5em;
+  padding: 0.7em 1.15em;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+  border: 1px solid var(--accent-wash);
+  border-radius: 999px;
+  background: var(--accent-wash);
+  color: var(--accent-ink);
+}
+
+.nav__sponsor:hover {
+  border-color: var(--rose);
+}
+
 /* On narrow screens, drop the middle links and the github glyph;
-   keep the brand and the primary call to action. */
+   keep the brand, the sponsor heart and the primary call to action. */
 @media (max-width: 760px) {
   .nav__links,
   .nav__icon-link {
     display: none;
+  }
+
+  /* The heart alone still reads as "sponsor"; the word is what has to go. */
+  .nav__sponsor-label {
+    display: none;
+  }
+
+  .nav__sponsor {
+    padding: 0.7em;
   }
 }

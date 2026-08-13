@@ -1,4 +1,4 @@
-import { Button, Footer, Nav } from '@pimalaya/shared'
+import { Button, Footer, Icon, Nav } from '@pimalaya/shared'
 import type { FooterColumn, NavLink } from '@pimalaya/shared'
 
 import { IndexPage } from './components/IndexPage'
@@ -74,9 +74,10 @@ export default function App({ url }: { url: string }) {
         brandLabel="Pimalaya blog home"
         logoTag="blog"
         links={navLinks}
+        sponsorHref="https://pimalaya.org/sponsor/"
         cta={
           <Button href="https://buttondown.com/pimalaya" size="md" external>
-            Subscribe
+            <Icon name="mail" size={16} /> Subscribe
           </Button>
         }
       />

@@ -1,15 +1,17 @@
-import { Button, Footer, Nav } from '@pimalaya/shared'
+import { Footer, Nav } from '@pimalaya/shared'
 import type { FooterColumn, NavLink } from '@pimalaya/shared'
 
 import { HomePage } from './components/HomePage'
 import { EcosystemPage } from './components/EcosystemPage'
+import { SponsorPage } from './components/SponsorPage'
 
 /*
  * Every page is prerendered at build time (see prerender.js), so this is not
- * a router; it just picks the page for one URL: `/` is the home page and
- * `/ecosystem/` the ecosystem map. The same switch serves the dev server,
- * where Vite falls back to index.html for every path. The chrome comes from
- * @pimalaya/shared, parameterized with this site's links and copy.
+ * a router; it just picks the page for one URL: `/` is the home page,
+ * `/ecosystem/` the ecosystem map and `/sponsor/` the funding page. The same
+ * switch serves the dev server, where Vite falls back to index.html for every
+ * path. The chrome comes from @pimalaya/shared, parameterized with this
+ * site's links and copy.
  */
 
 const navLinks: NavLink[] = [
@@ -44,6 +46,7 @@ const footerColumns: FooterColumn[] = [
     title: 'Project',
     links: [
       { label: 'Ecosystem', href: '/ecosystem/' },
+      { label: 'Sponsor', href: '/sponsor/' },
       { label: 'GitHub', href: 'https://github.com/pimalaya', external: true },
       {
         label: 'How Pimalaya works',
@@ -73,13 +76,17 @@ export default function App({ url }: { url: string }) {
       <Nav
         brandLabel="Pimalaya home"
         links={navLinks}
-        cta={
-          <Button href="https://buttondown.com/pimalaya" size="md" external>
-            Subscribe
-          </Button>
-        }
+        sponsorHref="/sponsor/"
       />
-      <main>{path === 'ecosystem' ? <EcosystemPage /> : <HomePage />}</main>
+      <main>
+        {path === 'ecosystem' ? (
+          <EcosystemPage />
+        ) : path === 'sponsor' ? (
+          <SponsorPage />
+        ) : (
+          <HomePage />
+        )}
+      </main>
       <Footer
         tagline="Open-source PIM tools, written in Rust"
         columns={footerColumns}

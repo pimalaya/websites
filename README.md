@@ -35,17 +35,6 @@ With [Flakes](https://nixos.wiki/wiki/Flakes) enabled, `nix build github:pimalay
 
 The publish workflow builds all three sites on every push and deploys sites/pimgate's dist/ to this repository's GitHub Pages under pimgate.pimalaya.org. pimalaya.org and blog.pimalaya.org are still deployed from the standalone [website](https://github.com/pimalaya/website) and [blog](https://github.com/pimalaya/blog) repositories until the pending cutover: either enable the disabled cross-repo deploy jobs, or move DNS to a host that can serve several sites from one repository. Both options are detailed in the comments of [.github/workflows/publish.yml](./.github/workflows/publish.yml).
 
-## AI disclosure
-
-This project is developed with AI assistance. This section documents how, so users and downstream packagers can make informed decisions.
-
-- **Tools**: Claude Code (Anthropic), invoked locally with a persistent project-scoped memory and a small set of repo-specific rules.
-- **Used for**: Scaffolding, refactors, mechanical multi-file edits, boilerplate (component scaffolding, inline SVGs), copy polish, exploratory design conversations.
-- **Not used for**: Pricing and offer terms (set by a human), git manipulation (commit, merge, rebase…), real-world tests.
-- **Verification**: Every AI-assisted change is read, type-checked, and built before commit (`npm run build:www`, `build:blog`, `build:pimgate`).
-- **Limitations**: AI models occasionally produce plausible but wrong copy or markup. The verification workflow catches most of this; it does not catch all of it. Bug reports are welcome and taken seriously.
-- **Last reviewed**: 07/08/2026
-
 ## License
 
 This project is licensed under either of:
@@ -53,17 +42,11 @@ This project is licensed under either of:
 - [MIT license](LICENSE-MIT)
 - [Apache License, Version 2.0](LICENSE-APACHE)
 
-at your option.
-
 ## Social
 
 - Chat on [Matrix](https://matrix.to/#/#pimalaya:matrix.org)
 - News on [Mastodon](https://fosstodon.org/@pimalaya) or [RSS](https://fosstodon.org/@pimalaya.rss)
 - Mail at [pimalaya.org@posteo.net](mailto:pimalaya.org@posteo.net)
-
-## Contributing
-
-Contributions are welcome: start with [CONTRIBUTING.md](./CONTRIBUTING.md), which opens with the Pimalaya-wide guides to read first.
 
 ## Sponsoring
 
@@ -74,7 +57,7 @@ Special thanks to the [NLnet foundation](https://nlnet.nl/) and the [European Co
 - 2022 → 2023: [NGI Assure](https://nlnet.nl/project/Himalaya/)
 - 2023 → 2024: [NGI Zero Entrust](https://nlnet.nl/project/Pimalaya/)
 - 2024 → 2026: [NGI Zero Core](https://nlnet.nl/project/Pimalaya-PIM/)
-- *2027 in preparation…*
+- 2026 → 2027: [NGI Zero Commons Fund](https://nlnet.nl/project/Pimalaya-pimdir/)
 
 If you appreciate the project, feel free to donate using one of the following providers:
 

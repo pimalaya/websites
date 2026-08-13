@@ -18,10 +18,13 @@ interface NavProps {
   /* Optional small tag beside the wordmark ("blog", "pimgate"...). */
   logoTag?: string
   links: NavLink[]
-  /* Primary call to action, right-aligned beside the GitHub glyph. */
-  cta: ReactNode
+  /* Primary call to action, right-aligned beside the GitHub glyph. Omitted on
+     the sites where the sponsor button is the only action worth offering. */
+  cta?: ReactNode
   /* GitHub destination of the icon link; defaults to the org. */
   githubHref?: string
+  /* Funding page. Omitted on the sites that do not have one. */
+  sponsorHref?: string
 }
 
 /* Sticky top navigation. Middle links collapse away on small screens. */
@@ -31,6 +34,7 @@ export function Nav({
   links,
   cta,
   githubHref = 'https://github.com/pimalaya',
+  sponsorHref,
 }: NavProps) {
   return (
     <header className="nav">
@@ -63,6 +67,12 @@ export function Nav({
           >
             <Icon name="github" size={20} />
           </a>
+          {sponsorHref && (
+            <a className="nav__sponsor" href={sponsorHref}>
+              <Icon name="heart" size={16} />
+              <span className="nav__sponsor-label">Sponsor</span>
+            </a>
+          )}
           {cta}
         </div>
       </div>
