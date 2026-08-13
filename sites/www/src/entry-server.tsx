@@ -38,9 +38,9 @@ export function renderPages(): { pages: Page[] } {
 
   const sponsor: Page = {
     slug: 'sponsor',
-    title: 'Pimalaya | Sponsor a one-person ecosystem',
+    title: 'Pimalaya | Sponsor free software funded by donations',
     description:
-      'Pimalaya is maintained by one person. Sponsorship is what turns your use of the tools into time spent on them: the tiers, what each one funds, and every way to give.',
+      'Pimalaya is free software, funded entirely by grants and donations: what the money pays for, what the grants already cover, and every way to give.',
     appHtml: renderToString(<App url="/sponsor/" />),
   }
 

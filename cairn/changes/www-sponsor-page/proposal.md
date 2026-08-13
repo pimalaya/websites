@@ -11,7 +11,7 @@ created: 2026-08-13
 
 Funding for Pimalaya currently happens entirely on other people's surfaces. The organisation's FUNDING.yml points at six platforms, every one of them registered to a personal handle, and GitHub renders them as a flat, unordered row of buttons with no room for a sentence. A visitor who wants to support the project therefore meets a payment provider before meeting the project, and meets a person's username before meeting Pimalaya.
 
-That framing is wrong twice. It hides the fact that matters most, which is that the entire ecosystem is maintained by one person and continues only while that person can afford the time. And it puts the organisation's funding story in a place the organisation does not control, so nothing explains what the money buys, what is already funded by grants, or why a company should care.
+That framing is wrong twice. It hides the fact that matters most, which is that the entire ecosystem runs on gift funding: grants and donations are the only money there is, nothing is sold, and the work continues exactly as long as they do. And it puts the organisation's funding story in a place the organisation does not control, so nothing explains what the money buys, what is already funded by grants, or why a company should care.
 
 A GitHub Sponsors profile cannot be owned by the Pimalaya organisation without a legal entity or a fiscal host, and that decision has been deferred. The website is the one funding surface the organisation fully controls today, and it is enough: FUNDING.yml carries a `custom` entry, so a Pimalaya-branded page can become the first thing a prospective sponsor sees while the underlying accounts stay personal.
 
@@ -19,7 +19,7 @@ A GitHub Sponsors profile cannot be owned by the Pimalaya organisation without a
 
 Add a third prerendered page at `/sponsor/`, built from a tier catalogue in src/lib/sponsors.ts the same way the home and ecosystem pages are built from src/lib/products.ts.
 
-The page states the position plainly: one maintainer, no paid tier, no gate, and time as the only real cost. It separates grant funding from sponsorship, because NLnet and the European Commission fund specific named work while sponsorship funds everything around it, and conflating the two makes the project look better funded than it is.
+The page states the position plainly: free software funded entirely by grants and donations, no paid tier, no gate, and time as the only real cost. It describes the funding model rather than the maintainer's situation, because a page that argues from one person's circumstances asks for rescue, while a page that states how the project is paid for asks the reader to take part in it. It separates grant funding from sponsorship, because NLnet and the European Commission fund specific named work while sponsorship funds everything around it, and conflating the two makes the project look better funded than it is: being grant-funded must not read as being already covered.
 
 The tier ladder is deliberately not repeated here. GitHub Sponsors owns the amounts, the billing and the sponsor list, and a second copy on the site is a second thing to keep in step for no gain: a visitor who wants tiers is one click from the authoritative ones. The page carries what GitHub cannot, which is who maintains this, what the money buys, and every route it can take.
 

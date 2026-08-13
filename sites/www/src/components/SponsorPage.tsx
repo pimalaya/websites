@@ -1,6 +1,13 @@
 import { Icon } from '@pimalaya/shared'
 
-import { funders, platforms, REPO_COUNT } from '../lib/sponsors'
+import {
+  APP_COUNT,
+  DOMAIN_COUNT,
+  funders,
+  LIB_COUNT,
+  platforms,
+  REPO_COUNT,
+} from '../lib/sponsors'
 import './SponsorPage.css'
 
 /*
@@ -11,8 +18,8 @@ import './SponsorPage.css'
  *
  * The tiers are deliberately absent. They live on GitHub Sponsors, which owns
  * the amounts and the billing; repeating them here would only be a second
- * copy to keep in step. This page carries what GitHub cannot: who maintains
- * this, what the money buys, and every route it can take.
+ * copy to keep in step. This page carries what GitHub cannot: how the project
+ * is funded, what the money buys, and every route it can take.
  *
  * The routes sit in the header rather than in a section of their own, so the
  * page opens on the ask instead of making a visitor who already decided to
@@ -25,10 +32,15 @@ export function SponsorPage() {
       <section className="sponsor-head">
         <div className="container">
           <span className="eyebrow">Sponsor</span>
-          <h1 className="sponsor-head__title">Pimalaya is one person</h1>
+          <h1 className="sponsor-head__title">
+            Pimalaya is free software,
+            <br />
+            funded entirely by grants and donations
+          </h1>
           <p className="sponsor-head__lead">
-            One maintainer, and an ecosystem that keeps working for exactly as
-            long as I can afford the time. This is where you fund it.
+            Grants pay for named pieces of work, for a fixed period. Donations
+            pay for everything else, and everything after. This is where you
+            fund it.
           </p>
           <ul className="give">
             {platforms.map((platform, index) => (
@@ -68,14 +80,13 @@ export function SponsorPage() {
           <h2 className="sponsor__section">What you are funding</h2>
           <div className="sponsor__prose">
             <p>
-              <strong>{REPO_COUNT} repositories</strong>: Himalaya for email,
-              Cardamum for contacts, Calendula for calendars, Neverest for
-              sync, and underneath them the layer nobody sees, a set of
-              I/O-free Rust libraries implementing IMAP, SMTP, JMAP, CalDAV,
-              CardDAV, vCard, iCalendar, OAuth and SASL <em>from the RFCs
-              up</em>. That substrate is why these tools work against servers
-              that disagree with each other, and it is{' '}
-              <strong>most of the work</strong>.
+              <strong>{REPO_COUNT} repositories</strong> including {' '}
+              <strong>{APP_COUNT} apps</strong> and{' '}
+              <strong>{LIB_COUNT} libraries</strong>, across{' '}
+              <strong>{DOMAIN_COUNT} domains</strong> (email, contacts,
+              calendars, time). Most of that count is the layer nobody sees,
+              I/O-free Rust libraries written <em>from the RFCs up</em>, and it
+              is <strong>most of the work</strong>.
             </p>
             <p>
               All of it is free software, MIT or Apache-2.0.{' '}
@@ -84,23 +95,21 @@ export function SponsorPage() {
               because there is nothing locked.
             </p>
             <p>
-              What it costs is <strong>time</strong>. Every hour on a protocol
-              edge case, a provider's quirk, a bug you reported, is an hour{' '}
-              <em>not billed elsewhere</em>. Sponsorship converts your use of
-              these tools into time I can spend on them: the difference between
-              a project I <strong>maintain</strong> and a hobby I{' '}
-              <em>get to on weekends</em>.
+              What it costs is <strong>time</strong>, and time is exactly what
+              grants and donations buy. Every hour on a protocol edge case, a
+              provider's quirk, a bug you reported, exists because somebody{' '}
+              <em>funded it</em>. Sponsorship is what turns your use of these
+              tools into <strong>more of those hours</strong>.
             </p>
           </div>
 
           <h2 className="sponsor__section">What grants already cover</h2>
           <p className="sponsor__section-lead">
             Pimalaya has been funded for years by these two, and that support
-            is real. It is also specific: a grant pays for a{' '}
-            <em>named piece of work</em>, for a fixed period. Sponsorship pays
-            for everything around it, the issues answered and the regressions
-            chased and the crates kept released, none of which is a deliverable
-            anyone can apply for.
+            is real. What a grant cannot cover is everything that is{' '}
+            <em>not a deliverable</em>: the issues answered, the regressions
+            chased, the crates kept released, the next protocol nobody wrote a
+            call for. That is the part sponsorship pays for.
           </p>
           <ul className="funders">
             {funders.map((funder) => (
@@ -117,13 +126,13 @@ export function SponsorPage() {
             ))}
           </ul>
 
-          <h2 className="sponsor__section">If you cannot give money</h2>
+          <h2 className="sponsor__section">Other ways to contribute</h2>
           <div className="sponsor__prose">
             <p>
-              Then give something that also costs you time. A bug report with
-              the steps to reproduce it, a documentation fix, a packaging
-              update for your distribution, an answer to someone else's
-              question in{' '}
+              Money is not the only thing that keeps this going, and time given
+              directly is worth as much as time bought. A bug report with the
+              steps to reproduce it, a documentation fix, a packaging update
+              for your distribution, an answer to someone else's question in{' '}
               <a
                 href="https://matrix.to/#/#pimalaya:matrix.org"
                 target="_blank"

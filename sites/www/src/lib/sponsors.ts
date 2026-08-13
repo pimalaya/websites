@@ -16,6 +16,8 @@ import type { IconName } from '@pimalaya/shared'
  */
 export const REPO_COUNT = '75+'
 export const APP_COUNT = '15+'
+export const LIB_COUNT = '30+'
+export const DOMAIN_COUNT = '4'
 
 export interface Platform {
   name: string
@@ -42,7 +44,7 @@ export const platforms: Platform[] = [
     name: 'GitHub Sponsors',
     url: 'https://github.com/sponsors/soywod',
     icon: 'heart',
-    note: 'The full tier ladder, monthly or one-time. Companies are billed by GitHub and get their own receipt, so nothing is needed from me for your accounting.',
+    note: 'The full tier ladder, monthly or one-time. Companies are billed by GitHub and get their own receipt, so the paperwork needs nothing from the project.',
   },
   {
     name: 'Liberapay',

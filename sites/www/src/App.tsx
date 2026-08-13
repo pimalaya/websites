@@ -90,18 +90,6 @@ export default function App({ url }: { url: string }) {
       <Footer
         tagline="Open-source PIM tools, written in Rust"
         columns={footerColumns}
-        bottomNote={
-          <>
-            Sustained for years by the{' '}
-            <a href="https://nlnet.nl/" target="_blank" rel="noopener noreferrer">
-              NLnet foundation
-            </a>{' '}
-            and the{' '}
-            <a href="https://www.ngi.eu/" target="_blank" rel="noopener noreferrer">
-              European Commission
-            </a>.
-          </>
-        }
       />
     </>
   )

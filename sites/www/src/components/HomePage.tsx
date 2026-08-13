@@ -211,31 +211,11 @@ export function HomePage() {
               <img src="/ngi0-core.svg" alt="NGI Zero Core" height={64} loading="lazy" />
             </a>
           </div>
-          <p className="gratitude__lead">
-            If you appreciate the project, you can support it too:
-          </p>
-          <ul className="gratitude__donate" aria-label="Donation links">
-            <li>
-              <a href="https://github.com/sponsors/soywod" target="_blank" rel="noopener noreferrer">
-                GitHub Sponsors
-              </a>
-            </li>
-            <li>
-              <a href="https://ko-fi.com/soywod" target="_blank" rel="noopener noreferrer">
-                Ko-fi
-              </a>
-            </li>
-            <li>
-              <a href="https://liberapay.com/soywod" target="_blank" rel="noopener noreferrer">
-                Liberapay
-              </a>
-            </li>
-            <li>
-              <a href="https://www.paypal.com/paypalme/soywod" target="_blank" rel="noopener noreferrer">
-                PayPal
-              </a>
-            </li>
-          </ul>
+          <div className="gratitude__cta">
+            <Button href="/sponsor/" size="md">
+              <Icon name="heart" size={18} /> Sponsor Pimalaya
+            </Button>
+          </div>
         </div>
       </section>
     </>

@@ -24,8 +24,9 @@ interface FooterProps {
   columns: FooterColumn[]
   /* Left side of the bottom line; defaults to the org copyright. */
   copyright?: string
-  /* Right side of the bottom line. */
-  bottomNote: ReactNode
+  /* Right side of the bottom line, omitted when a site has nothing to say
+     there. */
+  bottomNote?: ReactNode
 }
 
 export function Footer({
@@ -77,7 +78,7 @@ export function Footer({
 
         <div className="footer__bottom">
           <p>{copyright}</p>
-          <p>{bottomNote}</p>
+          {bottomNote && <p>{bottomNote}</p>}
         </div>
       </Container>
     </footer>
