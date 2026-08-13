@@ -48,19 +48,19 @@ export const platforms: Platform[] = [
   },
   {
     name: 'Liberapay',
-    url: 'https://liberapay.com/soywod',
+    url: 'https://liberapay.com/pimalaya',
     icon: 'liberapay',
     note: 'Recurring, run by a French non-profit, and the only option here that takes no cut of its own.',
   },
   {
     name: 'Ko-fi',
-    url: 'https://ko-fi.com/soywod',
+    url: 'https://ko-fi.com/pimalaya',
     icon: 'kofi',
     note: 'Monthly or one-time, and no account is needed to give once.',
   },
   {
     name: 'Buy Me a Coffee',
-    url: 'https://www.buymeacoffee.com/soywod',
+    url: 'https://www.buymeacoffee.com/pimalaya',
     icon: 'buyMeACoffee',
     note: 'One-time, in the smallest amounts of anything listed here.',
   },
