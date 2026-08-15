@@ -467,6 +467,14 @@ export const community: CommunityProject[] = [
       'A Neovim port of himalaya-vim, with folder pickers backed by fzf or Telescope.',
   },
   {
+    name: 'himalaya-nvim',
+    url: 'https://github.com/xav-ie/himalaya-nvim',
+    author: 'xav-ie',
+    kind: 'Neovim plugin',
+    description:
+      'A heavily modified Lua fork of himalaya-vim, with threaded views, structured search, HTML rendering and flag management.',
+  },
+  {
     name: 'himalaya-wrap',
     url: 'https://github.com/robertmeta/himalaya-wrap',
     author: 'robertmeta',
