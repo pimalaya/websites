@@ -35,12 +35,13 @@ export function SponsorPage() {
           <h1 className="sponsor-head__title">
             Pimalaya is free software,
             <br />
-            funded entirely by grants and donations
+            funded by the people who rely on it
           </h1>
           <p className="sponsor-head__lead">
-            Grants pay for named pieces of work, for a fixed period. Donations
-            pay for everything else, and everything after. This is where you
-            fund it.
+            Grants pay for named pieces of work, for a fixed period.
+            Partnerships pay for what a company needs from us: its servers
+            tested, its bugs first. Donations pay for everything else, and
+            everything after. This is where you fund it.
           </p>
           <ul className="give">
             {platforms.map((platform, index) => (

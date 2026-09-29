@@ -37,9 +37,9 @@ export function renderPages(): { pages: Page[] } {
 
   const sponsor: Page = {
     slug: 'sponsor',
-    title: 'Pimalaya | Sponsor free software funded by donations',
+    title: 'Pimalaya | Sponsor the free software you rely on',
     description:
-      'Pimalaya is free software, funded entirely by grants and donations: what the money pays for, what the grants already cover, and every way to give.',
+      'Pimalaya is free software, funded by the people who rely on it: what donations pay for that grants and partnerships do not, and every way to give.',
     appHtml: renderToString(<App url="/sponsor/" />),
   }
 

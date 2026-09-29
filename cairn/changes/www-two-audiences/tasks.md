@@ -13,4 +13,4 @@ change: www-two-audiences
 - [x] Verify: www builds, six pages prerendered, no dead internal link
 - [x] Fold the delta into spec/www-site.md and write the log entry
 - [ ] Before publishing: prices, signing entity, "small team" wording, deadline dates
-- [ ] After the first signature: reword the sponsor page headline and lead
+- [x] Reword the sponsor page headline and lead (done early: the business page made "funded entirely by grants and donations" read as a contradiction)
