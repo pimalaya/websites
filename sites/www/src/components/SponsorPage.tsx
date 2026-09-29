@@ -8,6 +8,7 @@ import {
   platforms,
   REPO_COUNT,
 } from '../lib/sponsors'
+import './Page.css'
 import './SponsorPage.css'
 
 /*
@@ -80,9 +81,10 @@ export function SponsorPage() {
         </div>
       </section>
 
-      <section className="sponsor">
+      <section className="band">
         <div className="container">
-          <h2 className="sponsor__section">What you are funding</h2>
+          <span className="eyebrow">The work</span>
+          <h2 className="band__title">What you are funding</h2>
           <div className="sponsor__prose">
             <p>
               <strong>{REPO_COUNT} repositories</strong> including {' '}
@@ -107,9 +109,14 @@ export function SponsorPage() {
               tools into <strong>more of those hours</strong>.
             </p>
           </div>
+        </div>
+      </section>
 
-          <h2 className="sponsor__section">What grants already cover</h2>
-          <p className="sponsor__section-lead">
+      <section className="band">
+        <div className="container">
+          <span className="eyebrow">Grants</span>
+          <h2 className="band__title">What grants already cover</h2>
+          <p className="band__lead">
             Pimalaya has been funded for years by these two, and that support
             is real. What a grant cannot cover is everything that is{' '}
             <em>not a deliverable</em>: the issues answered, the regressions
@@ -130,25 +137,31 @@ export function SponsorPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
 
-          <h2 className="sponsor__section">Other ways to contribute</h2>
-          <div className="sponsor__prose">
-            <p>
-              Money is not the only thing that keeps this going, and time given
-              directly is worth as much as time bought. A bug report with the
-              steps to reproduce it, a documentation fix, a packaging update
-              for your distribution, an answer to someone else's question in{' '}
-              <a
-                href="https://matrix.to/#/#pimalaya:matrix.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                the Matrix room
-              </a>
-              . Telling someone the tools exist counts too.{' '}
-              <strong>None of that is a consolation prize.</strong>
-            </p>
-          </div>
+      <section className="band band--dark">
+        <div className="container">
+          <span className="eyebrow">Beyond money</span>
+          <h2 className="band__title">Other ways to contribute</h2>
+          <p className="band__lead">
+            Money is not the only thing that keeps this going, and time given
+            directly is worth as much as time bought. A bug report with the
+            steps to reproduce it, a documentation fix, a packaging update for
+            your distribution, an answer to someone else's question in{' '}
+            <a
+              href="https://matrix.to/#/#pimalaya:matrix.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              the Matrix room
+            </a>
+            . Telling someone the tools exist counts too.{' '}
+            <strong>None of that is a consolation prize.</strong>
+          </p>
+          <p className="band__lead">
+            Where to start: the <a href="/community/">community page</a>.
+          </p>
         </div>
       </section>
     </>
