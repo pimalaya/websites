@@ -1,19 +1,22 @@
 import { apps, libraries, repoUrl } from '../lib/products'
+import { offers, pains, signIn } from '../lib/offers'
 import { Button, Icon } from '@pimalaya/shared'
 import { StatusBadge } from './ui/StatusBadge'
 import { Subscribe } from './Subscribe'
 import './HomePage.css'
 
 /*
- * The front door: what Pimalaya is, Himalaya first (it is how most people
- * arrive), then the catalogue of installable tools, the library story for
- * Rust developers, the follow-along box, and the funding gratitude. The
+ * The front door, for both audiences. The hero offers two doors: the tools,
+ * and the business page. Then the open-source side (Himalaya first, since it
+ * is how most people arrive, the catalogue of installable tools, the library
+ * story for Rust developers), the business band (the pain, the two offers),
+ * the community band, the follow-along box, and the funding gratitude. The
  * grid only shows products flagged `home` in src/lib/products.ts, apps and
  * libraries alike (a library ships a command too when it carries a CLI
  * feature); the full truthful map lives at /ecosystem/.
  */
 export function HomePage() {
-  const domains = ['Email', 'Contacts', 'Time', 'Plumbing']
+  const domains = ['Email', 'Contacts', 'Calendar', 'Time', 'Plumbing']
   const grid = [...apps, ...libraries].filter((product) => product.home)
 
   return (
@@ -23,20 +26,16 @@ export function HomePage() {
           <span className="eyebrow">Personal Information Management · Est. 2022</span>
           <h1 className="hero__title">Open-source PIM tools, written in Rust</h1>
           <p className="hero__lead">
-            Pimalaya is an ambitious project that aims to improve open-source
-            tools related to personal information management.
+            Free tools and Rust libraries for email, contacts and calendars,
+            built from the standards up and kept working against the servers
+            people actually use.
           </p>
           <div className="hero__cta">
-            <Button href="#apps" size="lg">
-              Browse the tools <Icon name="arrowRight" size={18} />
+            <Button href="#tools" size="lg">
+              Explore the tools <Icon name="arrowRight" size={18} />
             </Button>
-            <Button
-              href="https://github.com/pimalaya"
-              variant="secondary"
-              size="lg"
-              external
-            >
-              <Icon name="github" size={18} /> GitHub
+            <Button href="/business/" variant="secondary" size="lg">
+              Pimalaya for business
             </Button>
           </div>
         </div>
@@ -93,7 +92,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="apps" id="apps">
+      <section className="apps" id="tools">
         <div className="container">
           <span className="eyebrow">The tools</span>
           <h2 className="apps__title">Installable today</h2>
@@ -101,6 +100,11 @@ export function HomePage() {
             Every tool is free software, dual-licensed MIT or Apache-2.0. The
             full map, including what is brewing and what has been retired,
             lives on the <a href="/ecosystem/">ecosystem page</a>.
+          </p>
+          <p className="apps__lead">
+            On Gmail or Microsoft 365? A{' '}
+            <a href="/sign-in/">one-step sign-in</a> is planned, so you no
+            longer need to register your own app.
           </p>
 
           {domains.map((domain) => (
@@ -171,6 +175,90 @@ export function HomePage() {
             </Button>
             <Button href="/ecosystem/" variant="secondary" size="md">
               Browse the ecosystem
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="business" id="business">
+        <div className="container">
+          <span className="eyebrow">For business</span>
+          <h2 className="business__title">
+            Free software, kept working against real servers
+          </h2>
+          <p className="business__lead">
+            The code is the cheap part. Keeping it working is what costs, and
+            it costs every year:
+          </p>
+          <ul className="business__pains">
+            {pains.map((pain) => (
+              <li key={pain.title}>
+                <strong>{pain.title}</strong> {pain.text}
+              </li>
+            ))}
+          </ul>
+          <ul className="business__offers">
+            {offers.map((offer) => (
+              <li key={offer.id}>
+                <a className="business-card" href={`/business/#${offer.id}`}>
+                  <span className="business-card__name">{offer.audience}</span>
+                  <span className="business-card__note">
+                    <strong>{offer.who}</strong> {offer.summary}
+                  </span>
+                </a>
+              </li>
+            ))}
+            <li>
+              <a className="business-card" href="/sign-in/">
+                <span className="business-card__name">
+                  {signIn.audience}{' '}
+                  <span className="status status--young">planned</span>
+                </span>
+                <span className="business-card__note">
+                  <strong>{signIn.who}</strong> {signIn.summary}
+                </span>
+              </a>
+            </li>
+          </ul>
+          <div className="business__cta">
+            <Button href="/business/" size="lg">
+              Pimalaya for business <Icon name="arrowRight" size={18} />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="community">
+        <div className="container">
+          <span className="eyebrow">Community</span>
+          <h2 className="community__title">Talk, contribute, build on it</h2>
+          <p className="community__lead">
+            Questions and development talk in the{' '}
+            <a
+              href="https://matrix.to/#/#pimalaya:matrix.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Matrix room
+            </a>
+            , news on the{' '}
+            <a href="https://blog.pimalaya.org" target="_blank" rel="noopener noreferrer">
+              blog
+            </a>{' '}
+            and{' '}
+            <a
+              href="https://fosstodon.org/@pimalaya"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Mastodon
+            </a>
+            . Bug reports, documentation, packaging and code are all
+            contributions, and the CLIs and libraries are made to be built on.
+          </p>
+          <div className="community__cta">
+            <Button href="/community/" variant="secondary" size="md">
+              Join the community <Icon name="arrowRight" size={16} />
             </Button>
           </div>
         </div>

@@ -20,8 +20,8 @@ The theme and everything reused across sites lives in shared/ (`@pimalaya/shared
 
 ## Node toolchain
 
-Development runs through npm at the workspace root: `npm install` once, then per site `npm run dev:<site>`, `npm run build:<site>` (type-check, client + SSR build, prerender) and `npm run preview:<site>`. The Nix flake provides a devshell with the pinned Node, and its packages.default builds the Pimgate static bundle reproducibly.
+Development runs through npm at the workspace root: `npm install` once, then per site `npm run dev:<site>`, `npm run build:<site>` (type-check, client + SSR build, prerender) and `npm run preview:<site>`. The Nix flake provides a devshell with the pinned Node, and its packages.default builds the pimalaya.org static bundle reproducibly.
 
 ## Where to edit what
 
-The sites are English-only, so copy and outward links live inline in the components that show them. For the Pimgate one-pager: the page sections in sites/pimgate/src/components/PimgatePage.tsx with co-located CSS, the offer prices in sites/pimgate/src/lib/pricing.ts (placeholders, `TODO` comments mark the values to fill before deploy), head metadata in sites/pimgate/index.html, and the JSON-LD in sites/pimgate/prerender.js. Styling is plain CSS with the tokens in shared/src/styles/theme.css, the same logo-derived letterpress palette as pimalaya.org and the blog. There is no CSS framework and no webfonts.
+The sites are English-only, so copy and outward links live inline in the components that show them. For pimalaya.org: the pages in sites/www/src/components/ with co-located CSS, the product catalogue in sites/www/src/lib/products.ts, the funding routes in sites/www/src/lib/sponsors.ts, the business and sign-in offers with their prices in sites/www/src/lib/offers.ts (placeholders to fill before deploy), page titles in sites/www/src/entry-server.tsx, and the JSON-LD in sites/www/prerender.js. Styling is plain CSS with the tokens in shared/src/styles/theme.css, the same logo-derived letterpress palette as pimalaya.org and the blog. There is no CSS framework and no webfonts.

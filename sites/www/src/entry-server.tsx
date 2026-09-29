@@ -6,9 +6,8 @@ import App from './App'
 export { apps, libraries, retired, repoUrl } from './lib/products'
 
 /*
- * Build-time entry (see prerender.js). Renders every page to static markup:
- * the home page at `/`, the ecosystem map at `/ecosystem/` and the funding
- * page at `/sponsor/`.
+ * Build-time entry (see prerender.js). Renders every page to static markup,
+ * each landing at `/<slug>/` (the home page at `/`).
  */
 
 export interface Page {
@@ -24,7 +23,7 @@ export function renderPages(): { pages: Page[] } {
     slug: '',
     title: 'Pimalaya | Open-source PIM tools in Rust',
     description:
-      'Pimalaya is an ambitious project that aims to improve open-source tools related to personal information management.',
+      'Free tools and Rust libraries for email, contacts and calendars, built from the standards up and kept working against the servers people actually use.',
     appHtml: renderToString(<App url="/" />),
   }
 
@@ -44,5 +43,29 @@ export function renderPages(): { pages: Page[] } {
     appHtml: renderToString(<App url="/sponsor/" />),
   }
 
-  return { pages: [home, ecosystem, sponsor] }
+  const community: Page = {
+    slug: 'community',
+    title: 'Pimalaya | Chat, news, contributing and integrating',
+    description:
+      'Where the Pimalaya community talks, follows the project, contributes and builds on the tools and libraries.',
+    appHtml: renderToString(<App url="/community/" />),
+  }
+
+  const signIn: Page = {
+    slug: 'sign-in',
+    title: 'Pimalaya | One-step Gmail and Microsoft 365 sign-in',
+    description:
+      'A planned subscription to sign in to Gmail and Microsoft 365 from the Pimalaya tools in one step, without registering your own app.',
+    appHtml: renderToString(<App url="/sign-in/" />),
+  }
+
+  const business: Page = {
+    slug: 'business',
+    title: 'Pimalaya for business | Providers and integrators',
+    description:
+      'The software stays free. Partnerships pay for your service or integration tested on every change, your bugs first, and a maintained version line.',
+    appHtml: renderToString(<App url="/business/" />),
+  }
+
+  return { pages: [home, ecosystem, community, signIn, sponsor, business] }
 }

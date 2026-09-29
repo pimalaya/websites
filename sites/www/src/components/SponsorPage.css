@@ -120,6 +120,7 @@
   max-width: 68ch;
 }
 
+.give__foot a,
 .sponsor__section-lead a,
 .sponsor__prose a {
   color: var(--accent-ink);

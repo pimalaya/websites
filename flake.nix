@@ -20,7 +20,7 @@
           pname = "${name}-website";
           version = "0.1.0";
           src = ./.;
-          npmDepsHash = "sha256-KQOBPYYBKa+1cxj5dTtdGV5tLqG9j84ZczQ0j2thCks=";
+          npmDepsHash = "sha256-w8pVp+zEd+F9dlk8LuK0NCU8ck0F0l2QUlyJ1dxZz7c=";
           npmBuildScript = "build:${name}";
 
           installPhase = ''
@@ -39,14 +39,9 @@
           ];
         };
 
-        # One package per site; packages.default stays the Pimgate one-pager
-        # (the site CI deploys from this repository's Pages) for compatibility
-        # with `nix build github:pimalaya/websites`.
+        # One package per site; packages.default is pimalaya.org, so
+        # `nix build github:pimalaya/websites` builds the front door.
         packages = rec {
-          pimgate = mkSite {
-            name = "pimgate";
-            description = "The Pimgate website, a static one-pager";
-          };
           www = mkSite {
             name = "www";
             description = "The Pimalaya website (pimalaya.org), static pages";
@@ -55,7 +50,7 @@
             name = "blog";
             description = "The Pimalaya blog (blog.pimalaya.org), static pages plus RSS";
           };
-          default = pimgate;
+          default = www;
         };
       });
 }

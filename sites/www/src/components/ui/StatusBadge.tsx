@@ -11,7 +11,6 @@ const tone: Record<Status, 'good' | 'young' | 'muted'> = {
   beta: 'young',
   early: 'young',
   'in development': 'muted',
-  retiring: 'muted',
   frozen: 'muted',
   deprecated: 'muted',
 }

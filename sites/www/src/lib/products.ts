@@ -14,7 +14,6 @@ export type Status =
   | 'beta'
   | 'early'
   | 'in development'
-  | 'retiring'
   | 'frozen'
   | 'deprecated'
 
@@ -32,79 +31,27 @@ export interface Product {
    * why the grid draws from both catalogues.
    */
   home?: boolean
-  /*
-   * Hand-curated popularity rank (rough GitHub star magnitude), used only
-   * to order rows inside a status on the ecosystem page, never displayed.
-   */
-  popularity?: number
 }
 
-const statusOrder: Status[] = [
-  'stable',
-  'beta',
-  'early',
-  'in development',
-  'retiring',
-  'frozen',
-  'deprecated',
-]
-
-/* Ecosystem table order: status first (stable on top), popularity inside. */
-export function byStatusThenPopularity(a: Product, b: Product): number {
-  const status = statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status)
-  if (status !== 0) return status
-  return (b.popularity ?? 0) - (a.popularity ?? 0)
+/* Ecosystem table order: by name, so a row is found at a glance. */
+export function byName(a: Product, b: Product): number {
+  return a.name.localeCompare(b.name)
 }
 
-/* End-user tools, flagship excluded (Himalaya has its own section). */
+/*
+ * End-user tools. Statuses follow the releases: `in development` means no
+ * release yet, `early` a first release, `beta` a release in real use,
+ * `stable` a mature one.
+ */
 export const apps: Product[] = [
   {
-    name: 'neverest',
-    repo: 'neverest',
-    domain: 'Email',
+    name: 'calendula',
+    repo: 'calendula',
+    domain: 'Calendar',
     kind: 'CLI',
-    status: 'beta',
-    description: 'Synchronize and back up emails between two backends.',
+    status: 'early',
+    description: 'Manage calendars over CalDAV.',
     home: true,
-    popularity: 450,
-  },
-  {
-    name: 'himalaya-vim',
-    repo: 'himalaya-vim',
-    domain: 'Email',
-    kind: 'Vim plugin',
-    status: 'stable',
-    description: 'Manage emails from Vim, on top of the Himalaya CLI.',
-    home: true,
-    popularity: 160,
-  },
-  {
-    name: 'himalaya-tui',
-    repo: 'himalaya-tui',
-    domain: 'Email',
-    kind: 'TUI',
-    status: 'in development',
-    description: 'A full-screen terminal UI for reading and writing emails.',
-    popularity: 15,
-  },
-  {
-    name: 'mirador',
-    repo: 'mirador',
-    domain: 'Email',
-    kind: 'CLI',
-    status: 'retiring',
-    description:
-      'Watch mailboxes for changes; its watch features fold into the next generation of tools.',
-    popularity: 190,
-  },
-  {
-    name: 'm2m',
-    repo: 'm2m',
-    domain: 'Email',
-    kind: 'CLI',
-    status: 'in development',
-    description: 'Convert mail stores between Maildir, Maildir++ and m2dir.',
-    popularity: 5,
   },
   {
     name: 'cardamum',
@@ -115,34 +62,15 @@ export const apps: Product[] = [
     description:
       'Manage contacts over CardDAV, Google, Microsoft and JMAP address books.',
     home: true,
-    popularity: 40,
   },
   {
-    name: 'tcard',
-    repo: 'tcard',
-    domain: 'Contacts',
+    name: 'carillon',
+    repo: 'carillon',
+    domain: 'Plumbing',
     kind: 'CLI',
-    status: 'in development',
-    description: 'Edit vCards as friendly TOML.',
-    popularity: 10,
-  },
-  {
-    name: 'calendula',
-    repo: 'calendula',
-    domain: 'Calendar',
-    kind: 'CLI',
-    status: 'in development',
-    description: 'Manage calendars over CalDAV.',
-    popularity: 10,
-  },
-  {
-    name: 'tcal',
-    repo: 'tcal',
-    domain: 'Calendar',
-    kind: 'CLI',
-    status: 'in development',
-    description: 'Edit iCalendar events as friendly TOML.',
-    popularity: 5,
+    status: 'early',
+    description:
+      'Watch mail, contact and calendar collections for changes. Formerly mirador.',
   },
   {
     name: 'comodoro',
@@ -152,7 +80,50 @@ export const apps: Product[] = [
     status: 'stable',
     description: 'Manage Pomodoro-style timers from the command line.',
     home: true,
-    popularity: 250,
+  },
+  {
+    name: 'himalaya',
+    repo: 'himalaya',
+    domain: 'Email',
+    kind: 'CLI',
+    status: 'stable',
+    description:
+      'Manage emails from the command line, over IMAP, SMTP, JMAP, Maildir, Gmail and Microsoft.',
+    home: true,
+  },
+  {
+    name: 'himalaya-tui',
+    repo: 'himalaya-tui',
+    domain: 'Email',
+    kind: 'TUI',
+    status: 'in development',
+    description: 'A full-screen terminal UI for reading and writing emails.',
+  },
+  {
+    name: 'himalaya-vim',
+    repo: 'himalaya-vim',
+    domain: 'Email',
+    kind: 'Vim plugin',
+    status: 'stable',
+    description: 'Manage emails from Vim, on top of the Himalaya CLI.',
+    home: true,
+  },
+  {
+    name: 'm2m',
+    repo: 'm2m',
+    domain: 'Email',
+    kind: 'CLI',
+    status: 'in development',
+    description: 'Convert mail stores between Maildir, Maildir++ and m2dir.',
+  },
+  {
+    name: 'neverest',
+    repo: 'neverest',
+    domain: 'Email',
+    kind: 'CLI',
+    status: 'beta',
+    description: 'Synchronize and back up emails between two backends.',
+    home: true,
   },
   {
     name: 'ortie',
@@ -163,7 +134,24 @@ export const apps: Product[] = [
     description:
       'Manage OAuth 2.0 tokens for your accounts, with a provider wizard.',
     home: true,
-    popularity: 60,
+  },
+  {
+    name: 'pimalaya-android',
+    repo: 'android',
+    domain: 'Email + Contacts + Calendar',
+    kind: 'Android app',
+    status: 'in development',
+    description:
+      'Mail, contacts and calendars in one Android app, over one local store and one account list. Contacts are the mature domain; mail and calendar are read-only for now.',
+  },
+  {
+    name: 'pimalaya-linux',
+    repo: 'linux',
+    domain: 'Email + Contacts',
+    kind: 'Desktop app',
+    status: 'in development',
+    description:
+      'A native GTK4 and libAdwaita desktop app for mail and contacts, sharing its configuration file with the command-line tools.',
   },
   {
     name: 'sirup',
@@ -174,67 +162,61 @@ export const apps: Product[] = [
     description:
       'Spawn pre-authenticated IMAP and SMTP sessions, exposed over Unix sockets.',
     home: true,
-    popularity: 15,
   },
   {
-    name: 'pimalaya-android',
-    repo: 'android',
-    domain: 'Email + Contacts + Calendar',
-    kind: 'Android app',
-    status: 'in development',
-    description:
-      'Mail, contacts and calendars in one Android app, over one local store and one account list. Contacts are the mature domain; mail and calendar are read-only for now.',
-    popularity: 12,
+    name: 'tcal',
+    repo: 'tcal',
+    domain: 'Calendar',
+    kind: 'CLI',
+    status: 'early',
+    description: 'Edit iCalendar events as friendly TOML.',
+    home: true,
   },
   {
-    name: 'pimalaya-linux',
-    repo: 'linux',
-    domain: 'Email + Contacts',
-    kind: 'Desktop app',
-    status: 'in development',
-    description:
-      'A native GTK4 and libAdwaita desktop app for mail and contacts, sharing its configuration file with the command-line tools.',
-    popularity: 5,
+    name: 'tcard',
+    repo: 'tcard',
+    domain: 'Contacts',
+    kind: 'CLI',
+    status: 'early',
+    description: 'Edit vCards as friendly TOML.',
+    home: true,
   },
 ]
 
 /* Libraries for Rust developers, curated (the org holds more). */
 export const libraries: Product[] = [
   {
-    name: 'io-imap',
-    repo: 'io-imap',
-    domain: 'Email',
+    name: 'ical-rs',
+    repo: 'ical',
+    domain: 'Calendar',
     kind: 'Library',
-    status: 'stable',
-    description: 'I/O-free IMAP client.',
-    popularity: 40,
+    status: 'early',
+    description:
+      'iCalendar parser, validator, editor, merger and builder, with a byte-faithful round-trip.',
   },
   {
-    name: 'io-smtp',
-    repo: 'io-smtp',
-    domain: 'Email',
+    name: 'io-gcal',
+    repo: 'io-gcal',
+    domain: 'Calendar',
     kind: 'Library',
-    status: 'stable',
-    description: 'I/O-free SMTP client.',
-    popularity: 25,
+    status: 'early',
+    description: 'I/O-free Google Calendar REST API client.',
   },
   {
-    name: 'io-jmap',
-    repo: 'io-jmap',
+    name: 'io-gmail',
+    repo: 'io-gmail',
     domain: 'Email',
     kind: 'Library',
     status: 'early',
-    description: 'I/O-free JMAP client.',
-    popularity: 15,
+    description: 'I/O-free Gmail REST API client.',
   },
   {
-    name: 'io-webdav',
-    repo: 'io-webdav',
-    domain: 'Contacts + Calendar',
+    name: 'io-gpeople',
+    repo: 'io-gpeople',
+    domain: 'Contacts',
     kind: 'Library',
     status: 'early',
-    description: 'I/O-free CardDAV and CalDAV clients over WebDAV.',
-    popularity: 20,
+    description: 'I/O-free Google People REST API client. Formerly io-people.',
   },
   {
     name: 'io-http',
@@ -243,7 +225,54 @@ export const libraries: Product[] = [
     kind: 'Library',
     status: 'stable',
     description: 'I/O-free HTTP client core the other crates build on.',
-    popularity: 20,
+  },
+  {
+    name: 'io-imap',
+    repo: 'io-imap',
+    domain: 'Email',
+    kind: 'Library',
+    status: 'stable',
+    description: 'I/O-free IMAP client.',
+  },
+  {
+    name: 'io-jmap',
+    repo: 'io-jmap',
+    domain: 'Email',
+    kind: 'Library',
+    status: 'early',
+    description: 'I/O-free JMAP client.',
+  },
+  {
+    name: 'io-m2dir',
+    repo: 'io-m2dir',
+    domain: 'Email',
+    kind: 'Library',
+    status: 'early',
+    description: 'I/O-free m2dir store.',
+  },
+  {
+    name: 'io-maildir',
+    repo: 'io-maildir',
+    domain: 'Email',
+    kind: 'Library',
+    status: 'early',
+    description: 'I/O-free Maildir store.',
+  },
+  {
+    name: 'io-managesieve',
+    repo: 'io-managesieve',
+    domain: 'Email',
+    kind: 'Library',
+    status: 'early',
+    description: 'I/O-free ManageSieve client, to manage server-side mail filters.',
+  },
+  {
+    name: 'io-msgraph',
+    repo: 'io-msgraph',
+    domain: 'Email + Contacts',
+    kind: 'Library',
+    status: 'early',
+    description: 'I/O-free Microsoft Graph client (mail and contacts).',
   },
   {
     name: 'io-oauth',
@@ -253,80 +282,6 @@ export const libraries: Product[] = [
     status: 'stable',
     description:
       'I/O-free OAuth 2.0 flows: authorization code, device, dynamic registration.',
-    popularity: 25,
-  },
-  {
-    name: 'io-maildir',
-    repo: 'io-maildir',
-    domain: 'Email',
-    kind: 'Library',
-    status: 'early',
-    description: 'I/O-free Maildir store.',
-    popularity: 10,
-  },
-  {
-    name: 'io-m2dir',
-    repo: 'io-m2dir',
-    domain: 'Email',
-    kind: 'Library',
-    status: 'early',
-    description: 'I/O-free m2dir store.',
-    popularity: 5,
-  },
-  {
-    name: 'io-gmail',
-    repo: 'io-gmail',
-    domain: 'Email',
-    kind: 'Library',
-    status: 'early',
-    description: 'I/O-free Gmail REST API client.',
-    popularity: 8,
-  },
-  {
-    name: 'io-msgraph',
-    repo: 'io-msgraph',
-    domain: 'Email + Contacts',
-    kind: 'Library',
-    status: 'early',
-    description: 'I/O-free Microsoft Graph client (mail and contacts).',
-    popularity: 8,
-  },
-  {
-    name: 'io-people',
-    repo: 'io-people',
-    domain: 'Contacts',
-    kind: 'Library',
-    status: 'early',
-    description: 'I/O-free Google People API client.',
-    popularity: 5,
-  },
-  {
-    name: 'mml',
-    repo: 'mml',
-    domain: 'Email',
-    kind: 'Library + CLI',
-    status: 'stable',
-    description:
-      'Compose MIME messages as human-editable markup (MML), Emacs-style.',
-    popularity: 90,
-  },
-  {
-    name: 'vcard',
-    repo: 'vcard',
-    domain: 'Contacts',
-    kind: 'Library',
-    status: 'early',
-    description: 'vCard parser with a byte-faithful round-trip.',
-    popularity: 10,
-  },
-  {
-    name: 'stream',
-    repo: 'stream',
-    domain: 'Transport',
-    kind: 'Library',
-    status: 'stable',
-    description: 'Standard I/O connectors that drive the I/O-free crates.',
-    popularity: 15,
   },
   {
     name: 'io-pim-discovery',
@@ -337,22 +292,78 @@ export const libraries: Product[] = [
     description:
       'Discover a provider’s IMAP, SMTP, CardDAV and CalDAV services from an email address. The CLI ships as an off-by-default cargo feature.',
     home: true,
-    popularity: 10,
+  },
+  {
+    name: 'io-pimdir',
+    repo: 'io-pimdir',
+    domain: 'Storage',
+    kind: 'Library',
+    status: 'early',
+    description:
+      'The pimdir store and its sync engine: one local store for mail, contacts and calendars.',
+  },
+  {
+    name: 'io-proxy',
+    repo: 'io-proxy',
+    domain: 'Transport',
+    kind: 'Library',
+    status: 'early',
+    description: 'I/O-free SOCKS5 and HTTP CONNECT proxy tunnels.',
+  },
+  {
+    name: 'io-sasl',
+    repo: 'io-sasl',
+    domain: 'Auth',
+    kind: 'Library',
+    status: 'early',
+    description: 'I/O-free SASL client mechanisms.',
+  },
+  {
+    name: 'io-smtp',
+    repo: 'io-smtp',
+    domain: 'Email',
+    kind: 'Library',
+    status: 'stable',
+    description: 'I/O-free SMTP client.',
+  },
+  {
+    name: 'io-webdav',
+    repo: 'io-webdav',
+    domain: 'Contacts + Calendar',
+    kind: 'Library',
+    status: 'early',
+    description: 'I/O-free CardDAV and CalDAV clients over WebDAV.',
+  },
+  {
+    name: 'mml',
+    repo: 'mml',
+    domain: 'Email',
+    kind: 'Library + CLI',
+    status: 'stable',
+    description:
+      'Compose MIME messages as human-editable markup (MML), Emacs-style.',
+  },
+  {
+    name: 'stream',
+    repo: 'stream',
+    domain: 'Transport',
+    kind: 'Library',
+    status: 'stable',
+    description: 'Standard I/O connectors that drive the I/O-free crates.',
+  },
+  {
+    name: 'vcard-rs',
+    repo: 'vcard',
+    domain: 'Contacts',
+    kind: 'Library',
+    status: 'early',
+    description:
+      'vCard parser, validator, editor, merger and builder, with a byte-faithful round-trip.',
   },
 ]
 
 /* Kept for history: frozen aggregators and deprecated crates. */
 export const retired: Product[] = [
-  {
-    name: 'io-email',
-    repo: 'io-email',
-    domain: 'Email',
-    kind: 'Library',
-    status: 'frozen',
-    description:
-      'Multi-backend email aggregator; superseded by protocol-direct clients.',
-    popularity: 30,
-  },
   {
     name: 'io-addressbook',
     repo: 'io-addressbook',
@@ -361,7 +372,6 @@ export const retired: Product[] = [
     status: 'frozen',
     description:
       'Multi-backend contacts aggregator; superseded by protocol-direct clients.',
-    popularity: 10,
   },
   {
     name: 'io-calendar',
@@ -371,7 +381,15 @@ export const retired: Product[] = [
     status: 'frozen',
     description:
       'Multi-backend calendar aggregator; superseded by protocol-direct clients.',
-    popularity: 10,
+  },
+  {
+    name: 'io-email',
+    repo: 'io-email',
+    domain: 'Email',
+    kind: 'Library',
+    status: 'frozen',
+    description:
+      'Multi-backend email aggregator; superseded by protocol-direct clients.',
   },
   {
     name: 'io-fs',
@@ -380,16 +398,6 @@ export const retired: Product[] = [
     kind: 'Library',
     status: 'deprecated',
     description: 'Shared filesystem coroutines; each store now defines its own.',
-    popularity: 15,
-  },
-  {
-    name: 'io-process',
-    repo: 'io-process',
-    domain: 'System',
-    kind: 'Library',
-    status: 'deprecated',
-    description: 'Process-spawning coroutines.',
-    popularity: 20,
   },
   {
     name: 'io-keyring',
@@ -399,7 +407,22 @@ export const retired: Product[] = [
     status: 'deprecated',
     description:
       'Keyring coroutines; tools now document third-party keyring CLIs instead.',
-    popularity: 20,
+  },
+  {
+    name: 'io-process',
+    repo: 'io-process',
+    domain: 'System',
+    kind: 'Library',
+    status: 'deprecated',
+    description: 'Process-spawning coroutines.',
+  },
+  {
+    name: 'io-replica',
+    repo: 'io-replica',
+    domain: 'Storage',
+    kind: 'Library',
+    status: 'deprecated',
+    description: 'Sync engine, now folded into io-pimdir.',
   },
   {
     name: 'mimosa',
@@ -408,7 +431,6 @@ export const retired: Product[] = [
     kind: 'CLI',
     status: 'deprecated',
     description: 'Secret-management CLI, retired with io-keyring.',
-    popularity: 10,
   },
 ]
 
@@ -425,6 +447,8 @@ export interface CommunityProject {
   author: string
   kind: string
   description: string
+  /* Integrator partner (see src/lib/offers.ts), rendered as a badge. */
+  partner?: boolean
 }
 
 /*

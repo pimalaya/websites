@@ -297,3 +297,101 @@
 .gratitude__cta {
   margin-top: 1.75rem;
 }
+
+/*
+ * The business band: the pain first, then the two offers as cards, then one
+ * call to action. It sits between the libraries and the community band, the
+ * point where "use it" turns into "build on it".
+ */
+.business {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.business__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
+
+.business__lead {
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+.business__pains {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.6rem;
+  max-width: 68ch;
+  padding-left: 1.2rem;
+  list-style: disc;
+  color: var(--ink-soft);
+}
+
+.business__pains strong {
+  color: var(--ink);
+}
+
+.business__offers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.business-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.4rem 1.5rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.business-card:hover {
+  border-color: var(--rose);
+}
+
+.business-card__name {
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+
+.business-card__note {
+  margin-top: 0.35rem;
+  color: var(--ink-soft);
+}
+
+.business__cta {
+  margin-top: 2.5rem;
+}
+
+/* The community band: one paragraph, one call to action to /community/. */
+.community {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  border-top: 1px solid var(--rule);
+}
+
+.community__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
+
+.community__lead {
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+.community__lead a {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.community__cta {
+  margin-top: 1.75rem;
+}

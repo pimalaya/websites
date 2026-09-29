@@ -43,7 +43,7 @@ function pageHead(page, canonical) {
     url: `${siteUrl}/`,
     logo: `${siteUrl}/favicon.svg`,
     description:
-      'Pimalaya is an ambitious project that aims to improve open-source tools related to personal information management.',
+      'Free tools and Rust libraries for email, contacts and calendars, built from the standards up and kept working against the servers people actually use.',
     foundingDate: '2022',
     email: 'pimalaya.org@posteo.net',
     founder: { '@type': 'Person', name: 'soywod' },
@@ -63,6 +63,21 @@ function pageHead(page, canonical) {
       { '@type': 'ListItem', position: 2, name, item: canonical },
     ],
   })
+
+  // A plain WebPage about the organisation plus its breadcrumb, for every
+  // page that is neither the home page nor a catalogue.
+  const webPage = (name) => [
+    {
+      '@type': 'WebPage',
+      name: page.title,
+      description: page.description,
+      url: canonical,
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      publisher: { '@id': `${siteUrl}/#organization` },
+      about: { '@id': `${siteUrl}/#organization` },
+    },
+    breadcrumb(name),
+  ]
 
   // The ecosystem page carries the whole catalogue as an ItemList (apps as
   // SoftwareApplication, libraries as SoftwareSourceCode) plus a breadcrumb.
@@ -101,18 +116,15 @@ function pageHead(page, canonical) {
     // Nothing on the sponsor page is a product or an offer: the tiers buy
     // recognition and a route to the maintainer, not software, which is free
     // either way. So it stays a plain WebPage.
-    sponsor: [
-      {
-        '@type': 'WebPage',
-        name: page.title,
-        description: page.description,
-        url: canonical,
-        isPartOf: { '@id': `${siteUrl}/#website` },
-        publisher: { '@id': `${siteUrl}/#organization` },
-        about: { '@id': `${siteUrl}/#organization` },
-      },
-      breadcrumb('Sponsor'),
-    ],
+    sponsor: webPage('Sponsor'),
+
+    community: webPage('Community'),
+
+    // The business and sign-in offers carry placeholder prices, so they stay
+    // out of the graph until the prices settle: an Offer would promise more
+    // precision than the page gives.
+    business: webPage('Business'),
+    'sign-in': webPage('Sign-in'),
 
     '': [
       organization,

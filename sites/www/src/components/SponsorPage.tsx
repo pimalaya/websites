@@ -72,6 +72,10 @@ export function SponsorPage() {
             Recurring support is worth more than the same amount given once:
             it is the only kind that can be planned around.
           </p>
+          <p className="give__foot">
+            Building on Pimalaya, or running a mail service? See the{' '}
+            <a href="/business/">partnerships</a> instead.
+          </p>
         </div>
       </section>
 

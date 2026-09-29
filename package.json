@@ -15,9 +15,6 @@
     "dev:blog": "npm run dev --workspace sites/blog",
     "build:blog": "npm run build --workspace sites/blog",
     "preview:blog": "npm run preview --workspace sites/blog",
-    "newsletter": "npm run newsletter --workspace sites/blog --",
-    "dev:pimgate": "npm run dev --workspace sites/pimgate",
-    "build:pimgate": "npm run build --workspace sites/pimgate",
-    "preview:pimgate": "npm run preview --workspace sites/pimgate"
+    "newsletter": "npm run newsletter --workspace sites/blog --"
   }
 }

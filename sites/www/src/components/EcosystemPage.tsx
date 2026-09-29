@@ -1,6 +1,6 @@
 import {
   apps,
-  byStatusThenPopularity,
+  byName,
   community,
   libraries,
   retired,
@@ -22,7 +22,7 @@ import './EcosystemPage.css'
  */
 
 function ProductTable({ products }: { products: Product[] }) {
-  const rows = [...products].sort(byStatusThenPopularity)
+  const rows = [...products].sort(byName)
   return (
     <div className="eco__scroll">
       <table className="eco__table">
@@ -91,6 +91,14 @@ function CommunityTable({ projects }: { projects: CommunityProject[] }) {
                 >
                   {project.name}
                 </a>
+                {project.partner && (
+                  <>
+                    {' '}
+                    <a className="status status--young" href="/business/#integrators">
+                      partner
+                    </a>
+                  </>
+                )}
               </td>
               <td>{project.author}</td>
               <td>{project.kind}</td>
@@ -138,9 +146,9 @@ export function EcosystemPage() {
             </p>
             <p>
               Sync comes first, as a consolidation: everything sync-related
-              converges into one stack, the Neverest CLI on top of the
-              io-replica engine and the pimdir store. Watch joins the same
-              movement, with mirador rebranded to Carillon.
+              converges into one stack, the Neverest CLI on top of io-pimdir,
+              which holds both the pimdir store and its sync engine. Watch
+              joins the same movement with Carillon, formerly mirador.
             </p>
             <p>
               Once sync and watch settle, the contacts domain gets the same
