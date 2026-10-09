@@ -46,17 +46,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Added a partner badge to the community catalogue.
 
+- Added a dark palette, following the system preference.
+
+- Added Source Serif 4 as the self-hosted display face.
+
 - Added new entries to the catalogue.
 
   pimalaya-linux, carillon, ical-rs, io-gcal, io-managesieve, io-pimdir, io-proxy, io-sasl, and io-replica as retired.
 
 ### Changed
 
-- Changed the home hero to two calls to action, the tools and the business page.
+- Changed the home page layout.
 
-- Changed the nav to Ecosystem, Business, Blog and Community.
+  Hero beside the Himalaya terminal, tools grouped by domain, developers and business side by side, community and newsletter in one band.
+
+- Changed the nav to Tools, Ecosystem, Business, Community and Blog.
 
   Chat and News moved to the community page.
+
+- Changed the theme contrast so every text pair reaches 4.5:1.
 
 - Changed the ecosystem page to list the libraries before the apps.
 

@@ -29,6 +29,11 @@
 
 .footer__social {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--target);
+  height: var(--target);
+  margin-left: -12px; /* keep the glyph aligned with the wordmark */
   color: var(--on-dark-soft);
 }
 
@@ -36,9 +41,12 @@
   color: var(--on-dark);
 }
 
+/* As many columns as there are groups, wrapping only when they no longer
+   fit (four groups in a three-track grid left the last one alone on a
+   second row). */
 .footer__cols {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
   gap: 1.5rem;
 }
 

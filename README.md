@@ -40,6 +40,8 @@ This project is licensed under either of:
 - [MIT license](LICENSE-MIT)
 - [Apache License, Version 2.0](LICENSE-APACHE)
 
+The bundled Source Serif 4 font is licensed under the [SIL Open Font License 1.1](shared/src/fonts/OFL.txt).
+
 ## Social
 
 - Chat on [Matrix](https://matrix.to/#/#pimalaya:matrix.org)

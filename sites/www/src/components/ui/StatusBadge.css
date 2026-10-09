@@ -11,7 +11,7 @@
 
 .status--good {
   color: var(--green);
-  background: rgba(63, 125, 84, 0.1);
+  background: var(--green-wash);
 }
 
 .status--young {

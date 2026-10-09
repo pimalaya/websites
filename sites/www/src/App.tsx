@@ -29,11 +29,14 @@ const pages: Record<string, ComponentType> = {
   business: BusinessPage,
 }
 
+/* One line per link; the blog is the only one leaving the site, and the nav
+   marks it so. */
 const navLinks: NavLink[] = [
-  { label: 'Ecosystem', sub: 'the full map', href: '/ecosystem/' },
-  { label: 'Business', sub: 'partnerships', href: '/business/' },
-  { label: 'Journal', sub: 'Blog', href: 'https://blog.pimalaya.org', external: true },
-  { label: 'Community', sub: 'chat and news', href: '/community/' },
+  { label: 'Tools', href: '/#tools' },
+  { label: 'Ecosystem', href: '/ecosystem/' },
+  { label: 'Business', href: '/business/' },
+  { label: 'Community', href: '/community/' },
+  { label: 'Blog', href: 'https://blog.pimalaya.org', external: true },
 ]
 
 /* Grouped footer links, one column per side, then following and contact. */

@@ -2,10 +2,39 @@ import { Button, Icon } from '@pimalaya/shared'
 import './Subscribe.css'
 
 /*
+ * The newsletter form alone: a plain HTML POST to the Buttondown
+ * embed-subscribe endpoint (https://buttondown.com/pimalaya), so it works on
+ * these JavaScript-free pages. The id keeps label and input paired when a
+ * page carries more than one form.
+ */
+export function SubscribeForm({ id = 'bd-email' }: { id?: string }) {
+  return (
+    <form
+      className="subscribe__form embeddable-buttondown-form"
+      method="post"
+      action="https://buttondown.com/api/emails/embed-subscribe/pimalaya"
+    >
+      <label className="subscribe__label" htmlFor={id}>
+        Enter your email
+      </label>
+      <input
+        className="subscribe__input"
+        id={id}
+        type="email"
+        name="email"
+        required
+        placeholder="you@example.com"
+      />
+      <button className="btn btn--primary btn--lg" type="submit">
+        <Icon name="mail" size={18} /> Subscribe
+      </button>
+    </form>
+  )
+}
+
+/*
  * The blog is the canonical news source; RSS and the newsletter are two
- * read-only views on it. The form is a plain HTML POST to the Buttondown
- * embed-subscribe endpoint (https://buttondown.com/pimalaya), so it works
- * on these JavaScript-free pages.
+ * read-only views on it.
  */
 export function Subscribe() {
   return (
@@ -37,26 +66,7 @@ export function Subscribe() {
             <Icon name="rss" size={18} /> RSS feed
           </Button>
 
-          <form
-            className="subscribe__form embeddable-buttondown-form"
-            method="post"
-            action="https://buttondown.com/api/emails/embed-subscribe/pimalaya"
-          >
-            <label className="subscribe__label" htmlFor="bd-email">
-              Enter your email
-            </label>
-            <input
-              className="subscribe__input"
-              id="bd-email"
-              type="email"
-              name="email"
-              required
-              placeholder="you@example.com"
-            />
-            <button className="btn btn--primary btn--lg" type="submit">
-              <Icon name="mail" size={18} /> Subscribe
-            </button>
-          </form>
+          <SubscribeForm />
         </div>
 
         <p className="subscribe__powered-by">

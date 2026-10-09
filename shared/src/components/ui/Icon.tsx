@@ -18,6 +18,8 @@ type IconName =
   | 'mastodon'
   | 'rss'
   | 'mail'
+  | 'chat'
+  | 'article'
   | 'heart'
   | 'liberapay'
   | 'kofi'
@@ -51,6 +53,15 @@ const paths: Record<IconName, ReactNode> = {
     <>
       <rect x="3" y="5" width="18" height="14" rx="2" />
       <path d="M3.5 7l8.5 6 8.5-6" />
+    </>
+  ),
+  /* A speech bubble, for the chat room. */
+  chat: <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" />,
+  /* A page of text, for the blog. */
+  article: (
+    <>
+      <rect x="4" y="3" width="16" height="18" rx="2" />
+      <path d="M8 8h8M8 12h8M8 16h5" />
     </>
   ),
   heart: (

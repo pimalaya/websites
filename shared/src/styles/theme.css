@@ -4,39 +4,77 @@
  * The palette derives from the Pimalaya logo gradient (#f193b6 → #e267a3 →
  * #bf1e83): rosy paper, plum ink, magenta accent, the Carillon website's
  * letterpress structure re-inked in the brand colours. Everything downstream
- * references these variables, so re-theming is a single-file job.
+ * references these variables, so re-theming is a single-file job: the dark
+ * scheme below only redefines them.
+ *
+ * Every text pair meets WCAG AA (4.5:1) in both schemes.
  */
 
+/*
+ * The one webfont: Source Serif 4 (SIL OFL 1.1, see ../fonts/OFL.txt), the
+ * Latin subset of the variable weight axis, self-hosted so no page makes a
+ * third-party request. Glyphs outside the subset fall back to the stack.
+ */
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url("../fonts/source-serif-4-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url("../fonts/source-serif-4-latin-wght-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
+  color-scheme: light dark;
+
   /* ---- Surfaces ---- */
   --paper: #f9f1f3; /* page background (rosy paper) */
   --paper-raised: #fdf9fa; /* cards sitting on paper */
   --surface: #ffffff; /* clean white sections */
-  --ink-900: #23121c; /* dark section background (deep plum) */
+  --ink-900: #23121c; /* dark band background (deep plum) */
   --ink-800: #2d1824;
+  --nav-bg: rgba(255, 255, 255, 0.86); /* frosted nav over the page */
+  --logo-plate: transparent; /* behind the funder logos */
 
   /* ---- Text ---- */
   --ink: #301f2a; /* primary text */
   --ink-soft: #6f5464; /* secondary text */
-  --ink-faint: #a78d9c; /* muted labels / captions */
+  --ink-faint: #7d6272; /* muted labels / captions (4.9:1 on paper) */
   --on-dark: #f7e9f0; /* text on dark surfaces */
   --on-dark-soft: #bb9cad;
 
   /* ---- Accents ---- */
   --accent: #bf1e83; /* logo magenta, primary brand accent */
+  --on-accent: #ffffff; /* text on an accent fill */
   --accent-ink: #97156a; /* darker magenta for hover / links */
   --accent-wash: #f7d9ea; /* soft accent background fill */
   --rose: #e267a3; /* logo mid-pink, secondary tone (highlights on dark) */
-  --green: #3f7d54; /* "available" status */
+  --green: #2f6a45; /* "stable" status (5.3:1 on its wash) */
+  --green-wash: rgba(47, 106, 69, 0.1);
 
-  /* ---- Lines ---- */
+  /* ---- Lines and tints ---- */
   --rule: #ecd9e1; /* hairline borders on paper */
   --rule-strong: #dfc3cf;
   --rule-dark: rgba(247, 233, 240, 0.14); /* borders on dark */
+  --tint: rgba(48, 31, 42, 0.05); /* hover wash on paper */
+  --tint-dark: rgba(247, 233, 240, 0.08); /* hover wash on dark */
 
   /* ---- Typography ---- */
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
-    Georgia, serif;
+  --font-display: "Source Serif 4", "Iowan Old Style", "Palatino Linotype",
+    Palatino, "Book Antiqua", Georgia, serif;
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
   --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
@@ -54,4 +92,42 @@
   /* ---- Layout ---- */
   --container: 1080px;
   --nav-height: 68px;
+  --target: 44px; /* minimum height of anything clickable */
+}
+
+/*
+ * Dark scheme, following the visitor's system setting. The page sinks to a
+ * near-black plum, the dark bands lift to --ink-800 so they still read as
+ * bands, and the accent turns to the logo's mid-pink (dark ink on it, since
+ * white on #e267a3 falls short of 4.5:1).
+ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1a0d15;
+    --paper-raised: #23121c;
+    --surface: #1f0f19;
+    --ink-900: #2d1824;
+    --ink-800: #361d2c;
+    --nav-bg: rgba(31, 15, 25, 0.86);
+    --logo-plate: #f9f1f3;
+
+    --ink: #f7e9f0;
+    --ink-soft: #bb9cad;
+    --ink-faint: #a3879a;
+
+    --accent: #e267a3;
+    --on-accent: #23121c;
+    --accent-ink: #f193b6;
+    --accent-wash: #422032;
+    --green: #7cc196;
+    --green-wash: rgba(124, 193, 150, 0.12);
+
+    --rule: rgba(247, 233, 240, 0.1);
+    --rule-strong: rgba(247, 233, 240, 0.22);
+    --tint: rgba(247, 233, 240, 0.06);
+
+    --shadow-sm: none;
+    --shadow-md: 0 14px 34px -16px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 34px 64px -24px rgba(0, 0, 0, 0.7);
+  }
 }

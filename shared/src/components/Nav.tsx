@@ -6,8 +6,8 @@ import './Nav.css'
 
 export interface NavLink {
   label: string
-  /* Diminished destination shown under the label. */
-  sub: string
+  /* Optional diminished destination shown under the label. */
+  sub?: string
   href: string
   external?: boolean
 }
@@ -51,8 +51,11 @@ export function Nav({
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
             >
-              <span className="nav__link-label">{link.label}</span>
-              <span className="nav__link-sub">{link.sub}</span>
+              <span className="nav__link-label">
+                {link.label}
+                {link.external && <Icon name="externalLink" size={13} />}
+              </span>
+              {link.sub && <span className="nav__link-sub">{link.sub}</span>}
             </a>
           ))}
         </nav>
