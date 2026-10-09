@@ -108,6 +108,12 @@ export function SponsorPage() {
               <em>funded it</em>. Sponsorship is what turns your use of these
               tools into <strong>more of those hours</strong>.
             </p>
+            <p>
+              Sponsorship also pays for{' '}
+              <strong>dedicated accounts at Microsoft and Google</strong>, so
+              every release is tested against the real services, end to end,{' '}
+              <em>without ever touching anyone's data</em>.
+            </p>
           </div>
         </div>
       </section>

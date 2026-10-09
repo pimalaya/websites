@@ -141,7 +141,8 @@ export function BusinessPage() {
           <p className="band__lead">
             Since 2022, <strong>{LIB_COUNT} libraries</strong> written from
             the RFCs up (IMAP, SMTP, JMAP, CardDAV, CalDAV, OAuth) and tested
-            against the providers people use. A partnership puts yours first,
+            against the providers people use, on accounts kept for testing
+            alone. A partnership puts yours first,
             for less than the weeks an engineer would spend on them each year.
           </p>
         </div>
