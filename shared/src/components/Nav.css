@@ -117,3 +117,16 @@
     padding: 0.7em;
   }
 }
+
+/* Phones: tighter gaps, so a tagged wordmark, the heart and a call to
+   action still fit on one line at 360px. */
+@media (max-width: 520px) {
+  .nav__inner,
+  .nav__actions {
+    gap: 0.5rem;
+  }
+
+  .nav .logo {
+    gap: 0.6rem;
+  }
+}

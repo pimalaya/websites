@@ -17,7 +17,13 @@ change: www-design-refresh
 
 - www-site: Two audiences on the home page. The home page SHALL present a hero (install Himalaya, browse the tools) beside the Himalaya terminal with a facts strip, the tools as a list grouped by domain with a link to the ecosystem page and the sign-in page, the developers side (libraries) beside the business side (offers read from src/lib/offers.ts, call to action to `/business/`), one band for the community and the newsletter, then the gratitude. It SHALL make no third-party request.
 
-- www-site: Site-local pieces. Subscribe SHALL export SubscribeForm for reuse in other bands.
+- www-site: Site-local pieces. Subscribe SHALL export SubscribeForm for reuse in other bands. The inner pages SHALL share the page vocabulary of Page.css and keep only their own layout in a page stylesheet.
+
+- www-site: Business page. The page SHALL open on its headline beside rows for the two offers and the planned sign-in, instead of cards.
+
+- blog-site: Pages. The nav links SHALL fit one line each and be marked external. The index SHALL feature the newest post as "Start here" and list the others as dated rows; every post SHALL show its date and reading time and end on links to the older and newer posts.
+
+- workspace: Migrated sites. The identical-output rule held for the migration only; the sites have since been redesigned.
 
 ## REMOVED Requirements
 

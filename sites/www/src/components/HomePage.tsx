@@ -4,6 +4,7 @@ import { Button, Icon } from '@pimalaya/shared'
 import type { IconName } from '@pimalaya/shared'
 import { StatusBadge } from './ui/StatusBadge'
 import { SubscribeForm } from './Subscribe'
+import './Page.css'
 import './HomePage.css'
 
 /*

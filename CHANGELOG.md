@@ -66,6 +66,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Changed the theme contrast so every text pair reaches 4.5:1.
 
+- Changed the ecosystem, business, sign-in, community and sponsor page layouts.
+
+  Built on one shared page vocabulary: header, facts strip, panels, row lists, points.
+
+- Changed the blog index to feature the newest post and list the others with their reading time.
+
+- Changed the blog posts to show their reading time and link to the older and newer posts.
+
+- Changed the blog nav to Website, Matrix and Mastodon.
+
 - Changed the ecosystem page to list the libraries before the apps.
 
 - Changed the ecosystem tables to sort rows by name.

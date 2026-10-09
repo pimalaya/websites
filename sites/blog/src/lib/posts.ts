@@ -130,3 +130,16 @@ export function formatDate(date: string): string {
   ]
   return `${months[month - 1]} ${day}, ${year}`
 }
+
+/*
+ * Reading time in whole minutes, from the rendered body's word count at a
+ * common 220 words per minute. Computed from the content only, so builds
+ * stay reproducible.
+ */
+export function readingMinutes(post: Post): number {
+  const words = post.html
+    .replace(/<[^>]+>/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean).length
+  return Math.max(1, Math.round(words / 220))
+}

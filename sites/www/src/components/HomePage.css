@@ -94,33 +94,6 @@
   color: #bb9cad;
 }
 
-/* The facts strip: four numbers anyone can check in the repositories. */
-.facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
-  margin-top: clamp(2.5rem, 5vw, 3.5rem);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-
-.facts li {
-  display: flex;
-  flex-direction: column;
-  padding: 1.1rem 0;
-}
-
-.facts__value {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-.facts__note {
-  font-size: 0.9rem;
-  color: var(--ink-soft);
-}
-
 @media (max-width: 860px) {
   .hero__inner {
     grid-template-columns: 1fr;
@@ -479,21 +452,6 @@
 .talk__news-lead {
   margin-top: 0.5rem;
   font-size: 0.95rem;
-}
-
-/* The shared form, left-aligned in the card instead of centered. */
-.talk__news .subscribe__form {
-  justify-content: flex-start;
-  margin-top: 1.25rem;
-}
-
-.talk__news .subscribe__input {
-  flex: 1 1 14rem;
-  min-width: 0;
-}
-
-.talk__news .subscribe__powered-by {
-  margin-top: 1rem;
 }
 
 @media (max-width: 420px) {

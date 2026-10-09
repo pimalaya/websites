@@ -34,50 +34,54 @@ export function SubscribeForm({ id = 'bd-email' }: { id?: string }) {
 
 /*
  * The blog is the canonical news source; RSS and the newsletter are two
- * read-only views on it.
+ * read-only views on it. Copy and the two reading routes on the left, the
+ * newsletter form in a dark card on the right, like the home page.
  */
 export function Subscribe() {
   return (
-    <section className="subscribe on-dark" id="subscribe">
+    <section className="subscribe" id="subscribe">
       <div className="container subscribe__inner">
-        <span className="eyebrow subscribe__eyebrow">Follow along</span>
-        <h2 className="subscribe__title">Where the project talks</h2>
-        <p className="subscribe__lead">
-          News lives on the blog; everything else points to it. Read it in
-          your feed reader or get new posts by email (no tracking,
-          unsubscribe anytime).
-        </p>
-
-        <div className="subscribe__actions">
-          <Button
-            href="https://blog.pimalaya.org"
-            variant="secondary"
-            size="lg"
-            external
-          >
-            Read the blog
-          </Button>
-          <Button
-            href="https://blog.pimalaya.org/feed.xml"
-            variant="secondary"
-            size="lg"
-            external
-          >
-            <Icon name="rss" size={18} /> RSS feed
-          </Button>
-
-          <SubscribeForm />
+        <div>
+          <span className="eyebrow">Follow along</span>
+          <h2 className="subscribe__title">Where the project talks</h2>
+          <p className="subscribe__lead">
+            News lives on the blog; everything else points to it. Read it in
+            your feed reader or get new posts by email.
+          </p>
+          <div className="subscribe__actions">
+            <Button
+              href="https://blog.pimalaya.org"
+              variant="secondary"
+              size="md"
+              external
+            >
+              <Icon name="article" size={16} /> Read the blog
+            </Button>
+            <Button
+              href="https://blog.pimalaya.org/feed.xml"
+              variant="secondary"
+              size="md"
+              external
+            >
+              <Icon name="rss" size={16} /> RSS feed
+            </Button>
+          </div>
         </div>
 
-        <p className="subscribe__powered-by">
-          <a
-            href="https://buttondown.com/refer/pimalaya"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered by Buttondown
-          </a>
-        </p>
+        <div className="subscribe__card on-dark">
+          <h3 className="subscribe__card-title">New posts by email</h3>
+          <p className="subscribe__card-lead">No tracking, unsubscribe anytime.</p>
+          <SubscribeForm />
+          <p className="subscribe__powered-by">
+            <a
+              href="https://buttondown.com/refer/pimalaya"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Powered by Buttondown
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   )

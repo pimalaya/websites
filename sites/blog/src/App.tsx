@@ -13,20 +13,11 @@ import { posts } from './lib/posts'
  * @pimalaya/shared, parameterized with this site's links and copy.
  */
 
+/* One line per link, each leaving the blog, so each carries the mark. */
 const navLinks: NavLink[] = [
-  { label: 'Website', sub: 'pimalaya.org', href: 'https://pimalaya.org', external: true },
-  {
-    label: 'Chat',
-    sub: 'Matrix',
-    href: 'https://matrix.to/#/#pimalaya:matrix.org',
-    external: true,
-  },
-  {
-    label: 'News',
-    sub: 'Mastodon',
-    href: 'https://fosstodon.org/@pimalaya',
-    external: true,
-  },
+  { label: 'Website', href: 'https://pimalaya.org', external: true },
+  { label: 'Matrix', href: 'https://matrix.to/#/#pimalaya:matrix.org', external: true },
+  { label: 'Mastodon', href: 'https://fosstodon.org/@pimalaya', external: true },
 ]
 
 /* Grouped footer links. */

@@ -1,151 +1,435 @@
 /*
- * Shared layout of the text pages (business, sign-in, community): a header
- * with an optional grid of cards, then sections of prose and lists. The home,
- * ecosystem and sponsor pages keep their own stylesheets.
+ * The page vocabulary of pimalaya.org, shared by every page: a header with an
+ * optional row of on-page anchors, sections separated by a rule, and a few
+ * building blocks (facts strip, panels, row lists, points, timeline, steps).
+ * Lists of things are rows, not card grids; emphasis is an inset dark panel,
+ * not a full-width dark band.
  */
 
+/* ---- Header ---- */
+
 .page-head {
-  padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
+  padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2.5rem, 5vw, 3.5rem);
   border-bottom: 1px solid var(--rule);
 }
 
 .page-head__title {
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  margin-top: 0.75rem;
+  font-size: clamp(2.3rem, 5vw, 3.4rem);
+  margin-top: 0.9rem;
+  max-width: 20ch;
+  letter-spacing: -0.015em;
 }
 
 .page-head__lead {
-  margin-top: 1rem;
+  margin-top: 1.1rem;
   color: var(--ink-soft);
-  font-size: clamp(1.02rem, 2vw, 1.12rem);
-  max-width: 62ch;
+  font-size: clamp(1.05rem, 2vw, 1.18rem);
+  max-width: 60ch;
 }
 
 .page-head__cta {
-  margin-top: 1.75rem;
+  margin-top: 1.9rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
 }
 
-/* Cards linking down to sections, or out to other pages. */
-.cards {
-  margin-top: 2rem;
+/* Header with an aside (a price, a featured route) beside the copy. */
+.page-head__split {
   display: grid;
-  gap: 0.85rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: end;
 }
 
-.cards__item {
+@media (max-width: 860px) {
+  .page-head__split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* On-page anchors, for the long pages. */
+.toc {
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 1.15rem 1.25rem;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  background: var(--paper-raised);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.9rem;
 }
 
-a.cards__item:hover {
-  border-color: var(--rose);
-}
-
-.cards__name {
+.toc a {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  color: var(--accent-ink);
-}
-
-.cards__note {
-  margin-top: 0.3rem;
+  min-height: 36px;
+  padding: 0 0.95em;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  font-size: 0.88rem;
   color: var(--ink-soft);
-  font-size: 0.9rem;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
 }
 
-.cards__links {
-  margin-top: 0.6rem;
+.toc a:hover {
+  border-color: var(--ink);
+  background: var(--tint);
+  color: var(--ink);
+}
+
+/* ---- Facts strip ---- */
+
+.facts {
   display: grid;
-  gap: 0.3rem;
-  font-size: 0.92rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+  margin-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
 }
 
-.cards__links a,
-.page__lead a,
-.page__list a {
+.facts li {
+  display: flex;
+  flex-direction: column;
+  padding: 1.1rem 0;
+}
+
+.facts__value {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.facts__note {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* ---- Sections ---- */
+
+.section {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  scroll-margin-top: var(--nav-height);
+}
+
+.section + .section {
+  border-top: 1px solid var(--rule);
+}
+
+.section--surface {
+  background: var(--surface);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.section--surface + .section {
+  border-top: none;
+}
+
+.section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
+.section__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
+
+.section__count {
+  margin-left: 0.4em;
+  font-family: var(--font-sans);
+  font-size: 0.5em;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink-faint);
+  vertical-align: middle;
+}
+
+.section__lead {
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
+  max-width: 64ch;
+}
+
+.section__body {
+  margin-top: 2rem;
+}
+
+/* Two columns that stack on narrow screens. */
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+/* ---- Inline links and prose ---- */
+
+.page-head__lead a,
+.section__lead a,
+.prose-block a,
+.points a,
+.panel__lead a,
+.note a {
   color: var(--accent-ink);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.page {
-  padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(3rem, 6vw, 5rem);
+.prose-block {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 66ch;
+  color: var(--ink-soft);
 }
 
-/* Anchored sections land below the sticky nav instead of under it. */
-.page__block {
+.prose-block strong {
+  color: var(--ink);
+}
+
+.note {
+  margin-top: 1.25rem;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+/* ---- Panels ---- */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
   scroll-margin-top: 5rem;
 }
 
-.page__section {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 2.5rem;
-  font-size: clamp(1.5rem, 3vw, 1.9rem);
+.panel__title {
+  font-size: clamp(1.4rem, 2.6vw, 1.75rem);
 }
 
-.page__lead {
+.panel__lead {
   margin-top: 0.6rem;
   color: var(--ink-soft);
-  max-width: 68ch;
 }
 
-.page__list {
-  margin-top: 1.1rem;
-  display: grid;
-  gap: 0.6rem;
-  max-width: 68ch;
-  padding-left: 1.2rem;
-  list-style: disc;
-  color: var(--ink-soft);
+/* Pinned to the bottom so side-by-side panels align their actions. */
+.panel__foot {
+  margin-top: auto;
+  padding-top: 1.5rem;
 }
 
-.page__list strong {
-  color: var(--ink);
+.panel--dark {
+  background: var(--ink-900);
+  border-color: transparent;
+  color: var(--on-dark-soft);
 }
 
-.page__price {
-  margin-top: 1.1rem;
-  color: var(--ink-soft);
-  max-width: 68ch;
-}
-
-.page__price strong {
-  color: var(--ink);
-  font-size: 1.15rem;
-}
-
-.page__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.75rem;
-  font-weight: 600;
-  color: var(--accent-ink);
-}
-
-.page__cta:hover {
+.panel--dark .eyebrow {
   color: var(--rose);
 }
 
-/* Dated cards for the protocol deadlines on /business/. */
-.page__date {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--ink-faint);
+.panel--dark .panel__title,
+.panel--dark .section__title,
+.panel--dark strong {
+  color: var(--on-dark);
 }
+
+.panel--dark .panel__lead {
+  color: var(--on-dark-soft);
+}
+
+.panel--dark a:not(.btn) {
+  color: #f193b6;
+}
+
+.panel--accent {
+  background: var(--accent-wash);
+  border-color: transparent;
+}
+
+/* ---- Row lists: one link per row, hairlines between ---- */
+
+.rows {
+  border-top: 1px solid var(--rule);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  margin: 0 -0.75rem;
+  padding: 0.85rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  transition: background 0.15s ease;
+}
+
+a.row:hover {
+  background: var(--tint);
+}
+
+.row__name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+a.row:hover .row__name {
+  color: var(--accent-ink);
+}
+
+.row__note {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+/* A row led by an icon. */
+.row--icon {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  column-gap: 0.85rem;
+  align-items: start;
+}
+
+.row--icon > svg {
+  margin-top: 0.15rem;
+  color: var(--accent-ink);
+}
+
+/* ---- Points: short titled statements, in columns ---- */
+
+.points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: 1.5rem 2.25rem;
+}
+
+.points li {
+  padding-top: 1rem;
+  border-top: 2px solid var(--accent);
+  color: var(--ink-soft);
+}
+
+.points__title {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+/* ---- Timeline: dated lines ---- */
+
+.timeline,
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 0.25rem 1.25rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.timeline li:first-child {
+  border-top: 1px solid var(--rule);
+}
+
+.timeline__date {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  padding-top: 0.15rem;
+}
+
+.timeline__title {
+  font-weight: 600;
+}
+
+@media (max-width: 520px) {
+  .timeline li {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Steps: an ordered track ---- */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 1rem;
+  counter-reset: step;
+}
+
+.steps li {
+  position: relative;
+  padding: 1.25rem 1.25rem 1.35rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  counter-increment: step;
+}
+
+.steps li::before {
+  content: counter(step);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 999px;
+  background: var(--accent-wash);
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.steps__name {
+  display: block;
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.steps__note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+/* The current step carries the accent. */
+.steps__now {
+  border-color: var(--accent) !important;
+}
+
+.steps__now::after {
+  content: 'now';
+  position: absolute;
+  top: 1.45rem;
+  right: 1.25rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ---- Small things ---- */
 
 /* Same chip shape as the ecosystem's status badges, in the young tone. */
 .chip {
@@ -161,94 +445,84 @@ a.cards__item:hover {
   background: var(--accent-wash);
 }
 
-/*
- * Full-width bands, the same rhythm as the home page: one idea per band, an
- * eyebrow and a large title, light bands separated by a rule and dark bands
- * (the libraries look) for emphasis.
- */
-.band {
-  padding: clamp(3rem, 6vw, 5rem) 0;
-  border-top: 1px solid var(--rule);
-}
-
-.band--dark {
-  background: var(--ink-900);
-  color: var(--on-dark-soft);
-  border-top: none;
-}
-
-.band--dark .eyebrow {
-  color: var(--rose);
-}
-
-.band__title {
-  margin-top: 0.75rem;
-  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-}
-
-.band--dark .band__title,
-.band--dark strong {
-  color: var(--on-dark);
-}
-
-.band__lead {
-  margin-top: 0.9rem;
-  max-width: 62ch;
-  color: var(--ink-soft);
-}
-
-.band--dark .band__lead,
-.band--dark .page__list {
-  color: var(--on-dark-soft);
-}
-
-.band--dark a:not(.btn) {
-  color: var(--rose);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.band__cta {
-  margin-top: 1.75rem;
-}
-
-/* The offers side by side, one card each, stacking on narrow screens. */
-.offers {
-  margin-top: 2rem;
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
-}
-
-.offer-card {
+/* A price, set large. */
+.price {
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 1.6rem 1.75rem;
-  background: var(--paper-raised);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  scroll-margin-top: 5rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
-.offer-card__name {
-  font-size: 1.35rem;
-}
-
-.offer-card__who {
-  margin-top: 0.35rem;
+.price__value {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
   font-weight: 600;
-  color: var(--accent-ink);
+  line-height: 1;
+  color: var(--ink);
 }
 
-.offer-card__problem {
-  margin-top: 0.6rem;
+.price__unit {
   color: var(--ink-soft);
 }
 
-/* Price and call to action pinned to the bottom so the two cards align. */
-.offer-card__foot {
-  margin-top: auto;
-  padding-top: 1.25rem;
+.price__note {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* Bulleted list, used inside panels. */
+.ticks {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+}
+
+.ticks li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--ink-soft);
+}
+
+.ticks li::before {
+  content: '';
+  position: absolute;
+  left: 0.15rem;
+  top: 0.62em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.ticks strong {
+  color: var(--ink);
+}
+
+/* Funder wordmarks, on a light plate in the dark scheme. */
+.logos {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--logo-plate);
+}
+
+.logos img {
+  height: 48px;
+  width: auto;
+  mix-blend-mode: multiply;
+}
+
+/* Outline buttons flip to light lines inside a dark panel, as on dark bands. */
+.panel--dark .btn--secondary {
+  color: var(--on-dark);
+  border-color: var(--rule-dark);
+}
+
+.panel--dark .btn--secondary:hover {
+  border-color: var(--on-dark);
+  background: var(--tint-dark);
 }

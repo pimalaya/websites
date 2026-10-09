@@ -1,0 +1,78 @@
+/* Business page specifics, on top of the shared page vocabulary. */
+
+.biz__who {
+  margin-top: 0.4rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+
+.biz__timeline {
+  margin-top: 1.25rem;
+}
+
+/* Two columns inside the panel: the dates are short, the facts are not. */
+.biz__timeline li {
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+}
+
+@media (max-width: 520px) {
+  .biz__timeline li {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* The dark panels sit in a section of their own, with less air around them. */
+.biz__bring {
+  padding-top: 0;
+}
+
+.biz__bring-panel,
+.biz__close {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2rem clamp(2rem, 6vw, 5rem);
+}
+
+@media (max-width: 760px) {
+  .biz__bring-panel,
+  .biz__close {
+    grid-template-columns: 1fr;
+  }
+}
+
+.biz__figure {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.biz__figure-value {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--rose);
+}
+
+@media (max-width: 760px) {
+  .biz__figure {
+    text-align: left;
+  }
+}
+
+.biz__offers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 1.25rem;
+}
+
+.biz__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.75rem;
+}

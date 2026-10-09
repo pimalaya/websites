@@ -1,49 +1,132 @@
+/* ---- Masthead: the blog's name beside the post to start with ---- */
+
 .masthead {
-  padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(2rem, 4vw, 3rem);
+  padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2.5rem, 5vw, 3.5rem);
   border-bottom: 1px solid var(--rule);
 }
 
-.masthead__title {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  margin-top: 0.75rem;
+.masthead__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
 }
 
-.masthead__lead {
-  margin-top: 1rem;
-  color: var(--ink-soft);
-  font-size: clamp(1.05rem, 2vw, 1.18rem);
-  max-width: 58ch;
+@media (max-width: 860px) {
+  .masthead__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.masthead__title {
+  font-size: clamp(2.4rem, 5.4vw, 3.6rem);
+  margin-top: 0.9rem;
+  max-width: 16ch;
+  letter-spacing: -0.015em;
 }
 
 .masthead__cta {
-  margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.9rem;
 }
+
+/* The featured first post: an accent panel, the whole of it a link. */
+.masthead__start {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  background: var(--accent-wash);
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  transition: border-color 0.15s ease;
+}
+
+.masthead__start:hover {
+  border-color: var(--rose);
+}
+
+.masthead__start-title {
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.masthead__start-lead {
+  margin-top: 0.6rem;
+  color: var(--ink-soft);
+}
+
+.masthead__start-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-top: 1.25rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+
+/* ---- All posts: dated rows ---- */
 
 .post-index {
-  padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(3rem, 6vw, 5rem);
+  padding: clamp(3rem, 6vw, 5rem) 0;
 }
 
-.post-index__list > li + li {
+.post-index__heading {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.post-index__list {
+  margin-top: 1rem;
   border-top: 1px solid var(--rule);
+}
+
+.post-index__list > li {
+  border-bottom: 1px solid var(--rule);
 }
 
 .post-index__item {
   display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  padding: clamp(1.75rem, 3vw, 2.5rem) 0;
+  grid-template-columns: 11rem minmax(0, 1fr) auto;
+  gap: 0.5rem clamp(1rem, 3vw, 2.5rem);
+  align-items: start;
+  margin: 0 -1rem;
+  padding: clamp(1.5rem, 3vw, 2rem) 1rem;
+  border-radius: var(--radius);
+  transition: background 0.15s ease;
 }
 
-.post-index__date {
-  font-family: var(--font-sans);
+.post-index__item:hover {
+  background: var(--tint);
+}
+
+.post-index__meta {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.35rem;
   font-size: 0.88rem;
   color: var(--ink-faint);
-  padding-top: 0.4rem;
-  white-space: nowrap;
+}
+
+.post-index__body {
+  display: flex;
+  flex-direction: column;
 }
 
 .post-index__title {
+  font-family: var(--font-display);
   font-size: clamp(1.4rem, 2.6vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.15;
   transition: color 0.15s ease;
 }
 
@@ -52,20 +135,20 @@
 }
 
 .post-index__description {
-  margin-top: 0.6rem;
+  margin-top: 0.5rem;
   color: var(--ink-soft);
   max-width: 62ch;
 }
 
-.post-index__more {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  margin-top: 0.9rem;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
+.post-index__arrow {
+  padding-top: 0.4rem;
+  color: var(--ink-faint);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.post-index__item:hover .post-index__arrow {
   color: var(--accent-ink);
+  transform: translateX(3px);
 }
 
 @media (max-width: 640px) {
@@ -74,7 +157,13 @@
     gap: 0.35rem;
   }
 
-  .post-index__date {
+  .post-index__meta {
+    flex-direction: row;
+    gap: 0.75rem;
     padding-top: 0;
+  }
+
+  .post-index__arrow {
+    display: none;
   }
 }

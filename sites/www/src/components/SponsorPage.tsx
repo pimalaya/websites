@@ -1,4 +1,4 @@
-import { Icon } from '@pimalaya/shared'
+import { Button, Icon } from '@pimalaya/shared'
 
 import {
   APP_COUNT,
@@ -8,6 +8,7 @@ import {
   platforms,
   REPO_COUNT,
 } from '../lib/sponsors'
+import type { Platform } from '../lib/sponsors'
 import './Page.css'
 import './SponsorPage.css'
 
@@ -24,76 +25,114 @@ import './SponsorPage.css'
  *
  * The routes sit in the header rather than in a section of their own, so the
  * page opens on the ask instead of making a visitor who already decided to
- * give read three sections to find out where.
+ * give read three sections to find out where. The first route (the only one
+ * with tiers) is featured beside the headline; the others follow as rows.
  */
 
+function Mark({ platform, size }: { platform: Platform; size: number }) {
+  return platform.icon ? (
+    <Icon name={platform.icon} size={size} />
+  ) : (
+    /* thanks.dev publishes no usable glyph, so it gets a lettermark. */
+    <span className="give__monogram" aria-hidden="true">
+      td
+    </span>
+  )
+}
+
 export function SponsorPage() {
+  const [lead, ...others] = platforms
+
   return (
     <>
-      <section className="sponsor-head">
+      <section className="page-head">
         <div className="container">
-          <span className="eyebrow">Sponsor</span>
-          <h1 className="sponsor-head__title">
-            Pimalaya is free software,
-            <br />
-            funded by the people who rely on it
-          </h1>
-          <p className="sponsor-head__lead">
-            Grants pay for named pieces of work, for a fixed period.
-            Partnerships pay for what a company needs from us: its servers
-            tested, its bugs first. Donations pay for everything else, and
-            everything after. This is where you fund it.
-          </p>
+          <div className="page-head__split">
+            <div>
+              <span className="eyebrow">Sponsor</span>
+              <h1 className="page-head__title">
+                Pimalaya is free software, funded by the people who rely on it
+              </h1>
+              <p className="page-head__lead">
+                Grants pay for named pieces of work, for a fixed period.
+                Partnerships pay for what a company needs from us: its servers
+                tested, its bugs first. Donations pay for everything else, and
+                everything after. This is where you fund it.
+              </p>
+            </div>
+
+            {lead && (
+              <div className="panel panel--accent give__lead">
+                <h2 className="panel__title give__lead-title">
+                  <Mark platform={lead} size={22} /> {lead.name}
+                </h2>
+                <p className="panel__lead">{lead.note}</p>
+                <div className="panel__foot">
+                  <Button href={lead.url} size="lg" external>
+                    Go to {lead.name} <Icon name="externalLink" size={16} />
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <h2 className="give__heading">Or choose another route</h2>
           <ul className="give">
-            {platforms.map((platform, index) => (
+            {others.map((platform) => (
               <li key={platform.name}>
                 <a
-                  className={`give__item${index === 0 ? ' give__item--lead' : ''}`}
+                  className="row row--icon give__row"
                   href={platform.url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="give__head">
-                    <span className="give__mark" aria-hidden="true">
-                      {platform.icon ? (
-                        <Icon name={platform.icon} size={22} />
-                      ) : (
-                        <span className="give__monogram">td</span>
-                      )}
+                  <Mark platform={platform} size={20} />
+                  <span>
+                    <span className="row__name">
+                      {platform.name} <Icon name="externalLink" size={13} />
                     </span>
-                    <span className="give__name">
-                      {platform.name} <Icon name="externalLink" size={14} />
-                    </span>
+                    <span className="row__note">{platform.note}</span>
                   </span>
-                  <span className="give__note">{platform.note}</span>
                 </a>
               </li>
             ))}
           </ul>
-          <p className="give__foot">
+          <p className="note">
             Recurring support is worth more than the same amount given once:
-            it is the only kind that can be planned around.
-          </p>
-          <p className="give__foot">
-            Building on Pimalaya, or running a mail service? See the{' '}
+            it is the only kind that can be planned around. Building on
+            Pimalaya, or running a mail service? See the{' '}
             <a href="/business/">partnerships</a> instead.
           </p>
         </div>
       </section>
 
-      <section className="band">
+      <section className="section">
         <div className="container">
           <span className="eyebrow">The work</span>
-          <h2 className="band__title">What you are funding</h2>
-          <div className="sponsor__prose">
+          <h2 className="section__title">What you are funding</h2>
+          <ul className="facts">
+            <li>
+              <span className="facts__value">{REPO_COUNT}</span>
+              <span className="facts__note">repositories</span>
+            </li>
+            <li>
+              <span className="facts__value">{APP_COUNT}</span>
+              <span className="facts__note">apps</span>
+            </li>
+            <li>
+              <span className="facts__value">{LIB_COUNT}</span>
+              <span className="facts__note">libraries</span>
+            </li>
+            <li>
+              <span className="facts__value">{DOMAIN_COUNT}</span>
+              <span className="facts__note">domains: email, contacts, calendars, time</span>
+            </li>
+          </ul>
+          <div className="section__body prose-block">
             <p>
-              <strong>{REPO_COUNT} repositories</strong> including {' '}
-              <strong>{APP_COUNT} apps</strong> and{' '}
-              <strong>{LIB_COUNT} libraries</strong>, across{' '}
-              <strong>{DOMAIN_COUNT} domains</strong> (email, contacts,
-              calendars, time). Most of that count is the layer nobody sees,
-              I/O-free Rust libraries written <em>from the RFCs up</em>, and it
-              is <strong>most of the work</strong>.
+              Most of that count is the layer nobody sees, I/O-free Rust
+              libraries written <em>from the RFCs up</em>, and it is{' '}
+              <strong>most of the work</strong>.
             </p>
             <p>
               All of it is free software, MIT or Apache-2.0.{' '}
@@ -118,27 +157,24 @@ export function SponsorPage() {
         </div>
       </section>
 
-      <section className="band">
-        <div className="container">
-          <span className="eyebrow">Grants</span>
-          <h2 className="band__title">What grants already cover</h2>
-          <p className="band__lead">
-            Pimalaya has been funded for years by these two, and that support
-            is real. What a grant cannot cover is everything that is{' '}
-            <em>not a deliverable</em>: the issues answered, the regressions
-            chased, the crates kept released, the next protocol nobody wrote a
-            call for. That is the part sponsorship pays for.
-          </p>
-          <ul className="funders">
+      <section className="section">
+        <div className="container split give__grants">
+          <div>
+            <span className="eyebrow">Grants</span>
+            <h2 className="section__title">What grants already cover</h2>
+            <p className="section__lead">
+              Pimalaya has been funded for years by these two, and that support
+              is real. What a grant cannot cover is everything that is{' '}
+              <em>not a deliverable</em>: the issues answered, the regressions
+              chased, the crates kept released, the next protocol nobody wrote
+              a call for. That is the part sponsorship pays for.
+            </p>
+          </div>
+          <ul className="logos">
             {funders.map((funder) => (
               <li key={funder.name}>
-                <a
-                  className="funders__item"
-                  href={funder.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={funder.logo} alt={funder.name} height={44} />
+                <a href={funder.url} target="_blank" rel="noopener noreferrer">
+                  <img src={funder.logo} alt={funder.name} height={48} />
                 </a>
               </li>
             ))}
@@ -146,28 +182,32 @@ export function SponsorPage() {
         </div>
       </section>
 
-      <section className="band band--dark">
+      <section className="section">
         <div className="container">
-          <span className="eyebrow">Beyond money</span>
-          <h2 className="band__title">Other ways to contribute</h2>
-          <p className="band__lead">
-            Money is not the only thing that keeps this going, and time given
-            directly is worth as much as time bought. A bug report with the
-            steps to reproduce it, a documentation fix, a packaging update for
-            your distribution, an answer to someone else's question in{' '}
-            <a
-              href="https://matrix.to/#/#pimalaya:matrix.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              the Matrix room
-            </a>
-            . Telling someone the tools exist counts too.{' '}
-            <strong>None of that is a consolation prize.</strong>
-          </p>
-          <p className="band__lead">
-            Where to start: the <a href="/community/">community page</a>.
-          </p>
+          <div className="panel panel--dark">
+            <span className="eyebrow">Beyond money</span>
+            <h2 className="section__title">Other ways to contribute</h2>
+            <p className="panel__lead give__beyond">
+              Money is not the only thing that keeps this going, and time given
+              directly is worth as much as time bought. A bug report with the
+              steps to reproduce it, a documentation fix, a packaging update
+              for your distribution, an answer to someone else's question in{' '}
+              <a
+                href="https://matrix.to/#/#pimalaya:matrix.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                the Matrix room
+              </a>
+              . Telling someone the tools exist counts too.{' '}
+              <strong>None of that is a consolation prize.</strong>
+            </p>
+            <div className="panel__foot">
+              <Button href="/community/" variant="secondary" size="md">
+                Where to start <Icon name="arrowRight" size={16} />
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
     </>

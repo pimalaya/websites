@@ -1,16 +1,21 @@
+import { Icon } from '@pimalaya/shared'
+import type { IconName } from '@pimalaya/shared'
+
 import { Subscribe } from './Subscribe'
 import './Page.css'
+import './CommunityPage.css'
 
 /*
  * Where the open-source side talks, follows, contributes and integrates. It
  * replaces the separate Chat and News nav links, so every way in lives on one
- * page with a sentence saying what each is for.
+ * page with a sentence saying what each is for, and each link as a row.
  */
 
 const org = 'https://github.com/pimalaya/.github/blob/master'
 
 interface Block {
   title: string
+  icon: IconName
   note: string
   links: { label: string; href: string }[]
 }
@@ -18,6 +23,7 @@ interface Block {
 const blocks: Block[] = [
   {
     title: 'Chat',
+    icon: 'chat',
     note: 'Questions, help and development talk happen in the Matrix room.',
     links: [
       { label: '#pimalaya on Matrix', href: 'https://matrix.to/#/#pimalaya:matrix.org' },
@@ -25,6 +31,7 @@ const blocks: Block[] = [
   },
   {
     title: 'News',
+    icon: 'article',
     note: 'Releases and write-ups on the blog, short news on Mastodon, both in the newsletter below.',
     links: [
       { label: 'Blog', href: 'https://blog.pimalaya.org' },
@@ -34,6 +41,7 @@ const blocks: Block[] = [
   },
   {
     title: 'Contribute',
+    icon: 'github',
     note: 'Bug reports with steps to reproduce, documentation fixes, packages for your distribution, code.',
     links: [
       { label: 'How to contribute', href: `${org}/CONTRIBUTING.md` },
@@ -44,12 +52,13 @@ const blocks: Block[] = [
   },
   {
     title: 'Integrate',
+    icon: 'code',
     note: 'Drive the CLIs from scripts and agents through their JSON output, or embed the I/O-free libraries.',
     links: [
       { label: 'Integrating Pimalaya', href: `${org}/INTEGRATING.md` },
       { label: 'How Pimalaya works', href: `${org}/ARCHITECTURE.md` },
       { label: 'Libraries and apps', href: '/ecosystem/' },
-      { label: 'Built something? Get listed', href: '/ecosystem/' },
+      { label: 'Built something? Get listed', href: '/ecosystem/#community' },
     ],
   },
 ]
@@ -65,29 +74,44 @@ export function CommunityPage() {
             Pimalaya is built in the open. Here is where the conversation
             happens and how to take part in it.
           </p>
-          <ul className="cards">
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <ul className="community__blocks">
             {blocks.map((block) => (
-              <li key={block.title}>
-                <div className="cards__item">
-                  <span className="cards__name">{block.title}</span>
-                  <span className="cards__note">{block.note}</span>
-                  <span className="cards__links">
-                    {block.links.map((link) => (
-                      <a
-                        key={link.label}
-                        href={link.href}
-                        target={link.href.startsWith('http') ? '_blank' : undefined}
-                        rel={
-                          link.href.startsWith('http')
-                            ? 'noopener noreferrer'
-                            : undefined
-                        }
-                      >
-                        {link.label}
-                      </a>
-                    ))}
+              <li key={block.title} className="panel">
+                <h2 className="panel__title community__title">
+                  <span className="community__icon">
+                    <Icon name={block.icon} size={20} />
                   </span>
-                </div>
+                  {block.title}
+                </h2>
+                <p className="panel__lead">{block.note}</p>
+                <ul className="rows community__links">
+                  {block.links.map((link) => {
+                    const external = link.href.startsWith('http')
+                    return (
+                      <li key={link.label}>
+                        <a
+                          className="row"
+                          href={link.href}
+                          target={external ? '_blank' : undefined}
+                          rel={external ? 'noopener noreferrer' : undefined}
+                        >
+                          <span className="row__name">
+                            {link.label}
+                            <Icon
+                              name={external ? 'externalLink' : 'arrowRight'}
+                              size={14}
+                            />
+                          </span>
+                        </a>
+                      </li>
+                    )
+                  })}
+                </ul>
               </li>
             ))}
           </ul>
