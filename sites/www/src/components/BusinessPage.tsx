@@ -222,21 +222,23 @@ export function BusinessPage() {
                   stays free for anyone.
                 </p>
               ) : (
-                <ul className="ticks">
+                <ul className="biz__partners">
                   {partners.map((partner) => (
                     <li key={partner.url}>
                       <a href={partner.url} target="_blank" rel="noopener noreferrer">
-                        {partner.name}
+                        <img src={partner.logo} alt={partner.name} height={32} loading="lazy" />
                       </a>
+                      <p className="panel__lead">{partner.note}</p>
                     </li>
                   ))}
                 </ul>
               )}
-              <p className="panel__lead">
-                Tell us what you run and what breaks:{' '}
-                <a href={mailto('Partnership')}>{CONTACT_EMAIL}</a>.
-              </p>
             </div>
+            <hr className="biz__rule" />
+            <p className="panel__lead">
+              Tell us what you run and what breaks:{' '}
+              <a href={mailto('Partnership')}>{CONTACT_EMAIL}</a>.
+            </p>
             <div>
               <Button href={mailto('Partnership')} size="lg">
                 <Icon name="mail" size={18} /> Contact us

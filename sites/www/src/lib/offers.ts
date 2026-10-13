@@ -130,7 +130,19 @@ export interface Partner {
   url: string
   /* Which offer they are a partner under, by id. */
   offer: string
+  /* What is built together, one sentence. */
+  note: string
+  /* Their logo, served from public/. */
+  logo: string
 }
 
-/* Empty until the first contract is signed, and the pages say so. */
-export const partners: Partner[] = []
+/* The signed partners, listed honestly: none means the pages say so. */
+export const partners: Partner[] = [
+  {
+    name: 'Red Arrow',
+    url: 'https://redarrow.fr',
+    offer: 'integrators',
+    logo: '/redarrow.svg',
+    note: 'Builds with us an AI-powered desktop client for mail, contacts and calendars, on the Pimalaya stack.',
+  },
+]

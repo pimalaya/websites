@@ -201,7 +201,12 @@ export function EcosystemPage() {
                 Around it, the libraries <strong>consolidate</strong> (stable
                 APIs, documentation, coverage), <strong>interfaces</strong>{' '}
                 become views over the local store, and{' '}
-                <strong>tasks</strong> are the next domain.
+                <strong>tasks</strong> are the next domain. With{' '}
+                <a href="https://redarrow.fr" target="_blank" rel="noopener noreferrer">
+                  Red Arrow
+                </a>
+                , our first partner, we are also building an AI-powered
+                desktop client for mail, contacts and calendars.
               </p>
             </div>
             <ol className="steps eco__steps">
@@ -215,7 +220,7 @@ export function EcosystemPage() {
               </li>
               <li>
                 <span className="steps__name">Interfaces</span>
-                <span className="steps__note">Android, then Linux desktop</span>
+                <span className="steps__note">Android, then desktop</span>
               </li>
               <li>
                 <span className="steps__name">More domains</span>

@@ -509,3 +509,13 @@
   width: auto;
   mix-blend-mode: multiply;
 }
+
+.side__partner img {
+  display: block;
+  height: 28px;
+  width: auto;
+}
+
+.side__partner .side__lead {
+  margin-top: 0.5rem;
+}

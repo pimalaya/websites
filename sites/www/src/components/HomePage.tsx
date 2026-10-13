@@ -1,5 +1,5 @@
 import { apps, libraries, repoUrl } from '../lib/products'
-import { offers } from '../lib/offers'
+import { offers, partners } from '../lib/offers'
 import { Button, Icon } from '@pimalaya/shared'
 import type { IconName } from '@pimalaya/shared'
 import { StatusBadge } from './ui/StatusBadge'
@@ -251,6 +251,17 @@ export function HomePage() {
                 </li>
               ))}
             </ul>
+            {partners.length > 0 && (
+              <div className="side__partner">
+                <a href={partners[0].url} target="_blank" rel="noopener noreferrer">
+                  <img src={partners[0].logo} alt={partners[0].name} height={28} loading="lazy" />
+                </a>
+                <p className="side__lead">
+                  Our first partner {partners[0].note.charAt(0).toLowerCase()}
+                  {partners[0].note.slice(1)}
+                </p>
+              </div>
+            )}
             <div className="side__foot">
               <Button href="/business/" size="md">
                 Pimalaya for business <Icon name="arrowRight" size={16} />

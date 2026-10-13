@@ -76,3 +76,34 @@
   margin-top: auto;
   padding-top: 1.75rem;
 }
+
+.biz__partners {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.1rem;
+}
+
+.biz__partners img {
+  display: block;
+  height: 32px;
+  width: auto;
+}
+
+.biz__partners .panel__lead {
+  margin-top: 0.4rem;
+}
+
+.biz__close > :first-child,
+.biz__rule {
+  grid-column: 1 / -1;
+}
+
+.biz__rule {
+  border: none;
+  border-top: 2px dashed var(--rule-dark);
+  margin: 0;
+}
+
+.biz__close > .panel__lead {
+  margin: 0;
+}
