@@ -50,7 +50,7 @@ export const apps: Product[] = [
     domain: 'Calendar',
     kind: 'CLI',
     status: 'early',
-    description: 'Manage calendars over CalDAV.',
+    description: 'Manage calendars over CalDAV, Google Calendar, vdir and pimdir.',
     home: true,
   },
   {
@@ -60,7 +60,7 @@ export const apps: Product[] = [
     kind: 'CLI',
     status: 'early',
     description:
-      'Manage contacts over CardDAV, Google, Microsoft and JMAP address books.',
+      'Manage contacts over CardDAV, JMAP, Google, Microsoft and vdir address books.',
     home: true,
   },
   {
@@ -88,7 +88,7 @@ export const apps: Product[] = [
     kind: 'CLI',
     status: 'stable',
     description:
-      'Manage emails from the command line, over IMAP, SMTP, JMAP, Maildir, Gmail and Microsoft.',
+      'Manage emails from the command line, over IMAP, SMTP, JMAP, Gmail, Microsoft, Maildir, m2dir and mbox.',
     home: true,
   },
   {
@@ -119,10 +119,11 @@ export const apps: Product[] = [
   {
     name: 'neverest',
     repo: 'neverest',
-    domain: 'Email',
+    domain: 'Email + Contacts + Calendar',
     kind: 'CLI',
     status: 'beta',
-    description: 'Synchronize and back up emails between two backends.',
+    description:
+      'Synchronize mail, contacts and calendars into a local pimdir store, from IMAP, CardDAV, CalDAV, Google and Microsoft.',
     home: true,
   },
   {
@@ -142,7 +143,7 @@ export const apps: Product[] = [
     kind: 'Android app',
     status: 'in development',
     description:
-      'Mail, contacts and calendars in one Android app, over one local store and one account list. Contacts are the mature domain; mail and calendar are read-only for now.',
+      'Mail, contacts and calendars in one offline-first Android app, over Google, Microsoft, JMAP and any IMAP, CardDAV and CalDAV server. In closed alpha.',
   },
   {
     name: 'pimalaya-linux',
@@ -267,12 +268,20 @@ export const libraries: Product[] = [
     description: 'I/O-free ManageSieve client, to manage server-side mail filters.',
   },
   {
-    name: 'io-msgraph',
-    repo: 'io-msgraph',
-    domain: 'Email + Contacts',
+    name: 'io-mbox',
+    repo: 'io-mbox',
+    domain: 'Email',
     kind: 'Library',
     status: 'early',
-    description: 'I/O-free Microsoft Graph client (mail and contacts).',
+    description: 'I/O-free mbox reader and writer, every variant, in bounded memory.',
+  },
+  {
+    name: 'io-msgraph',
+    repo: 'io-msgraph',
+    domain: 'Email + Contacts + Calendar',
+    kind: 'Library',
+    status: 'early',
+    description: 'I/O-free Microsoft Graph client (mail, contacts and calendars).',
   },
   {
     name: 'io-oauth',
@@ -290,17 +299,17 @@ export const libraries: Product[] = [
     kind: 'Library + CLI',
     status: 'early',
     description:
-      'Discover a provider’s IMAP, SMTP, CardDAV and CalDAV services from an email address. The CLI ships as an off-by-default cargo feature.',
+      'Discover a provider’s IMAP, SMTP, JMAP, CardDAV and CalDAV services from an email address. The CLI ships as an off-by-default cargo feature.',
     home: true,
   },
   {
     name: 'io-pimdir',
     repo: 'io-pimdir',
     domain: 'Storage',
-    kind: 'Library',
+    kind: 'Library + CLI',
     status: 'early',
     description:
-      'The pimdir store and its sync engine: one local store for mail, contacts and calendars.',
+      'The reference pimdir implementation, store and sync engine: one local store for mail, contacts and calendars. The pimdir operator CLI ships as an off-by-default cargo feature.',
   },
   {
     name: 'io-proxy',
@@ -335,6 +344,14 @@ export const libraries: Product[] = [
     description: 'I/O-free CardDAV and CalDAV clients over WebDAV.',
   },
   {
+    name: 'io-vdir',
+    repo: 'io-vdir',
+    domain: 'Contacts + Calendar',
+    kind: 'Library',
+    status: 'early',
+    description: 'I/O-free vdir store for vCard and iCalendar collections.',
+  },
+  {
     name: 'mml',
     repo: 'mml',
     domain: 'Email',
@@ -342,6 +359,15 @@ export const libraries: Product[] = [
     status: 'stable',
     description:
       'Compose MIME messages as human-editable markup (MML), Emacs-style.',
+  },
+  {
+    name: 'pimdir',
+    repo: 'pimdir',
+    domain: 'Storage',
+    kind: 'Specification',
+    status: 'early',
+    description:
+      'The pimdir standard: one portable SQLite-plus-blobs store for mail, contacts and calendars, with its sync and search layers. Draft.',
   },
   {
     name: 'stream',

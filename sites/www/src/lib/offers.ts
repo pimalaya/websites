@@ -1,7 +1,6 @@
 /*
  * What Pimalaya sells around the free software, in one file: the prices, the
- * business offers behind /business/, the planned sign-in offer behind
- * /sign-in/, the pain both the home page and /business/ state, and the
+ * business offers behind /business/, the pain both the home page and /business/ state, and the
  * current partners.
  *
  * The prices come from the 2026-09-29 research (comparables, day rates,
@@ -10,7 +9,6 @@
 
 export const PROVIDER_PRICE = '€3,000'
 export const INTEGRATOR_PRICE = '€5,000'
-export const SIGN_IN_PRICE = '€12'
 
 export const CONTACT_EMAIL = 'pimalaya.org@posteo.net'
 
@@ -126,36 +124,6 @@ export const offers: Offer[] = [
     subject: 'Partnership: integrator',
   },
 ]
-
-
-/*
- * The planned one-step sign-in for individual users. Announced with its price
- * and a call to commit, never as available: counting those commitments is how
- * it gets decided.
- */
-export const signIn = {
-  audience: 'For users',
-  who: 'You use the Pimalaya tools with Gmail or Microsoft 365.',
-  summary: 'Sign in with one click, without registering your own app.',
-  problem:
-    'Signing in to Gmail or Microsoft 365 from a free client means either registering your own app with Google or Microsoft, or using an app someone registered and keeps verified. Google charges for that verification every year, through a mandatory security audit, and the free tools cannot absorb that cost.',
-  benefits: [
-    {
-      title: 'One step.',
-      text: 'Himalaya and the Pimalaya apps sign in with Pimalaya’s verified apps: you approve access once, in your browser.',
-    },
-    {
-      title: 'Your data stays between you and your provider.',
-      text: 'A small Pimalaya server holds the apps’ secret and renews your access. It never sees your mail or contacts, and stores and logs nothing. Its code is public.',
-    },
-    {
-      title: 'Still free the other way.',
-      text: 'Registering your own app and bringing its client ID keeps working, for free, as it does today.',
-    },
-  ] as Point[],
-  price: SIGN_IN_PRICE,
-  subject: 'Sign-in: I would pay',
-}
 
 export interface Partner {
   name: string

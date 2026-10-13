@@ -80,8 +80,14 @@ function pageHead(page, canonical) {
   ]
 
   // The ecosystem page carries the whole catalogue as an ItemList (apps as
-  // SoftwareApplication, libraries as SoftwareSourceCode) plus a breadcrumb.
+  // SoftwareApplication, libraries as SoftwareSourceCode, the specification
+  // as a TechArticle) plus a breadcrumb.
   const products = [...apps, ...libraries, ...retired]
+  const software = (product) => ({
+    '@type': product.kind === 'Library' ? 'SoftwareSourceCode' : 'SoftwareApplication',
+    codeRepository: repoUrl(product),
+    programmingLanguage: 'Rust',
+  })
 
   const graphs = {
     ecosystem: [
@@ -98,13 +104,12 @@ function pageHead(page, canonical) {
             '@type': 'ListItem',
             position: index + 1,
             item: {
-              '@type':
-                product.kind === 'Library' ? 'SoftwareSourceCode' : 'SoftwareApplication',
+              ...(product.kind === 'Specification'
+                ? { '@type': 'TechArticle' }
+                : software(product)),
               name: product.name,
               description: product.description,
               url: repoUrl(product),
-              codeRepository: repoUrl(product),
-              programmingLanguage: 'Rust',
               license: 'MIT OR Apache-2.0',
             },
           })),
@@ -120,11 +125,10 @@ function pageHead(page, canonical) {
 
     community: webPage('Community'),
 
-    // The business and sign-in offers carry placeholder prices, so they stay
+    // The business offers carry placeholder prices, so they stay
     // out of the graph until the prices settle: an Offer would promise more
     // precision than the page gives.
     business: webPage('Business'),
-    'sign-in': webPage('Sign-in'),
 
     '': [
       organization,

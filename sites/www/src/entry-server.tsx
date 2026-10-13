@@ -51,14 +51,6 @@ export function renderPages(): { pages: Page[] } {
     appHtml: renderToString(<App url="/community/" />),
   }
 
-  const signIn: Page = {
-    slug: 'sign-in',
-    title: 'Pimalaya | One-step Gmail and Microsoft 365 sign-in',
-    description:
-      'A planned subscription to sign in to Gmail and Microsoft 365 from the Pimalaya tools in one step, without registering your own app.',
-    appHtml: renderToString(<App url="/sign-in/" />),
-  }
-
   const business: Page = {
     slug: 'business',
     title: 'Pimalaya for business | Providers and integrators',
@@ -67,5 +59,5 @@ export function renderPages(): { pages: Page[] } {
     appHtml: renderToString(<App url="/business/" />),
   }
 
-  return { pages: [home, ecosystem, community, signIn, sponsor, business] }
+  return { pages: [home, ecosystem, community, sponsor, business] }
 }

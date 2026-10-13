@@ -7,7 +7,6 @@ import { BusinessPage } from './components/BusinessPage'
 import { CommunityPage } from './components/CommunityPage'
 import { EcosystemPage } from './components/EcosystemPage'
 import { HomePage } from './components/HomePage'
-import { SignInPage } from './components/SignInPage'
 import { SponsorPage } from './components/SponsorPage'
 
 /*
@@ -17,14 +16,13 @@ import { SponsorPage } from './components/SponsorPage'
  * comes from @pimalaya/shared, parameterized with this site's links and copy.
  *
  * The site speaks to two audiences: the open-source side (ecosystem,
- * community, sign-in, sponsor) and the business side (business). The home
+ * community, sponsor) and the business side (business). The home
  * page presents both.
  */
 
 const pages: Record<string, ComponentType> = {
   ecosystem: EcosystemPage,
   community: CommunityPage,
-  'sign-in': SignInPage,
   sponsor: SponsorPage,
   business: BusinessPage,
 }
@@ -61,7 +59,6 @@ const footerColumns: FooterColumn[] = [
       { label: 'For business', href: '/business/' },
       { label: 'Providers', href: '/business/#providers' },
       { label: 'Integrators', href: '/business/#integrators' },
-      { label: 'Sign-in', href: '/sign-in/' },
     ],
   },
   {

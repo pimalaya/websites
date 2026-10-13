@@ -177,39 +177,49 @@ export function EcosystemPage() {
           <div className="section__body split">
             <div className="prose-block">
               <p>
-                Mail is now the most complete domain of the ecosystem,
-                especially with Himalaya v2. The focus therefore moves to what
-                surrounds it: <strong>sync</strong>, <strong>watch</strong>,
-                then <strong>contacts</strong>, then <strong>calendar</strong>.
+                Mail, contacts and calendars are all covered now: Himalaya,
+                Cardamum and Calendula each speak several backends, and
+                Neverest syncs all three domains into one local store. The
+                2026 to 2027 direction, funded by the NGI Zero Commons Fund,
+                is{' '}
+                <a
+                  href="https://blog.pimalaya.org/another-year-with-nlnet/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  set out on the blog
+                </a>
+                .
               </p>
               <p>
-                Sync comes first, as a consolidation: everything sync-related
-                converges into one stack, the Neverest CLI on top of io-pimdir,
-                which holds both the pimdir store and its sync engine. Watch
-                joins the same movement with Carillon, formerly mirador.
+                The focus is <strong>pimdir</strong>, the standard for
+                personal information on disk. The Android app is its first
+                full implementation, read and write, which is where the draft
+                gets stress-tested before it stops moving.
               </p>
               <p>
-                Once sync and watch settle, the contacts domain gets the same
-                treatment around Cardamum, then the calendar domain follows
-                around Calendula.
+                Around it, the libraries <strong>consolidate</strong> (stable
+                APIs, documentation, coverage), <strong>interfaces</strong>{' '}
+                become views over the local store, and{' '}
+                <strong>tasks</strong> are the next domain.
               </p>
             </div>
             <ol className="steps eco__steps">
               <li className="steps__now">
-                <span className="steps__name">Sync</span>
-                <span className="steps__note">Neverest on top of io-pimdir</span>
+                <span className="steps__name">Standardise pimdir</span>
+                <span className="steps__note">the draft, stressed by Android</span>
               </li>
               <li>
-                <span className="steps__name">Watch</span>
-                <span className="steps__note">Carillon, formerly mirador</span>
+                <span className="steps__name">Consolidate</span>
+                <span className="steps__note">stable libraries, documented</span>
               </li>
               <li>
-                <span className="steps__name">Contacts</span>
-                <span className="steps__note">around Cardamum</span>
+                <span className="steps__name">Interfaces</span>
+                <span className="steps__note">Android, then Linux desktop</span>
               </li>
               <li>
-                <span className="steps__name">Calendar</span>
-                <span className="steps__note">around Calendula</span>
+                <span className="steps__name">More domains</span>
+                <span className="steps__note">tasks next</span>
               </li>
             </ol>
           </div>
@@ -316,9 +326,16 @@ export function EcosystemPage() {
                 became the whole thing, mail, contacts and calendars behind
                 one store and one account list, which is the second point it
                 validates: the three domains belong in one app, not three.
-                Contacts is where it is mature; mail and calendar read today
-                and will write later. A blog post about the approach is coming
-                soon.
+                All three domains now read and write, offline first, and the
+                app is in{' '}
+                <a
+                  href="https://blog.pimalaya.org/pimalaya-android-closed-alpha/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  closed alpha
+                </a>{' '}
+                with a handful of chosen testers.
               </p>
             </li>
             <li className="panel">

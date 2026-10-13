@@ -32,6 +32,8 @@ const crates = [
   'io-maildir',
   'mml',
   'vcard',
+  'ical',
+  'io-pimdir',
 ]
 
 interface Channel {
@@ -191,9 +193,7 @@ export function HomePage() {
           </div>
 
           <p className="apps__note">
-            Every tool is free software, dual-licensed MIT or Apache-2.0. On
-            Gmail or Microsoft 365? A <a href="/sign-in/">one-step sign-in</a>{' '}
-            is planned, so you no longer need to register your own app.
+            Every tool is free software, dual-licensed MIT or Apache-2.0.
           </p>
         </div>
       </section>

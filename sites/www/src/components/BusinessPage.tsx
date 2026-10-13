@@ -1,6 +1,6 @@
 import { Button, Icon } from '@pimalaya/shared'
 
-import { CONTACT_EMAIL, mailto, offers, pains, partners, signIn } from '../lib/offers'
+import { CONTACT_EMAIL, mailto, offers, pains, partners } from '../lib/offers'
 import type { Offer } from '../lib/offers'
 import { LIB_COUNT } from '../lib/sponsors'
 import './Page.css'
@@ -121,16 +121,6 @@ export function BusinessPage() {
                 </a>
               </li>
             ))}
-            <li>
-              <a className="row" href="/sign-in/">
-                <span className="row__name">
-                  {signIn.audience} <span className="chip">planned</span>
-                </span>
-                <span className="row__note">
-                  {signIn.who} {signIn.summary}
-                </span>
-              </a>
-            </li>
           </ul>
         </div>
       </section>
