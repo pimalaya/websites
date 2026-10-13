@@ -68,6 +68,8 @@ Write to [pimalaya.org@posteo.net](mailto:pimalaya.org@posteo.net) with:
 
 I will pick testers **for coverage**, not first come first served, so do not read silence as a no: it may simply mean your setup is already well covered. If the alpha goes well, a wider beta follows, and I will announce it here.
 
+Rather skip Google Play, or not wait? You can also **install the APK yourself**, straight from the CI: open the [latest release build](https://github.com/pimalaya/android/actions/workflows/releases.yml?query=branch%3Amaster+is%3Asuccess), download it under *Artifacts* (a GitHub account is needed), and open it on your phone. pimalaya-arm64-v8a suits most phones, pimalaya all of them. Updates are then on you, and reports are just as welcome on the [issue tracker](https://github.com/pimalaya/android/issues).
+
 ## In short
 
 **Mail, contacts, calendars, sync and notifications, in one app, on your own providers, offline first and private.** Years of libraries finally meeting in one place, and the first full pimdir implementation. It is early, it is rough, and it needs a few good testers before it needs many.
