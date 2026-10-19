@@ -43,7 +43,7 @@ function pageHead(page, canonical) {
     url: `${siteUrl}/`,
     logo: `${siteUrl}/favicon.svg`,
     description:
-      'Free tools and Rust libraries for email, contacts and calendars, built from the standards up and kept working against the servers people actually use.',
+      'Free tools and Rust libraries for mail, contacts and calendars, built from the standards up and kept working against the servers people actually use.',
     foundingDate: '2022',
     email: 'pimalaya.org@posteo.net',
     founder: { '@type': 'Person', name: 'soywod' },
@@ -143,7 +143,7 @@ function pageHead(page, canonical) {
       {
         '@type': 'SoftwareApplication',
         name: 'Himalaya',
-        description: 'CLI to manage emails.',
+        description: 'CLI to manage mail.',
         url: 'https://github.com/pimalaya/himalaya',
         applicationCategory: 'CommunicationApplication',
         operatingSystem: 'Cross-platform',

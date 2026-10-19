@@ -125,7 +125,7 @@ export function SponsorPage() {
             </li>
             <li>
               <span className="facts__value">{DOMAIN_COUNT}</span>
-              <span className="facts__note">domains: email, contacts, calendars, time</span>
+              <span className="facts__note">domains: mail, contacts, calendars, time</span>
             </li>
           </ul>
           <div className="section__body prose-block">

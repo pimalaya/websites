@@ -23,7 +23,7 @@ export function renderPages(): { pages: Page[] } {
     slug: '',
     title: 'Pimalaya | Open-source PIM tools in Rust',
     description:
-      'Free tools and Rust libraries for email, contacts and calendars, built from the standards up and kept working against the servers people actually use.',
+      'Free tools and Rust libraries for mail, contacts and calendars, built from the standards up and kept working against the servers people actually use.',
     appHtml: renderToString(<App url="/" />),
   }
 

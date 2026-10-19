@@ -53,7 +53,7 @@ const blocks: Block[] = [
   {
     title: 'Integrate',
     icon: 'code',
-    note: 'Drive the CLIs from scripts and agents through their JSON output, or embed the I/O-free libraries.',
+    note: 'Drive the CLIs from scripts and agents through their JSON output and its schemas, or embed the I/O-free libraries. Pimalaya ships no AI of its own.',
     links: [
       { label: 'Integrating Pimalaya', href: `${org}/INTEGRATING.md` },
       { label: 'How Pimalaya works', href: `${org}/ARCHITECTURE.md` },

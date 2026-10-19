@@ -20,7 +20,7 @@ import './HomePage.css'
  * /ecosystem/, and the pain behind the offers at /business/.
  */
 
-const domains = ['Email', 'Contacts', 'Calendar', 'Time', 'Plumbing']
+const domains = ['Mail', 'Contacts', 'Calendar', 'Time', 'Plumbing']
 
 const crates = [
   'io-imap',
@@ -76,7 +76,7 @@ export function HomePage() {
             <span className="eyebrow">Personal Information Management · Est. 2022</span>
             <h1 className="hero__title">Open-source PIM tools, written in Rust</h1>
             <p className="hero__lead">
-              Free tools and Rust libraries for email, contacts and calendars,
+              Free tools and Rust libraries for mail, contacts and calendars,
               built from the standards up and kept working against the servers
               people actually use.
             </p>
@@ -116,7 +116,7 @@ export function HomePage() {
               </pre>
             </div>
             <figcaption className="hero__caption">
-              <strong>Himalaya</strong>, the flagship: manage your emails from
+              <strong>Himalaya</strong>, the flagship: manage your mail from
               the command line. Scriptable, fast, and at home in a terminal.{' '}
               <a
                 href="https://github.com/pimalaya/himalaya"

@@ -84,34 +84,34 @@ export const apps: Product[] = [
   {
     name: 'himalaya',
     repo: 'himalaya',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'CLI',
     status: 'stable',
     description:
-      'Manage emails from the command line, over IMAP, SMTP, JMAP, Gmail, Microsoft, Maildir, m2dir and mbox.',
+      'Manage mail from the command line, over IMAP, SMTP, JMAP, Gmail, Microsoft, Maildir, m2dir and mbox.',
     home: true,
   },
   {
     name: 'himalaya-tui',
     repo: 'himalaya-tui',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'TUI',
     status: 'in development',
-    description: 'A full-screen terminal UI for reading and writing emails.',
+    description: 'A full-screen terminal UI for reading and writing mail.',
   },
   {
     name: 'himalaya-vim',
     repo: 'himalaya-vim',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'Vim plugin',
     status: 'stable',
-    description: 'Manage emails from Vim, on top of the Himalaya CLI.',
+    description: 'Manage mail from Vim, on top of the Himalaya CLI.',
     home: true,
   },
   {
     name: 'm2m',
     repo: 'm2m',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'CLI',
     status: 'in development',
     description: 'Convert mail stores between Maildir, Maildir++ and m2dir.',
@@ -119,7 +119,7 @@ export const apps: Product[] = [
   {
     name: 'neverest',
     repo: 'neverest',
-    domain: 'Email + Contacts + Calendar',
+    domain: 'Mail + Contacts + Calendar',
     kind: 'CLI',
     status: 'beta',
     description:
@@ -139,7 +139,7 @@ export const apps: Product[] = [
   {
     name: 'pimalaya-android',
     repo: 'android',
-    domain: 'Email + Contacts + Calendar',
+    domain: 'Mail + Contacts + Calendar',
     kind: 'Android app',
     status: 'in development',
     description:
@@ -148,7 +148,7 @@ export const apps: Product[] = [
   {
     name: 'pimalaya-linux',
     repo: 'linux',
-    domain: 'Email + Contacts',
+    domain: 'Mail + Contacts',
     kind: 'Desktop app',
     status: 'in development',
     description:
@@ -206,7 +206,7 @@ export const libraries: Product[] = [
   {
     name: 'io-gmail',
     repo: 'io-gmail',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'Library',
     status: 'early',
     description: 'I/O-free Gmail REST API client.',
@@ -230,7 +230,7 @@ export const libraries: Product[] = [
   {
     name: 'io-imap',
     repo: 'io-imap',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'Library',
     status: 'stable',
     description: 'I/O-free IMAP client.',
@@ -238,7 +238,7 @@ export const libraries: Product[] = [
   {
     name: 'io-jmap',
     repo: 'io-jmap',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'Library',
     status: 'early',
     description: 'I/O-free JMAP client.',
@@ -246,7 +246,7 @@ export const libraries: Product[] = [
   {
     name: 'io-m2dir',
     repo: 'io-m2dir',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'Library',
     status: 'early',
     description: 'I/O-free m2dir store.',
@@ -254,7 +254,7 @@ export const libraries: Product[] = [
   {
     name: 'io-maildir',
     repo: 'io-maildir',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'Library',
     status: 'early',
     description: 'I/O-free Maildir store.',
@@ -262,7 +262,7 @@ export const libraries: Product[] = [
   {
     name: 'io-managesieve',
     repo: 'io-managesieve',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'Library',
     status: 'early',
     description: 'I/O-free ManageSieve client, to manage server-side mail filters.',
@@ -270,7 +270,7 @@ export const libraries: Product[] = [
   {
     name: 'io-mbox',
     repo: 'io-mbox',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'Library',
     status: 'early',
     description: 'I/O-free mbox reader and writer, every variant, in bounded memory.',
@@ -278,7 +278,7 @@ export const libraries: Product[] = [
   {
     name: 'io-msgraph',
     repo: 'io-msgraph',
-    domain: 'Email + Contacts + Calendar',
+    domain: 'Mail + Contacts + Calendar',
     kind: 'Library',
     status: 'early',
     description: 'I/O-free Microsoft Graph client (mail, contacts and calendars).',
@@ -330,7 +330,7 @@ export const libraries: Product[] = [
   {
     name: 'io-smtp',
     repo: 'io-smtp',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'Library',
     status: 'stable',
     description: 'I/O-free SMTP client.',
@@ -354,7 +354,7 @@ export const libraries: Product[] = [
   {
     name: 'mml',
     repo: 'mml',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'Library + CLI',
     status: 'stable',
     description:
@@ -411,11 +411,11 @@ export const retired: Product[] = [
   {
     name: 'io-email',
     repo: 'io-email',
-    domain: 'Email',
+    domain: 'Mail',
     kind: 'Library',
     status: 'frozen',
     description:
-      'Multi-backend email aggregator; superseded by protocol-direct clients.',
+      'Multi-backend mail aggregator; superseded by protocol-direct clients.',
   },
   {
     name: 'io-fs',
@@ -490,7 +490,7 @@ export const community: CommunityProject[] = [
     author: 'dantecatalfamo',
     kind: 'Emacs plugin',
     description:
-      'Browse, read, write and organize emails from Emacs, on top of the Himalaya CLI. Published on MELPA.',
+      'Browse, read, write and organize mail from Emacs, on top of the Himalaya CLI. Published on MELPA.',
   },
   {
     name: 'mailbrus',
@@ -498,7 +498,7 @@ export const community: CommunityProject[] = [
     author: 'antono',
     kind: 'Desktop and web app',
     description:
-      'A keyboard-driven, plain-text-first email client built on the io-email and io-maildir crates, shipped as a Tauri app and a progressive web app.',
+      'A keyboard-driven, plain-text-first mail client built on the io-email and io-maildir crates, shipped as a Tauri app and a progressive web app.',
   },
   {
     name: 'himalaya.nvim',
@@ -538,7 +538,7 @@ export const community: CommunityProject[] = [
     author: 'jns',
     kind: 'Raycast extension',
     description:
-      'Read and manage the emails of your default account from the Raycast launcher on macOS.',
+      'Read and manage the mail of your default account from the Raycast launcher on macOS.',
   },
   {
     name: 'dfzf',
@@ -554,6 +554,6 @@ export const community: CommunityProject[] = [
     author: 'openclaw',
     kind: 'Agent skill',
     description:
-      'Teaches the OpenClaw coding agent to manage emails through the Himalaya CLI.',
+      'Teaches the OpenClaw coding agent to manage mail through the Himalaya CLI.',
   },
 ]

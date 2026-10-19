@@ -17,22 +17,26 @@ import './BusinessPage.css'
  */
 
 /*
- * Dates reused from the retired pimgate one-pager.
- *
- * NOTE: re-check them before publishing; they move on Microsoft's schedule.
+ * Checked on 2026-10-19 against Microsoft's message center: MC1227454 (EWS)
+ * and MC786329 (SMTP AUTH, final removal date announced in the second half of
+ * 2027). Re-check before publishing; they move on Microsoft's schedule.
  */
 const deadlines = [
   {
-    date: 'Already in effect',
-    title: 'Basic auth is gone from hosted IMAP and SMTP.',
+    date: 'Since October 2022',
+    title: 'Basic auth is gone from IMAP, POP and Exchange ActiveSync.',
   },
   {
     date: '1 October 2026',
-    title: 'Exchange Web Services retirement begins, through April 2027.',
+    title: 'Exchange Web Services blocked by default; admins can still turn it back on.',
   },
   {
     date: 'End of December 2026',
-    title: 'SMTP AUTH goes default-off on Microsoft 365.',
+    title: 'Basic auth for SMTP AUTH turned off by default on Microsoft 365.',
+  },
+  {
+    date: '1 April 2027',
+    title: 'Exchange Web Services shut down for good.',
   },
 ]
 
@@ -75,6 +79,9 @@ function OfferPanel({ offer }: { offer: Offer }) {
             <span className="price__value">{offer.price}</span>
             <span className="price__unit">per year</span>
           </p>
+          {offer.setup && (
+            <p className="price__note">Plus a setup from {offer.setup}.</p>
+          )}
           {offer.priceNote && <p className="price__note">{offer.priceNote}</p>}
         </div>
         <Button href={mailto(offer.subject)} size="md">
@@ -93,12 +100,13 @@ export function BusinessPage() {
           <div>
             <span className="eyebrow">Pimalaya for business</span>
             <h1 className="page-head__title">
-              Email, contacts and calendars that keep working
+              Mail, contacts and calendars that keep working
             </h1>
             <p className="page-head__lead">
-              The code is free and stays free. What we sell is what does not
-              come with it: your service or integration tested on every
-              change, your bugs first, a version line maintained for you.
+              The ecosystem keeps moving, we keep you working. The code is
+              free and stays free. What we sell is what does not come with it:
+              your servers, apps and integrations tested on every change, your
+              bugs first, maintained for you year after year.
             </p>
             <div className="page-head__cta">
               <Button href={mailto('Partnership')} size="lg">
@@ -166,10 +174,16 @@ export function BusinessPage() {
               <h2 className="section__title">The quirks are already found</h2>
               <p className="panel__lead">
                 Since 2022, <strong>{LIB_COUNT} libraries</strong> written
-                from the RFCs up (IMAP, SMTP, JMAP, CardDAV, CalDAV, OAuth) and
-                tested against the providers people use, on accounts kept for
-                testing alone. A partnership puts yours first, for less than
-                the weeks an engineer would spend on them each year.
+                from the RFCs up (IMAP, SMTP, JMAP, CardDAV, CalDAV, OAuth,
+                discovery) and tested against the providers people use, on
+                accounts kept for testing alone. A partnership puts yours
+                first, for less than the weeks an engineer would spend on them
+                each year.
+              </p>
+              <p className="panel__lead">
+                Pimalaya ships no AI. Its tools are made to be driven by other
+                software, agents included: JSON output with its schemas, and
+                documentation written for integrators.
               </p>
             </div>
             <p className="biz__figure">
@@ -183,7 +197,7 @@ export function BusinessPage() {
       <section className="section section--surface" id="offers">
         <div className="container">
           <span className="eyebrow">Partnerships</span>
-          <h2 className="section__title">Two ways to partner</h2>
+          <h2 className="section__title">Three ways to partner</h2>
           <ul className="section__body biz__offers">
             {offers.map((offer) => (
               <OfferPanel key={offer.id} offer={offer} />
