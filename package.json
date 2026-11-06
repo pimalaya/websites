@@ -15,6 +15,7 @@
     "dev:blog": "npm run dev --workspace sites/blog",
     "build:blog": "npm run build --workspace sites/blog",
     "preview:blog": "npm run preview --workspace sites/blog",
-    "newsletter": "npm run newsletter --workspace sites/blog --"
+    "newsletter": "npm run newsletter --workspace sites/blog --",
+    "sync:privacy": "cp ../android/PRIVACY.md sites/www/content/android/privacy.md"
   }
 }

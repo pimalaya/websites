@@ -3,6 +3,8 @@ import type { ComponentType } from 'react'
 import { Footer, Nav } from '@pimalaya/shared'
 import type { FooterColumn, NavLink } from '@pimalaya/shared'
 
+import { AndroidPage } from './components/AndroidPage'
+import { AndroidPrivacyPage } from './components/AndroidPrivacyPage'
 import { BusinessPage } from './components/BusinessPage'
 import { CommunityPage } from './components/CommunityPage'
 import { EcosystemPage } from './components/EcosystemPage'
@@ -25,6 +27,8 @@ const pages: Record<string, ComponentType> = {
   community: CommunityPage,
   sponsor: SponsorPage,
   business: BusinessPage,
+  android: AndroidPage,
+  'android/privacy': AndroidPrivacyPage,
 }
 
 /* One line per link; the blog is the only one leaving the site, and the nav
@@ -45,6 +49,7 @@ const footerColumns: FooterColumn[] = [
       { label: 'Ecosystem', href: '/ecosystem/' },
       { label: 'Community', href: '/community/' },
       { label: 'Sponsor', href: '/sponsor/' },
+      { label: 'Android app', href: '/android/' },
       { label: 'GitHub', href: 'https://github.com/pimalaya', external: true },
       {
         label: 'How Pimalaya works',

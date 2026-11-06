@@ -130,6 +130,41 @@ function pageHead(page, canonical) {
     // precision than the page gives.
     business: webPage('Business'),
 
+    android: [
+      {
+        '@type': 'SoftwareApplication',
+        name: 'Pimalaya for Android',
+        description: page.description,
+        url: canonical,
+        applicationCategory: 'CommunicationApplication',
+        operatingSystem: 'Android 8.0 or newer',
+        codeRepository: 'https://github.com/pimalaya/android',
+        license: 'MIT OR Apache-2.0',
+        author: { '@id': `${siteUrl}/#organization` },
+      },
+      breadcrumb('Android app'),
+    ],
+
+    // Below the app page, so its breadcrumb has three steps.
+    'android/privacy': [
+      {
+        '@type': 'WebPage',
+        name: page.title,
+        description: page.description,
+        url: canonical,
+        isPartOf: { '@id': `${siteUrl}/#website` },
+        publisher: { '@id': `${siteUrl}/#organization` },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Pimalaya', item: `${siteUrl}/` },
+          { '@type': 'ListItem', position: 2, name: 'Android app', item: `${siteUrl}/android/` },
+          { '@type': 'ListItem', position: 3, name: 'Privacy policy', item: canonical },
+        ],
+      },
+    ],
+
     '': [
       organization,
       {

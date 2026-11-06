@@ -1,0 +1,70 @@
+/*
+ * The Android pages' own layout: the privacy page's link back to the app page
+ * and the policy's typography. marked emits plain elements with no classes,
+ * so the policy is styled by element selectors scoped under .policy.
+ */
+
+.android__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+
+.android__back svg {
+  transform: rotate(180deg);
+}
+
+.android__back:hover {
+  color: var(--ink);
+}
+
+.android__back + .page-head__title {
+  margin-top: 1.5rem;
+}
+
+.policy {
+  max-width: 70ch;
+  font-size: 1.04rem;
+}
+
+.policy > * + * {
+  margin-top: 1.1em;
+}
+
+.policy h2 {
+  margin-top: 2em;
+  font-size: 1.6rem;
+}
+
+.policy a {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 3px;
+}
+
+.policy a:hover {
+  color: var(--accent);
+}
+
+.policy ul {
+  padding-left: 1.4em;
+  list-style: disc;
+}
+
+.policy li + li {
+  margin-top: 0.45em;
+}
+
+.policy code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.12em 0.4em;
+}

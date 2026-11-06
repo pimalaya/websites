@@ -59,5 +59,23 @@ export function renderPages(): { pages: Page[] } {
     appHtml: renderToString(<App url="/business/" />),
   }
 
-  return { pages: [home, ecosystem, community, sponsor, business] }
+  const android: Page = {
+    slug: 'android',
+    title: 'Pimalaya for Android | Mail, contacts and calendars',
+    description:
+      'Mail, contacts, calendars and tasks in one offline-first Android app, on Google, Microsoft, Fastmail or any standard server. Free, open source, no server in between.',
+    appHtml: renderToString(<App url="/android/" />),
+  }
+
+  const androidPrivacy: Page = {
+    slug: 'android/privacy',
+    title: 'Pimalaya for Android | Privacy policy',
+    description:
+      'How the Pimalaya Android app handles your data: stored on your device, sent only to the servers you connect, never to us.',
+    appHtml: renderToString(<App url="/android/privacy/" />),
+  }
+
+  return {
+    pages: [home, ecosystem, community, sponsor, business, android, androidPrivacy],
+  }
 }
