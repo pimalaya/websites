@@ -12,4 +12,5 @@ change: www-privacy-terms
 - [x] The Android app page links `/terms/`; the android repo's PRIVACY.md links `/privacy/`, copy refreshed
 - [x] `npm run build:www` green, both pages in dist/ and the sitemap
 - [x] Spec folded, log written
-- [ ] Published (Publish workflow of pimalaya/_www), then the three root URLs entered in Google's and Microsoft's Branding pages
+- [x] Published (Publish workflow of pimalaya/_www, run 42356253830, 2026-11-07), `/`, `/privacy/` and `/terms/` answer 200
+- [ ] The three root URLs entered in Google's and Microsoft's Branding pages
