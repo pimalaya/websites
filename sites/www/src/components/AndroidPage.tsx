@@ -1,7 +1,6 @@
 import { Button, Icon } from '@pimalaya/shared'
 
 import './Page.css'
-import './AndroidPage.css'
 
 /*
  * The Android app's home page, the one Google's OAuth verification and the
@@ -36,6 +35,7 @@ const links = [
   { label: 'Source code', href: repo },
   { label: 'Report a bug', href: `${repo}/issues` },
   { label: 'Privacy policy', href: '/android/privacy/' },
+  { label: 'Terms of use', href: '/terms/' },
 ]
 
 export function AndroidPage() {

@@ -79,6 +79,27 @@ function pageHead(page, canonical) {
     breadcrumb(name),
   ]
 
+  // The Android app's privacy policy, below the app's page, so its
+  // breadcrumb has three steps.
+  const androidPrivacy = [
+    {
+      '@type': 'WebPage',
+      name: page.title,
+      description: page.description,
+      url: canonical,
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      publisher: { '@id': `${siteUrl}/#organization` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Pimalaya', item: `${siteUrl}/` },
+        { '@type': 'ListItem', position: 2, name: 'Android app', item: `${siteUrl}/android/` },
+        { '@type': 'ListItem', position: 3, name: 'Privacy policy', item: canonical },
+      ],
+    },
+  ]
+
   // The ecosystem page carries the whole catalogue as an ItemList (apps as
   // SoftwareApplication, libraries as SoftwareSourceCode, the specification
   // as a TechArticle) plus a breadcrumb.
@@ -145,25 +166,9 @@ function pageHead(page, canonical) {
       breadcrumb('Android app'),
     ],
 
-    // Below the app page, so its breadcrumb has three steps.
-    'android/privacy': [
-      {
-        '@type': 'WebPage',
-        name: page.title,
-        description: page.description,
-        url: canonical,
-        isPartOf: { '@id': `${siteUrl}/#website` },
-        publisher: { '@id': `${siteUrl}/#organization` },
-      },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Pimalaya', item: `${siteUrl}/` },
-          { '@type': 'ListItem', position: 2, name: 'Android app', item: `${siteUrl}/android/` },
-          { '@type': 'ListItem', position: 3, name: 'Privacy policy', item: canonical },
-        ],
-      },
-    ],
+    'android/privacy': androidPrivacy,
+    privacy: webPage('Privacy policy'),
+    terms: webPage('Terms of use'),
 
     '': [
       organization,

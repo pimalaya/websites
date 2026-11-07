@@ -75,7 +75,33 @@ export function renderPages(): { pages: Page[] } {
     appHtml: renderToString(<App url="/android/privacy/" />),
   }
 
+  const privacy: Page = {
+    slug: 'privacy',
+    title: 'Pimalaya | Privacy policy',
+    description:
+      'How the Pimalaya apps handle your data: stored on your device, sent only to the servers you connect, never to us. Google user data and this website included.',
+    appHtml: renderToString(<App url="/privacy/" />),
+  }
+
+  const terms: Page = {
+    slug: 'terms',
+    title: 'Pimalaya | Terms of use',
+    description:
+      'The terms of the Pimalaya apps: open-source licensed, provided as is, no account and no server of ours, your providers’ terms still apply.',
+    appHtml: renderToString(<App url="/terms/" />),
+  }
+
   return {
-    pages: [home, ecosystem, community, sponsor, business, android, androidPrivacy],
+    pages: [
+      home,
+      ecosystem,
+      community,
+      sponsor,
+      business,
+      android,
+      androidPrivacy,
+      privacy,
+      terms,
+    ],
   }
 }

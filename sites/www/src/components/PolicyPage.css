@@ -1,10 +1,10 @@
 /*
- * The Android pages' own layout: the privacy page's link back to the app page
- * and the policy's typography. marked emits plain elements with no classes,
- * so the policy is styled by element selectors scoped under .policy.
+ * The legal pages' own layout: the optional link back to a parent page and
+ * the policy's typography. marked emits plain elements with no classes, so
+ * the policy is styled by element selectors scoped under .policy.
  */
 
-.android__back {
+.policy__back {
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
@@ -14,15 +14,15 @@
   color: var(--accent-ink);
 }
 
-.android__back svg {
+.policy__back svg {
   transform: rotate(180deg);
 }
 
-.android__back:hover {
+.policy__back:hover {
   color: var(--ink);
 }
 
-.android__back + .page-head__title {
+.policy__back + .page-head__title {
   margin-top: 1.5rem;
 }
 

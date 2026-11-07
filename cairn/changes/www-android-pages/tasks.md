@@ -11,4 +11,5 @@ change: www-android-pages
 - [x] Footer link to `/android/`
 - [x] `npm run build:www` green, both pages in dist/ and the sitemap
 - [x] Spec folded, log written
-- [ ] Published (Publish workflow of pimalaya/website), then the URLs entered in Google's Branding page
+- [x] Published (Publish workflow of pimalaya/_www, run 42286028119, 2026-11-06), both URLs answer 200
+- [x] Superseded for the Branding pages: the consent screen serves every Pimalaya app, so it takes `/`, `/privacy/` and `/terms/` (www-privacy-terms); `/android/privacy/` stays the app's details and the stores' link

@@ -4,11 +4,15 @@ import { Footer, Nav } from '@pimalaya/shared'
 import type { FooterColumn, NavLink } from '@pimalaya/shared'
 
 import { AndroidPage } from './components/AndroidPage'
-import { AndroidPrivacyPage } from './components/AndroidPrivacyPage'
 import { BusinessPage } from './components/BusinessPage'
 import { CommunityPage } from './components/CommunityPage'
 import { EcosystemPage } from './components/EcosystemPage'
 import { HomePage } from './components/HomePage'
+import {
+  AndroidPrivacyPage,
+  PrivacyPage,
+  TermsPage,
+} from './components/PolicyPage'
 import { SponsorPage } from './components/SponsorPage'
 
 /*
@@ -29,6 +33,8 @@ const pages: Record<string, ComponentType> = {
   business: BusinessPage,
   android: AndroidPage,
   'android/privacy': AndroidPrivacyPage,
+  privacy: PrivacyPage,
+  terms: TermsPage,
 }
 
 /* One line per link; the blog is the only one leaving the site, and the nav
@@ -105,6 +111,12 @@ export default function App({ url }: { url: string }) {
       <Footer
         tagline="Open-source PIM tools, written in Rust"
         columns={footerColumns}
+        bottomNote={
+          <>
+            <a href="/privacy/">Privacy policy</a> ·{' '}
+            <a href="/terms/">Terms of use</a>
+          </>
+        }
       />
     </>
   )
