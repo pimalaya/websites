@@ -1,6 +1,6 @@
 # Privacy Policy
 
-Last updated: 7 November 2026
+Last updated: 10 November 2026
 
 This privacy policy describes how the apps published by the Pimalaya project handle your data: the Android app and the command-line, terminal and desktop clients that connect to your mail, contacts and calendar accounts (the "apps"), and this website. The apps are free and open-source software; their source code is available at https://github.com/pimalaya.
 
@@ -33,13 +33,46 @@ The apps make network connections only to:
 
 ## Google user data
 
-When you connect a Google account, an app accesses your Gmail messages (to read, send, label, move and delete them), your Google contacts, your Google calendars and your Google tasks, only to provide those features to you on your device. This data is stored on your device only, and is sent nowhere but back to Google; no server of Pimalaya receives it. It is never used for advertising, never sold, never used to train any model, and never read by a person.
+This section covers the data an app receives from Google's APIs (Gmail, Google Calendar, Google Tasks and Google People) when you connect a Google account, whichever app you connect it in.
+
+### Data accessed
+
+For the parts of the account you choose to connect, an app accesses:
+
+- **Gmail**: your messages, labels and sending addresses;
+- **Google Calendar**: your list of calendars and the events in them;
+- **Google Tasks**: your task lists and their tasks;
+- **Google Contacts**: your contacts and their labels;
+- **your account's address**, to check that you signed in with the account you entered.
+
+The apps derive no aggregated or anonymized data from it.
+
+### How the data is used
+
+Only to provide an app's features to you on your device: to read, search, send, label, move and delete your mail; to read, create, change and delete events, and to invite the guests you add; to read, create, complete, change and delete tasks; to read, create, change and delete contacts and their labels; and to keep the app's copy in sync with your account. It is never used for advertising, never used to develop, improve or train any artificial intelligence or machine learning model, and never read by anyone but you.
+
+### Sharing and transfer
+
+The apps share Google user data with no one. An app sends it nowhere but back to Google, to carry out your actions, and never to us, to advertisers, to data brokers, to artificial intelligence services or to any other third party. It is never sold. The only other place it can go is one you choose on your own device: the Android app copies your contacts and calendars into the phone's own Contacts and Calendar apps when you turn that option on, as its details below say.
+
+### Protection
+
+- The Pimalaya project runs no server: no copy of your Google data exists outside your devices and Google.
+- Every connection to Google is encrypted with TLS.
+- You sign in on Google's own page, so the apps never see your Google password.
+- The Android app keeps the data in its private storage, which Android keeps from other apps, excludes it from Android's cloud backups and device-to-device transfers, and encrypts your OAuth tokens with a key held by the Android Keystore. The command-line, terminal and desktop apps keep the data in files of your own user account, and your tokens where you configure them, such as your system's keyring or a password manager.
+
+### Retention and deletion
+
+An app keeps Google user data only while the Google account is configured in it; "Data retention and deletion" below says what removing the account or uninstalling the app deletes. You can revoke an app's access to your Google account at any time at https://myaccount.google.com/permissions, after which it can no longer reach it.
+
+### Limited Use
 
 Pimalaya's use and transfer to any other app of information received from Google APIs will adhere to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
 
 ## Data retention and deletion
 
-An app keeps your data only for as long as the corresponding account is configured in it. Removing the account from the app, or uninstalling the app, deletes what it stored for that account on your device; the Android app moves the account's contacts into its on-device addressbook, where you can delete them, as its details below say. Data already synced to a remote server is not removed by either; delete it on the server if you want it gone. You can also revoke an app's access to your Google account at any time from https://myaccount.google.com/permissions.
+An app keeps your data only for as long as the corresponding account is configured in it. Removing the account from the app, or uninstalling the app, deletes what it stored for that account on your device; the Android app moves the account's contacts into its on-device addressbook, where you can delete them, and on Android 10 and later its uninstall dialog offers to keep the app's data for a later reinstall, both as its details below say. Data already synced to a remote server is not removed by either; delete it on the server if you want it gone. You can also revoke an app's access to your Google account at any time from https://myaccount.google.com/permissions.
 
 ## Details per app
 
