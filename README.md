@@ -8,8 +8,9 @@ Every site is an npm workspace package under sites/, consuming the shared theme 
 
 | Site                             | Domain               | Build                   | Deploy                                                                        |
 |----------------------------------|----------------------|-------------------------|-------------------------------------------------------------------------------|
-| [sites/www](./sites/www)         | pimalaya.org         | `npm run build:www`     | cutover pending: still deployed from [website](https://github.com/pimalaya/website) |
-| [sites/blog](./sites/blog)       | blog.pimalaya.org    | `npm run build:blog`    | cutover pending: still deployed from [blog](https://github.com/pimalaya/blog) |
+| [sites/www](./sites/www)         | pimalaya.org         | `npm run build:www`     | Publish workflow of [pimalaya/_www](https://github.com/pimalaya/_www), by hand |
+| [sites/blog](./sites/blog)       | blog.pimalaya.org    | `npm run build:blog`    | Publish workflow of [pimalaya/_blog](https://github.com/pimalaya/_blog), by hand |
+| [sites/pkg](./sites/pkg)         | pkg.pimalaya.org     | `npm run build:pkg`     | Hub workflow of [pimalaya/packages](https://github.com/pimalaya/packages), daily |
 
 NOTE: the pimalaya.org site is named `www`, the conventional host label for the apex domain, to avoid colliding with the retiring standalone repository.
 
@@ -27,11 +28,15 @@ With [Flakes](https://nixos.wiki/wiki/Flakes) enabled, `nix build github:pimalay
 
 - `npm run build:www` builds pimalaya.org into sites/www/dist (swap `build` for `dev` or `preview` on any site)
 - `npm run build:blog` builds blog.pimalaya.org; a post is a markdown file in [sites/blog/posts/](./sites/blog/posts) with `title`, `description` and `date` frontmatter
+- `npm run build:pkg` builds the install page of pkg.pimalaya.org, its placeholders left for the packages hub
 - `npm run newsletter -- <slug>` prints a Buttondown-ready email for a post ([sites/blog/scripts/newsletter.js](./sites/blog/scripts/newsletter.js), manual, no CI step)
 
 ## Deployment
 
-Nothing is deployed from this repository yet. pimalaya.org and blog.pimalaya.org are still deployed from the standalone [website](https://github.com/pimalaya/website) and [blog](https://github.com/pimalaya/blog) repositories until the pending cutover: either push each site's dist/ to its standalone repository's Pages from this repository's CI, or move DNS to a host that can serve several sites from one repository.
+GitHub Pages serves one site per repository, so each domain is deployed by the repository that owns it, building this repository's master:
+
+- pimalaya.org and blog.pimalaya.org: run the Publish workflow of [pimalaya/_www](https://github.com/pimalaya/_www) or [pimalaya/_blog](https://github.com/pimalaya/_blog) after pushing here.
+- pkg.pimalaya.org: the [Hub workflow](https://github.com/pimalaya/packages/blob/master/.github/workflows/hub.yml) of pimalaya/packages builds sites/pkg on every daily run, fills its `@NAME@` placeholders (tools, commands, signing key) and deploys it with the APT and DNF repositories; a change here goes live on the next run, or at once with a dispatched run.
 
 ## License
 

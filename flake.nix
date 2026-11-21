@@ -20,7 +20,7 @@
           pname = "${name}-website";
           version = "0.1.0";
           src = ./.;
-          npmDepsHash = "sha256-w8pVp+zEd+F9dlk8LuK0NCU8ck0F0l2QUlyJ1dxZz7c=";
+          npmDepsHash = "sha256-A/g6dWG4PL6svYC4rk+rLSr+Rryl8m+ykmWgknRGrfo=";
           npmBuildScript = "build:${name}";
 
           installPhase = ''
@@ -49,6 +49,10 @@
           blog = mkSite {
             name = "blog";
             description = "The Pimalaya blog (blog.pimalaya.org), static pages plus RSS";
+          };
+          pkg = mkSite {
+            name = "pkg";
+            description = "The Pimalaya packages install page (pkg.pimalaya.org), with the placeholders the packages hub fills";
           };
           default = www;
         };
