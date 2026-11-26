@@ -1,50 +1,58 @@
 ---
 title: The story behind Pimalaya
-description: A Vim plugin that had no business managing mail, the backlash and the love it got, and the split between UI and logic that became a whole project.
+description: A Vim plugin that had no business managing mails, the people who hated it and the people who loved it, and how splitting the UI from the logic turned into a whole project.
 date: 2026-08-03
 ---
 
-Pimalaya is today a constellation of low-level libraries, CLIs, TUIs and mobile apps around personal information management. But it did not start as a project, nor as a plan. It started as a Vim plugin that had no business existing.
+Pimalaya is today a set of low-level libraries, CLIs, TUIs and mobile apps around personal information management. But it did not start as a project, nor as a plan. It started as a Vim plugin that had no business existing.
 
 ## Mails inside Vim
 
-Years ago I discovered Vim, and like many people who fall into it, I fell hard. Once your editor becomes the place where you think, you want everything in it: notes, tasks, code, and, in my case, mails.
+Years ago I discovered Vim, and like many people, I fell hard into it. Once your editor becomes the place where you think, you want everything inside: notes, tasks, code, and in my case, mails.
 
-So I wrote [iris.vim](https://github.com/soywod/iris.vim), a plugin to manage mails inside Vim. Reading, replying, archiving, without leaving the editor.
+So I wrote [iris.vim](https://github.com/soywod/iris.vim), a plugin to manage mails inside Vim: reading, replying, archiving, without leaving the editor.
 
-The reception was… polarized. Some people hated me for torturing Vim: it is a text editor, not a mail client, and the plugin ecosystem was never meant to carry a mail workflow. Others loved the concept: their editor was already their home, and mail was the one thing still dragging them elsewhere.
+The reception was… mixed. Some people hated me for torturing Vim: it is a text editor, not a mail client, and plugins were never meant to carry a mail workflow. Others loved the concept: their editor was already their home, and mails were the last thing pulling them out of it.
 
-Both sides were right, and that tension turned out to be the founding insight of everything that came after.
+Both were right. And this tension turned out to be the root of everything that came after.
 
 ## Splitting the UI from the logic
 
-The critics had a point: Vim is a terrible place to *implement* a mail client. Fetching, parsing, encoding, talking to servers: none of that belongs in a plugin. But the lovers had a point too: Vim is a wonderful place to *display* one.
+The critics had a point: Vim is a terrible place to *implement* a mail client. Fetching, parsing, encoding, talking to servers, none of this belongs to a plugin. But the others had a point too: Vim is a nice place to *display* one.
 
-This is where I started to split the UI from the logic. The domain (everything mail knows how to do) should live outside the editor, in a proper program. The editor should only be a frontend: buffers in, keystrokes out.
+This is when I started to split the UI from the logic. The domain (everything a mail client knows how to do) should live outside of the editor, in a real program. The editor should just be a frontend: buffers in, keystrokes out.
 
-Once the logic is its own program, the frontend becomes swappable. Vim today, something else tomorrow.
+Once the logic lives in its own program, the frontend can be replaced. Vim today, something else tomorrow.
 
 ## A CLI, in Rust
 
-The shape of that program came naturally: a command-line interface. I had wanted to learn Rust for a while, and a mail CLI fit perfectly: innovative (the terminal mail world was full of TUIs like mutt, but a plain, scriptable CLI was rare), the right size for learning a new language, and exactly the backend a Vim frontend needed. The plugin would just shell out and render the output.
+The program took the shape of a command-line interface, quite naturally. I wanted to learn Rust for a while, and a mail CLI was a perfect fit:
 
-That CLI became [Himalaya](https://github.com/pimalaya/himalaya).
+- It was new: the terminal mail world was full of TUIs like mutt, but a plain, scriptable CLI was rare.
+- It had the right size to learn a new language.
+- It was exactly the backend a Vim frontend needed: the plugin would just call the CLI and render its output.
+
+This CLI became [Himalaya](https://github.com/pimalaya/himalaya).
 
 ## Then it grew
 
-The CLI was supposed to be the end of the story. It was actually the beginning, and the same splitting instinct kept applying itself one level down:
+The CLI was supposed to be the end of the story. In fact it was just the beginning, and the same splitting kept happening one level down:
 
-- The email logic was extracted from the CLI into a dedicated library, so other tools could reuse it.
-- The protocol logic was extracted from the email library into low-level libraries (IMAP, SMTP, and friends), so the email layer itself became swappable.
-- A TUI joined the CLI, proving the point of the whole architecture: same logic, another frontend.
-- Then other PIM domains knocked on the door: if it works for mails, why not contacts? Why not calendars?
+- The email logic moved from the CLI to a dedicated lib, so other tools could reuse it.
+- The protocol logic moved from the email lib to low-level libs (IMAP, SMTP etc), so the email layer itself could be replaced.
+- A TUI joined the CLI, which proved the point of the whole architecture: same logic, another frontend.
+- Then other PIM domains knocked at the door: if it works for mails, why not for contacts? Why not for calendars?
 
-At some point this stopped being "the Himalaya ecosystem" and became its own project: Pimalaya.
+At some point it stopped being "the Himalaya ecosystem", and it became a project on its own: Pimalaya.
 
 ## Here we are
 
-Today Pimalaya is full of low-level libraries, and fully mail-capable: Himalaya CLI, a TUI, mobile apps on the way. Contacts are coming next, then calendars.
+Today Pimalaya has plenty of low-level libs, and the mail side is complete: Himalaya CLI, a TUI, and mobile apps on their way. Contacts come next, then calendars.
 
-The plugin that tortured Vim is long gone, but its lesson is load-bearing in everything we build: the domain logic lives in reusable layers, and the UI (editor, terminal, phone) is just a view on it.
+The plugin that tortured Vim is long gone, but its lesson is still everywhere in what we build: the domain logic lives in reusable layers, and the UI (editor, terminal, phone) is just a view on it.
 
-Not bad for a plugin some people hated.
+Not bad for a plugin some people hated :)
+
+## Update (2026-11-26)
+
+The promise above was kept: contacts and calendars did come next. [Cardamum](https://github.com/pimalaya/cardamum) and [Calendula](https://github.com/pimalaya/calendula) reached their `v1`, and the Android app now gathers mails, contacts and calendars in one place. See [Pimalaya for Android enters closed alpha](https://blog.pimalaya.org/pimalaya-android-closed-alpha/) and [Pimalaya goes stable](https://blog.pimalaya.org/pimalaya-goes-stable/).
