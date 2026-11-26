@@ -18,7 +18,7 @@ The site SHALL ship the post index at `/` and one prerendered JavaScript-free pa
 src/lib/feed.ts SHALL build the RSS 2.0 feed with full article content, from the post data only (never the build clock), shared by prerender (written to dist/feed.xml) and the dev server (served live at /feed.xml by the vite plugin).
 
 ### Requirement: Newsletter
-The newsletter SHALL stay manual with no CI step: scripts/newsletter.js (`npm run newsletter -- <slug>`) prints the subject (the post title) and a paste-ready markdown body (frontmatter stripped, root-relative links absolutized, canonical link appended) for a new Buttondown email.
+The newsletter SHALL stay manual with no CI step: scripts/newsletter.js (`npm run newsletter -- <slug>`) prints the subject (the post title) and a paste-ready markdown body for a new Buttondown email: the post description in italic, a `---` rule, then the post (frontmatter stripped, root-relative links absolutized) a canonical link to it and the `{{ subscribe_form }}` tag. A missing `title` or `description` SHALL fail the script.
 
 ### Requirement: Head and structured data
 The pages SHALL carry the title, meta description, canonical https://blog.pimalaya.org/, Open Graph tags with the social card (og:type `article` on posts), the article:published_time meta on posts, and JSON-LD injected at prerender time (a Blog object on the index, a BlogPosting per article), all unchanged from the standalone repository.

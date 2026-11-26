@@ -5,9 +5,11 @@
 //
 // Buttondown's composer is markdown-native, and its RSS-to-email automation is
 // a paid feature, so sending is manual: this prints the subject (the post
-// title) and a paste-ready markdown body — frontmatter stripped, root-relative
-// links absolutized, a canonical link to the article appended. Paste the body
-// into a new Buttondown email, set the subject, send.
+// title) and a paste-ready markdown body (the post description in italic and a
+// rule, then the post with frontmatter stripped and root-relative links
+// absolutized, then a canonical link to the article and Buttondown's
+// subscribe form tag). Paste the body into a new Buttondown email, set the
+// subject, send.
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -34,9 +36,11 @@ for (const line of match[1].split(/\r?\n/)) {
   const sep = line.indexOf(':')
   if (sep !== -1) fm[line.slice(0, sep).trim()] = line.slice(sep + 1).trim()
 }
-if (!fm.title) {
-  console.error(`posts/${slug}.md: missing frontmatter key "title"`)
-  process.exit(1)
+for (const key of ['title', 'description']) {
+  if (!fm[key]) {
+    console.error(`posts/${slug}.md: missing frontmatter key "${key}"`)
+    process.exit(1)
+  }
 }
 
 const body = raw
@@ -47,6 +51,12 @@ const body = raw
 
 console.log(`Subject: ${fm.title}`)
 console.log()
+console.log(`*${fm.description}*`)
+console.log()
+console.log('---')
+console.log()
 console.log(body)
 console.log()
 console.log(`[Read this post on the blog](${siteUrl}/${slug}/)`)
+console.log()
+console.log('{{ subscribe_form }}')
