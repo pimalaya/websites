@@ -192,10 +192,19 @@ export function EcosystemPage() {
                 .
               </p>
               <p>
-                The focus is <strong>pimdir</strong>, the standard for
-                personal information on disk. The Android app is its first
-                full implementation, read and write, which is where the draft
-                gets stress-tested before it stops moving.
+                The focus was <strong>pimdir</strong>, the standard for
+                personal information on disk: storage, sync and search reached
+                their v1 on 26 November 2026, with every CLI released on top
+                of it the same day (see{' '}
+                <a
+                  href="https://blog.pimalaya.org/pimalaya-goes-stable/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Pimalaya goes stable
+                </a>
+                ). The Android app, its first full implementation, follows
+                the v1 too.
               </p>
               <p>
                 Around it, the libraries <strong>consolidate</strong> (stable
@@ -210,17 +219,17 @@ export function EcosystemPage() {
               </p>
             </div>
             <ol className="steps eco__steps">
-              <li className="steps__now">
+              <li>
                 <span className="steps__name">Standardise pimdir</span>
-                <span className="steps__note">the draft, stressed by Android</span>
+                <span className="steps__note">v1 released, November 2026</span>
               </li>
               <li>
                 <span className="steps__name">Consolidate</span>
-                <span className="steps__note">stable libraries, documented</span>
+                <span className="steps__note">stable CLIs, libraries documented</span>
               </li>
-              <li>
+              <li className="steps__now">
                 <span className="steps__name">Interfaces</span>
-                <span className="steps__note">Android, then desktop</span>
+                <span className="steps__note">Android, Himalaya TUI, then desktop</span>
               </li>
               <li>
                 <span className="steps__name">More domains</span>

@@ -182,8 +182,9 @@ export function BusinessPage() {
               </p>
               <p className="panel__lead">
                 Pimalaya ships no AI. Its tools are made to be driven by other
-                software, agents included: JSON output with its schemas, and
-                documentation written for integrators.
+                software, agents included: JSON output with its schemas, an
+                MCP server in the CLIs, and documentation written for
+                integrators.
               </p>
             </div>
             <p className="biz__figure">

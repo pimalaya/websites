@@ -106,12 +106,15 @@ export function HomePage() {
                   {'\n'}
                   {'\n'}
                   <span className="term__head">
-                    {'ID   FLAGS  SUBJECT                    FROM'}
+                    {'Account:  work (imap)\n'}
+                    {'Mailbox:  INBOX\n'}
+                    {'Page:     1, envelopes 1 to 3'}
                   </span>
                   {'\n'}
-                  {'214  ✓      Re: sans-I/O in practice   Ada\n'}
-                  {'213         Weekly sync notes          Grace\n'}
-                  {'212  ★      NLnet grant follow-up      NLnet'}
+                  {'\n'}
+                  {'214  *   2026-11-26 09:12  Ada    Re: sans-I/O in practice\n'}
+                  {'213   R  2026-11-25 17:40  Grace  Weekly sync notes\n'}
+                  {'212    @ 2026-11-24 11:03  NLnet  NLnet grant follow-up'}
                 </code>
               </pre>
             </div>

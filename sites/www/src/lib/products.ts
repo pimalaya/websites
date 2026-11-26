@@ -49,8 +49,9 @@ export const apps: Product[] = [
     repo: 'calendula',
     domain: 'Calendar',
     kind: 'CLI',
-    status: 'early',
-    description: 'Manage calendars over CalDAV, Google Calendar, vdir and pimdir.',
+    status: 'stable',
+    description:
+      'Manage calendars over CalDAV, JMAP, Google Calendar, Microsoft Graph, vdir and pimdir.',
     home: true,
   },
   {
@@ -58,9 +59,9 @@ export const apps: Product[] = [
     repo: 'cardamum',
     domain: 'Contacts',
     kind: 'CLI',
-    status: 'early',
+    status: 'stable',
     description:
-      'Manage contacts over CardDAV, JMAP, Google, Microsoft and vdir address books.',
+      'Manage contacts over CardDAV, JMAP, Google People, Microsoft Graph, vdir and pimdir.',
     home: true,
   },
   {
@@ -68,9 +69,10 @@ export const apps: Product[] = [
     repo: 'carillon',
     domain: 'Plumbing',
     kind: 'CLI',
-    status: 'early',
+    status: 'stable',
     description:
-      'Watch mail, contact and calendar collections for changes. Formerly mirador.',
+      'Watch mailboxes, address books and calendars, and fire hooks on changes, alarms and birthdays. Formerly mirador.',
+    home: true,
   },
   {
     name: 'comodoro',
@@ -88,7 +90,7 @@ export const apps: Product[] = [
     kind: 'CLI',
     status: 'stable',
     description:
-      'Manage mail from the command line, over IMAP, SMTP, JMAP, Gmail, Microsoft, Maildir, m2dir and mbox.',
+      'Manage mail from the command line, over IMAP, SMTP, JMAP, Gmail, Microsoft Graph, Maildir, mbox and pimdir.',
     home: true,
   },
   {
@@ -121,7 +123,7 @@ export const apps: Product[] = [
     repo: 'neverest',
     domain: 'Mail + Contacts + Calendar',
     kind: 'CLI',
-    status: 'beta',
+    status: 'stable',
     description:
       'Synchronize mail, contacts and calendars into a local pimdir store, from IMAP, CardDAV, CalDAV, Google and Microsoft.',
     home: true,
@@ -133,7 +135,7 @@ export const apps: Product[] = [
     kind: 'CLI',
     status: 'stable',
     description:
-      'Manage OAuth 2.0 tokens for your accounts, with a provider wizard.',
+      'Manage OAuth 2.0 tokens for your accounts, with ready-made Google, Microsoft and Fastmail accounts.',
     home: true,
   },
   {
@@ -244,14 +246,6 @@ export const libraries: Product[] = [
     description: 'I/O-free JMAP client.',
   },
   {
-    name: 'io-m2dir',
-    repo: 'io-m2dir',
-    domain: 'Mail',
-    kind: 'Library',
-    status: 'early',
-    description: 'I/O-free m2dir store.',
-  },
-  {
     name: 'io-maildir',
     repo: 'io-maildir',
     domain: 'Mail',
@@ -307,7 +301,7 @@ export const libraries: Product[] = [
     repo: 'io-pimdir',
     domain: 'Storage',
     kind: 'Library + CLI',
-    status: 'early',
+    status: 'stable',
     description:
       'The reference pimdir implementation, store and sync engine: one local store for mail, contacts and calendars. The pimdir operator CLI ships as an off-by-default cargo feature.',
   },
@@ -365,9 +359,9 @@ export const libraries: Product[] = [
     repo: 'pimdir',
     domain: 'Storage',
     kind: 'Specification',
-    status: 'early',
+    status: 'stable',
     description:
-      'The pimdir standard: one portable SQLite-plus-blobs store for mail, contacts and calendars, with its sync and search layers. Draft.',
+      'The pimdir standard: one portable SQLite-plus-blobs store for mail, contacts and calendars, with its sync and search layers.',
   },
   {
     name: 'stream',
@@ -433,6 +427,14 @@ export const retired: Product[] = [
     status: 'deprecated',
     description:
       'Keyring coroutines; tools now document third-party keyring CLIs instead.',
+  },
+  {
+    name: 'io-m2dir',
+    repo: 'io-m2dir',
+    domain: 'Mail',
+    kind: 'Library',
+    status: 'deprecated',
+    description: 'm2dir store, superseded by pimdir.',
   },
   {
     name: 'io-process',

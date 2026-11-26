@@ -94,7 +94,7 @@ export const offers: Offer[] = [
       },
       {
         title: 'Setup with one address:',
-        text: 'a first-class preset in our setup wizards and the discovery rules.',
+        text: 'a first-class preset in the setup of our apps and the discovery rules.',
       },
       {
         title: 'Apps under your name:',
